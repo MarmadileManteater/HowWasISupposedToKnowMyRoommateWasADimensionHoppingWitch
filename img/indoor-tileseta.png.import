@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bafroom.png-ad49b9e719bd4782db8ca81edd93bda7.stex"
+path="res://.import/indoor-tileseta.png-f3ee5334081a35441cc057d4e29bbde5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bafroom.png"
-dest_files=[ "res://.import/bafroom.png-ad49b9e719bd4782db8ca81edd93bda7.stex" ]
+source_file="res://img/indoor-tileseta.png"
+dest_files=[ "res://.import/indoor-tileseta.png-f3ee5334081a35441cc057d4e29bbde5.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/kifchen.png-35bcacfea7c8fe85510fb3561a7bf845.stex"
+path="res://.import/shower.png-ce1909d38beda1cbd6b60931144cbde0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kifchen.png"
-dest_files=[ "res://.import/kifchen.png-35bcacfea7c8fe85510fb3561a7bf845.stex" ]
+source_file="res://img/shower.png"
+dest_files=[ "res://.import/shower.png-ce1909d38beda1cbd6b60931144cbde0.stex" ]
 
 [params]
 

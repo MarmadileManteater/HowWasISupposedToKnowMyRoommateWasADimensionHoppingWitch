@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/typing.png-bf56e0ccdbb00b625f08400b8924bb09.stex"
+path="res://.import/pc-time.png-645b51dbc2f189fe5446d0a8635be89a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://typing.png"
-dest_files=[ "res://.import/typing.png-bf56e0ccdbb00b625f08400b8924bb09.stex" ]
+source_file="res://img/pc-time.png"
+dest_files=[ "res://.import/pc-time.png-645b51dbc2f189fe5446d0a8635be89a.stex" ]
 
 [params]
 

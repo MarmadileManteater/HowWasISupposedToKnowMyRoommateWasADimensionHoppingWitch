@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/puter.png-98f149a2a40eec3e34475b3fb448b6a9.stex"
+path="res://.import/bafroom.png-57f67e6860722535c3764339fbb074c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://puter.png"
-dest_files=[ "res://.import/puter.png-98f149a2a40eec3e34475b3fb448b6a9.stex" ]
+source_file="res://img/bafroom.png"
+dest_files=[ "res://.import/bafroom.png-57f67e6860722535c3764339fbb074c1.stex" ]
 
 [params]
 

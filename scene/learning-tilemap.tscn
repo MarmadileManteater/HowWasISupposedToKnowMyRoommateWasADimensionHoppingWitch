@@ -1,24 +1,24 @@
 [gd_scene load_steps=84 format=2]
 
-[ext_resource path="res://environmental-objects.png" type="Texture" id=1]
-[ext_resource path="res://F_03.png" type="Texture" id=2]
-[ext_resource path="res://indoor-tileseta.png" type="Texture" id=3]
-[ext_resource path="res://Player.cs" type="Script" id=4]
-[ext_resource path="res://kifchen.png" type="Texture" id=5]
-[ext_resource path="res://dialog.tscn" type="PackedScene" id=6]
-[ext_resource path="res://WasteBasket.cs" type="Script" id=7]
-[ext_resource path="res://IndoorPlantWalkWay.cs" type="Script" id=8]
-[ext_resource path="res://KitchenMask.cs" type="Script" id=9]
-[ext_resource path="res://Dishwasher.cs" type="Script" id=10]
-[ext_resource path="res://Painting.cs" type="Script" id=11]
-[ext_resource path="res://bafroom.png" type="Texture" id=12]
-[ext_resource path="res://Toilet.cs" type="Script" id=13]
-[ext_resource path="res://Sink.cs" type="Script" id=14]
-[ext_resource path="res://shower.png" type="Texture" id=15]
-[ext_resource path="res://puter.png" type="Texture" id=16]
-[ext_resource path="res://pc-time.tscn" type="PackedScene" id=17]
-[ext_resource path="res://DeadPlant.cs" type="Script" id=18]
-[ext_resource path="res://RoomateDoorActivator.cs" type="Script" id=19]
+[ext_resource path="res://img/indoor-tileseta.png" type="Texture" id=1]
+[ext_resource path="res://img/shower.png" type="Texture" id=2]
+[ext_resource path="res://scene/dialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/pc-time.tscn" type="PackedScene" id=4]
+[ext_resource path="res://cs/RoomateDoorActivator.cs" type="Script" id=5]
+[ext_resource path="res://cs/Player.cs" type="Script" id=6]
+[ext_resource path="res://cs/Painting.cs" type="Script" id=7]
+[ext_resource path="res://cs/Toilet.cs" type="Script" id=8]
+[ext_resource path="res://img/kifchen.png" type="Texture" id=9]
+[ext_resource path="res://img/puter.png" type="Texture" id=10]
+[ext_resource path="res://img/environmental-objects.png" type="Texture" id=11]
+[ext_resource path="res://img/F_03.png" type="Texture" id=12]
+[ext_resource path="res://cs/IndoorPlantWalkWay.cs" type="Script" id=13]
+[ext_resource path="res://cs/KitchenMask.cs" type="Script" id=14]
+[ext_resource path="res://cs/WasteBasket.cs" type="Script" id=15]
+[ext_resource path="res://cs/Dishwasher.cs" type="Script" id=16]
+[ext_resource path="res://cs/Sink.cs" type="Script" id=17]
+[ext_resource path="res://cs/DeadPlant.cs" type="Script" id=18]
+[ext_resource path="res://img/bafroom.png" type="Texture" id=19]
 
 [sub_resource type="VisualShader" id=7]
 code = "shader_type spatial;
@@ -73,7 +73,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 
 [sub_resource type="TileSet" id=17]
 0/name = "indoor-tileseta.png 0"
-0/texture = ExtResource( 3 )
+0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 24, 24 )
@@ -94,7 +94,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 0/z_index = 0
 1/name = "indoor-tileseta.png 1"
-1/texture = ExtResource( 3 )
+1/texture = ExtResource( 1 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 24, 0, 24, 24 )
@@ -115,7 +115,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 1/z_index = 0
 2/name = "indoor-tileseta.png 2"
-2/texture = ExtResource( 3 )
+2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 48, 0, 24, 24 )
@@ -136,7 +136,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 2/z_index = 0
 3/name = "indoor-tileseta.png 3"
-3/texture = ExtResource( 3 )
+3/texture = ExtResource( 1 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 72, 0, 48, 24 )
@@ -157,7 +157,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 3/z_index = 0
 4/name = "indoor-tileseta.png 4"
-4/texture = ExtResource( 3 )
+4/texture = ExtResource( 1 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 120, 0, 48, 24 )
@@ -178,7 +178,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 4/z_index = 0
 5/name = "indoor-tileseta.png 5"
-5/texture = ExtResource( 3 )
+5/texture = ExtResource( 1 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 168, 0, 48, 24 )
@@ -199,7 +199,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 5/z_index = 0
 6/name = "indoor-tileseta.png 6"
-6/texture = ExtResource( 3 )
+6/texture = ExtResource( 1 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 216, 0, 48, 24 )
@@ -220,7 +220,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 6/z_index = 0
 7/name = "indoor-tileseta.png 7"
-7/texture = ExtResource( 3 )
+7/texture = ExtResource( 1 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 264, 0, 48, 24 )
@@ -234,7 +234,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 7/shapes = [  ]
 7/z_index = 0
 8/name = "indoor-tileseta.png 8"
-8/texture = ExtResource( 3 )
+8/texture = ExtResource( 1 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 312, 0, 48, 24 )
@@ -248,7 +248,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 8/shapes = [  ]
 8/z_index = 0
 9/name = "indoor-tileseta.png 9"
-9/texture = ExtResource( 3 )
+9/texture = ExtResource( 1 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 360, 0, 48, 24 )
@@ -262,7 +262,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 9/shapes = [  ]
 9/z_index = 0
 10/name = "indoor-tileseta.png 10"
-10/texture = ExtResource( 3 )
+10/texture = ExtResource( 1 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 408, 0, 24, 24 )
@@ -283,7 +283,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 } ]
 10/z_index = 0
 11/name = "indoor-tileseta.png 11"
-11/texture = ExtResource( 3 )
+11/texture = ExtResource( 1 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 432, 0, 24, 24 )
@@ -297,7 +297,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 11/shapes = [  ]
 11/z_index = 0
 12/name = "indoor-tileseta.png 12"
-12/texture = ExtResource( 3 )
+12/texture = ExtResource( 1 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 456, 0, 24, 24 )
@@ -311,7 +311,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 12/shapes = [  ]
 12/z_index = 0
 13/name = "indoor-tileseta.png 13"
-13/texture = ExtResource( 3 )
+13/texture = ExtResource( 1 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 480, 0, 24, 24 )
@@ -325,7 +325,7 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 13/shapes = [  ]
 13/z_index = 0
 14/name = "indoor-tileseta.png 14"
-14/texture = ExtResource( 3 )
+14/texture = ExtResource( 1 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 504, 0, 24, 24 )
@@ -340,15 +340,15 @@ points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
 14/z_index = 0
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 312, 0, 48, 24 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 360, 0, 48, 24 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 264, 0, 48, 24 )
 
 [sub_resource type="SpriteFrames" id=5]
@@ -361,7 +361,7 @@ animations = [ {
 
 [sub_resource type="TileSet" id=50]
 0/name = "kifchen.png 0"
-0/texture = ExtResource( 5 )
+0/texture = ExtResource( 9 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 24, 24 )
@@ -375,7 +375,7 @@ animations = [ {
 0/shapes = [  ]
 0/z_index = 0
 1/name = "kifchen.png 1"
-1/texture = ExtResource( 5 )
+1/texture = ExtResource( 9 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 24, 0, 24, 24 )
@@ -389,7 +389,7 @@ animations = [ {
 1/shapes = [  ]
 1/z_index = 0
 2/name = "kifchen.png 2"
-2/texture = ExtResource( 5 )
+2/texture = ExtResource( 9 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 48, 0, 24, 24 )
@@ -403,7 +403,7 @@ animations = [ {
 2/shapes = [  ]
 2/z_index = 0
 3/name = "kifchen.png 3"
-3/texture = ExtResource( 5 )
+3/texture = ExtResource( 9 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 72, 0, 24, 24 )
@@ -418,7 +418,7 @@ animations = [ {
 3/z_index = 0
 
 [sub_resource type="AtlasTexture" id=79]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 11 )
 region = Rect2( 64, 16, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=80]
@@ -432,7 +432,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=78]
 
 [sub_resource type="AtlasTexture" id=75]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 11 )
 region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=76]
@@ -498,7 +498,7 @@ points = PoolVector2Array( 48, 18, 0, 18, 0, 0, 48, 0 )
 
 [sub_resource type="TileSet" id=64]
 0/name = "shower.png 0"
-0/texture = ExtResource( 15 )
+0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 48, 24 )
@@ -586,7 +586,7 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 
 [sub_resource type="TileSet" id=23]
 0/name = "environmental-objects.png 0"
-0/texture = ExtResource( 1 )
+0/texture = ExtResource( 11 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 48, 16 )
@@ -607,7 +607,7 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 } ]
 0/z_index = 0
 1/name = "environmental-objects.png 1"
-1/texture = ExtResource( 1 )
+1/texture = ExtResource( 11 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 16, 16, 16, 16 )
@@ -634,7 +634,7 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 } ]
 1/z_index = 0
 2/name = "environmental-objects.png 2"
-2/texture = ExtResource( 1 )
+2/texture = ExtResource( 11 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 48, 0, 16, 16 )
@@ -655,7 +655,7 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 } ]
 2/z_index = 0
 3/name = "environmental-objects.png 3"
-3/texture = ExtResource( 1 )
+3/texture = ExtResource( 11 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 32, 16, 16, 16 )
@@ -676,7 +676,7 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 } ]
 3/z_index = 0
 4/name = "environmental-objects.png 4"
-4/texture = ExtResource( 1 )
+4/texture = ExtResource( 11 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 48, 16, 16, 16 )
@@ -698,51 +698,51 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 4/z_index = 0
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 17, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 34, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 48, 0, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 48, 17, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 48, 34, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 16, 0, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 16, 17, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 16, 34, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 32, 17, 16, 17 )
 
 [sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 12 )
 region = Rect2( 32, 34, 16, 17 )
 
 [sub_resource type="SpriteFrames" id=22]
@@ -794,7 +794,7 @@ height = 8.66666
 
 [sub_resource type="TileSet" id=58]
 0/name = "bafroom.png 0"
-0/texture = ExtResource( 12 )
+0/texture = ExtResource( 19 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 16, 16, 16 )
@@ -808,7 +808,7 @@ height = 8.66666
 0/shapes = [  ]
 0/z_index = 0
 1/name = "bafroom.png 1"
-1/texture = ExtResource( 12 )
+1/texture = ExtResource( 19 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 16, 16, 16, 16 )
@@ -824,7 +824,7 @@ height = 8.66666
 
 [sub_resource type="TileSet" id=66]
 1/name = "puter.png 1"
-1/texture = ExtResource( 16 )
+1/texture = ExtResource( 10 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 16, 16, 16 )
@@ -854,7 +854,7 @@ extents = Vector2( 20.5, 16.5 )
 extents = Vector2( 45, 10 )
 
 [sub_resource type="AtlasTexture" id=71]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 11 )
 region = Rect2( 16, 16, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=72]
@@ -869,11 +869,11 @@ animations = [ {
 extents = Vector2( 9, 9 )
 
 [sub_resource type="AtlasTexture" id=67]
-atlas = ExtResource( 16 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=68]
-atlas = ExtResource( 16 )
+atlas = ExtResource( 10 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=69]
@@ -931,7 +931,7 @@ tile_data = PoolIntArray( 131068, 0, 0, 131069, 3, 0, 131070, 2, 0, 131071, 1, 0
 [node name="Roomate Door Activator" type="Area2D" parent="."]
 position = Vector2( 35, -100 )
 collision_layer = 0
-script = ExtResource( 19 )
+script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Roomate Door Activator"]
 scale = Vector2( 3, 3 )
@@ -965,7 +965,7 @@ margin_top = 49.0
 margin_right = 2.0
 margin_bottom = 221.0
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 9 )
+script = ExtResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Kitchen Mask"]
 "anims/Fade in" = SubResource( 52 )
@@ -986,7 +986,7 @@ margin_top = -335.0
 margin_right = 688.0
 margin_bottom = -143.0
 color = Color( 0, 0, 0, 1 )
-script = ExtResource( 9 )
+script = ExtResource( 14 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bathroom Mask"]
 "anims/Fade in" = SubResource( 61 )
@@ -1004,7 +1004,7 @@ tile_data = PoolIntArray( 458767, 4, 0 )
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 364, 264 )
 scale = Vector2( 3, 3 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="camera" type="Camera2D" parent="Player"]
 scale = Vector2( 0.333333, 0.333333 )
@@ -1019,11 +1019,11 @@ playing = true
 position = Vector2( -0.333336, 1.66667 )
 shape = SubResource( 43 )
 
-[node name="Dialog" parent="Player" instance=ExtResource( 6 )]
+[node name="Dialog" parent="Player" instance=ExtResource( 3 )]
 position = Vector2( -170, -99 )
 scale = Vector2( 0.333333, 0.333333 )
 
-[node name="PC Time" parent="Player" instance=ExtResource( 17 )]
+[node name="PC Time" parent="Player" instance=ExtResource( 4 )]
 visible = false
 scale = Vector2( 0.333333, 0.333333 )
 
@@ -1059,21 +1059,21 @@ format = 1
 tile_data = PoolIntArray( -262143, 3, 0, 262159, 3, 0, 393228, 2, 0, 393229, 0, 0 )
 
 [node name="Waste Basket" type="KinematicBody2D" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Waste Basket"]
 position = Vector2( 600, 320.5 )
 shape = SubResource( 57 )
 
 [node name="Dishwasher" type="KinematicBody2D" parent="."]
-script = ExtResource( 10 )
+script = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dishwasher"]
 position = Vector2( -183, 127 )
 shape = SubResource( 51 )
 
 [node name="Toilet" type="KinematicBody2D" parent="."]
-script = ExtResource( 13 )
+script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Toilet"]
 position = Vector2( 631, -131 )
@@ -1081,7 +1081,7 @@ shape = SubResource( 59 )
 
 [node name="Sink" type="KinematicBody2D" parent="."]
 position = Vector2( -126, 103 )
-script = ExtResource( 14 )
+script = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sink"]
 position = Vector2( 755, -192 )
@@ -1089,7 +1089,7 @@ shape = SubResource( 60 )
 
 [node name="Painting" type="KinematicBody2D" parent="."]
 position = Vector2( 406, 355 )
-script = ExtResource( 11 )
+script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Painting"]
 position = Vector2( 312, -169 )
@@ -1097,7 +1097,7 @@ shape = SubResource( 55 )
 
 [node name="Indoor Plant" type="KinematicBody2D" parent="."]
 position = Vector2( 406, 355 )
-script = ExtResource( 8 )
+script = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Indoor Plant"]
 position = Vector2( -194, -120 )

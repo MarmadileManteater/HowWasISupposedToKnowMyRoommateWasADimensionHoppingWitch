@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/indoor-tileseta.png-5bacfb3cb855c6222fb57de708de9e7c.stex"
+path="res://.import/typing.png-2aa29b4eb45246e34cee7b1b4f9cd41c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://indoor-tileseta.png"
-dest_files=[ "res://.import/indoor-tileseta.png-5bacfb3cb855c6222fb57de708de9e7c.stex" ]
+source_file="res://img/typing.png"
+dest_files=[ "res://.import/typing.png-2aa29b4eb45246e34cee7b1b4f9cd41c.stex" ]
 
 [params]
 

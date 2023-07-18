@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Kenney Pixel.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://environmental-objects.png" type="Texture" id=2]
-[ext_resource path="res://Dialog.cs" type="Script" id=3]
+[ext_resource path="res://font/Kenney Pixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://img/environmental-objects.png" type="Texture" id=2]
+[ext_resource path="res://cs/Dialog.cs" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
