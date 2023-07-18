@@ -1,0 +1,160 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Kenney Pixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://environmental-objects.png" type="Texture" id=2]
+[ext_resource path="res://Dialog.cs" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 823, 542 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "bob"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 823, 542 ), Vector2( 823, 534 ), Vector2( 823, 541 ) ]
+}
+
+[node name="Dialog" type="Node2D"]
+visible = false
+z_index = 1
+script = ExtResource( 3 )
+
+[node name="Padding" type="ColorRect" parent="."]
+margin_left = 162.0
+margin_top = 399.0
+margin_right = 202.0
+margin_bottom = 439.0
+rect_scale = Vector2( 17.5035, 4.33683 )
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+
+[node name="Box" type="ColorRect" parent="."]
+margin_left = 176.0
+margin_top = 409.0
+margin_right = 216.0
+margin_bottom = 449.0
+rect_scale = Vector2( 16.7964, 3.8924 )
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+
+[node name="Name" type="RichTextLabel" parent="Box"]
+margin_right = 40.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.25, 1.004 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+scroll_active = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Text" type="RichTextLabel" parent="Box"]
+margin_top = 10.2764
+margin_right = 160.0
+margin_bottom = 40.2764
+rect_scale = Vector2( 0.25, 1.004 )
+custom_fonts/italics_font = SubResource( 6 )
+custom_fonts/bold_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DecideTimeBox" type="ColorRect" parent="."]
+visible = false
+margin_left = 645.0
+margin_top = 300.0
+margin_right = 657.0
+margin_bottom = 322.0
+rect_scale = Vector2( 16.7964, 3.8924 )
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+
+[node name="Option A" type="RichTextLabel" parent="DecideTimeBox"]
+margin_left = 2.0
+margin_right = 42.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.25, 1.004 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+text = "Yes"
+scroll_active = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Option B" type="RichTextLabel" parent="DecideTimeBox"]
+margin_left = 2.0
+margin_top = 10.276
+margin_right = 42.0
+margin_bottom = 22.276
+rect_scale = Vector2( 0.25, 1.004 )
+custom_fonts/italics_font = SubResource( 6 )
+custom_fonts/bold_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+text = "No"
+scroll_active = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Selector" type="AnimatedSprite" parent="DecideTimeBox"]
+position = Vector2( 0.178612, 16.6992 )
+rotation = -1.57327
+scale = Vector2( 0.770691, 0.178789 )
+frames = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Indicator" type="AnimatedSprite" parent="."]
+position = Vector2( 823, 535.035 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator"]
+autoplay = "bob"
+reset_on_save = false
+method_call_mode = 1
+anims/RESET = SubResource( 4 )
+anims/bob = SubResource( 5 )
