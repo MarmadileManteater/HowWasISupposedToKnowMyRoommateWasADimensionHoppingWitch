@@ -3,7 +3,7 @@ using System;
 
 namespace SummerFediverseJam
 {
-	public class WasteBasket : MundaneThing
+	public class RoomateDoorCollider : DialogBody
 	{
 		// Declare member variables here. Examples:
 		// private int a = 2;
@@ -17,18 +17,7 @@ namespace SummerFediverseJam
 
 		public override DialogText[] GetDialog(Player player)
 		{
-			return AddBaseDialog(player, new[] { 
-				new DialogText { 
-					Text = "It's a waste basket."
-				},
-				new DialogText {
-					Text = "No one has thrown anything interesting away recently :(",
-					AfterDequeue = () =>
-					{
-						player.EnterBattle(MonsterOption.SpiderWithFingers);
-					}
-				}
-			}); 
+			return new[] { new DialogText { Text = "This is my roommate's room." }, new DialogText { Text = "The door is locked, and they are presently away." } }; 
 		}
 
 		//  // Called every frame. 'delta' is the elapsed time since the previous frame.

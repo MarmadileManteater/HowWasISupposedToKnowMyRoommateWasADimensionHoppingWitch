@@ -66,7 +66,7 @@ public class Dialog : Node2D
 		if (PhraseNum != -1) {
 			if (dialog[PhraseNum].AfterDequeue != null)
 			{
-				dialog[PhraseNum].AfterDequeue?.Invoke();
+				dialog[PhraseNum].AfterDequeue();
 			}
 			if (dialog[PhraseNum].End)
 			{

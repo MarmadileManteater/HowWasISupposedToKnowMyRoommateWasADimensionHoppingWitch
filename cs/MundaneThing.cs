@@ -27,9 +27,12 @@ namespace SummerFediverseJam
         protected DialogText[] AddBaseDialog(Player player, DialogText[] given)
         {
             var d = AddDialog(GetMundaneDialog(player), given);
+            var action = d[d.Length - 1].AfterDequeue;
             d[d.Length - 1].AfterDequeue = () =>
             {
                 player.InteractWithObject(this);
+                if (action != null)
+                    action();
             };
             return d;
         }

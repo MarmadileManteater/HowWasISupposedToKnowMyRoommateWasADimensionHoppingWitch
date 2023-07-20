@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/briefing.ogg-773f65a6f343c8bb41b89c8890f1009a.oggstr"
+
+[deps]
+
+source_file="res://audio/briefing.ogg"
+dest_files=[ "res://.import/briefing.ogg-773f65a6f343c8bb41b89c8890f1009a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

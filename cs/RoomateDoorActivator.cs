@@ -12,6 +12,8 @@ namespace SummerFediverseJam {
 		private CircleShape2D __circleShape;
 		private Player __player;
 		private AnimatedSprite __roommateDoor;
+		private KitchenMask __roommateMask;
+		private CollisionShape2D __roommateDoorCollider;
 		private bool IsActivated;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -21,6 +23,8 @@ namespace SummerFediverseJam {
 			__circleShape = (CircleShape2D)__collisionShape.Shape;
 			__player = GetParent().GetNode<Player>("Player");
 			__roommateDoor = GetParent().GetNode<AnimatedSprite>("Roomate Door");
+			__roommateMask = GetParent().GetNode<KitchenMask>("Roomate Room/Roommate mask");
+			__roommateDoorCollider = GetParent().GetNode<CollisionShape2D>("Roomate Door Collider/CollisionShape2D");
 		}
 		private void Activate()
 		{
@@ -30,7 +34,10 @@ namespace SummerFediverseJam {
 					Text = "[i]*ker-chunk*[/i]",
 					AfterDequeue = () =>
 					{
+						__roommateMask.ExtraCondition = true;
 						__roommateDoor.Play("opendoor");
+						__roommateDoor.ZIndex = 2;
+						__roommateDoorCollider.Disabled = true;
 					}
 				}
 			});

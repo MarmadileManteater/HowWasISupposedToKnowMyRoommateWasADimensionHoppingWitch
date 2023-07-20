@@ -6,9 +6,13 @@ using System.Collections.Generic;
 namespace SummerFediverseJam {
 	public class Player : KinematicBody2D
 	{
+		private Node __root;
 		private Dialog __dialog;
+		private Battle __battleScene;
+		private AudioStreamPlayer __backgroundMusic;
 		private Vector2 DialogExpireLocation = new Vector2(0, 0);
 		public Controls Controls = new Controls();
+		private Vector2 PrebattlePosition = new Vector2(0, 0);
 		#region Mundane Objects
 		private List<MundaneThing> MundaneObjectsInteractedWith = new List<MundaneThing>();
 		// mundane objects count
@@ -28,8 +32,11 @@ namespace SummerFediverseJam {
 		
 		public override void _Ready()
 		{
+			__root = GetParent();
 			__dialog = GetNode<Dialog>("Dialog");
-			__dialog.dialog = new DialogText[0]; 
+			__dialog.dialog = new DialogText[0];
+			__battleScene = GetParent().GetNode<Battle>("Battle");
+			__backgroundMusic = GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		}
 		
 		public void NewDialog(DialogText[] dialog)
@@ -37,6 +44,61 @@ namespace SummerFediverseJam {
 			__dialog.dialog = dialog;
 			__dialog.NextPhrase();
 		}
+
+		public void EnterBattleCallback()
+		{
+            var mask = GetNode<ColorRect>("Node2D/BattleTransitionMask");
+            GetNode<Timer>("Node2D/BattleTransitionTimer").Stop();
+            GetParent().RemoveChild(this);
+            __battleScene.GetNode<TileMap>("FieldOfFloatingIslands").AddChild(this);
+            var camera = GetNode<Camera2D>("camera");
+            RemoveChild(camera);
+            camera.Position = new Vector2(500, 300);
+            PrebattlePosition = Position;
+            Position = new Vector2(167, 128);
+            Scale = new Vector2(1, 1);
+            __battleScene.AddChild(camera);
+            __battleScene.Show();
+            CollisionLayer = 2;
+            CollisionMask = 2;
+			mask.Hide();
+        }
+
+		// todo ✏ add param for monster information
+		public void EnterBattle(MonsterOption option)
+		{
+            var mask = GetNode<ColorRect>("Node2D/BattleTransitionMask");
+            var player = GetNode<AnimationPlayer>("Node2D/BattleTransitionMask/AnimationPlayer");
+            mask.Show();
+            var timer = GetNode<Timer>("Node2D/BattleTransitionTimer");
+            player.CurrentAnimation = "fade-out";
+            __battleScene.CurrentMonster = option;
+            __battleScene.CurrentOption = BattleOption.None;
+            __battleScene.CurrentOption = BattleOption.Fight;
+			timer.WaitTime = 2.5f;
+			timer.Start();
+			__backgroundMusic.Stop();
+            __battleScene.PlayMusic();
+            timer.Connect("timeout", this, nameof(EnterBattleCallback));
+        }
+
+		public void ExitBattle()
+		{
+			GetParent().RemoveChild(this);
+			var camera = __battleScene.GetNode<Camera2D>("camera");
+			__battleScene.RemoveChild(camera);
+			camera.Position = new Vector2(0, 0);
+			AddChild(camera);
+			Scale = new Vector2(3, 3);
+			Position = PrebattlePosition;
+			__root.AddChildBelowNode(__root.GetNode<TileMap>("Environment layer 2"), this);
+			CollisionLayer = 1;
+			CollisionMask = 1;
+			__battleScene.StopMusic();
+            var player = GetNode<AnimationPlayer>("Node2D/BattleTransitionMask/AnimationPlayer");
+			player.CurrentAnimation = "fade-in";
+			__backgroundMusic.Play(0);
+        }
 
 		public override void _UnhandledInput(InputEvent @event)
 		{
@@ -71,7 +133,7 @@ namespace SummerFediverseJam {
 			{
 				Controls.Down = false;
 			}
-			if (@event.IsActionPressed("ui_accept"))
+			if (@event.IsActionPressed("ui_accept") && !(__battleScene.moverSwitch == true && CollisionLayer == 2))
 			{
 				__dialog.NextPhrase();
 			}
@@ -87,7 +149,7 @@ namespace SummerFediverseJam {
 			// otherwise the animation won't play if it keeps flipping back and forth before the animation plays
 			var animation = sprite.Animation;
 			// only activate controls if the dialog is closed or unpopulated
-			if (__dialog.PhraseNum == -1) {
+			if (__dialog.PhraseNum == -1 && !(__battleScene.moverSwitch == true && CollisionLayer == 2)) {
 				Godot.Object collider = null;
 				Vector2 direction = Vector2.Zero;
 				if (Controls.Left) {
@@ -133,7 +195,7 @@ namespace SummerFediverseJam {
 					}
 					catch (Exception ex)
 					{
-						GD.PushWarning($"Issue creating dialog with collider {ex}");
+						//GD.PushWarning($"Issue creating dialog with collider {ex}");
 					}
 				}
 				else if (animation[0] != sprite.Animation[0] || Math.Abs(distanceFromDialogExpiry.x) > 0 || Math.Abs(distanceFromDialogExpiry.y) > 0)
