@@ -189,6 +189,9 @@ namespace SummerFediverseJam
 				{
 					CurrentOption--;
 				}
+				if (@event.IsActionPressed("ui_accept") && player.IsInBattle)
+				{
+				}
 			}
 			base._UnhandledInput(@event);
 		}

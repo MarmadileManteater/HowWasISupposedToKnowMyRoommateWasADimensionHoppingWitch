@@ -13,6 +13,7 @@ namespace SummerFediverseJam {
 		private Vector2 DialogExpireLocation = new Vector2(0, 0);
 		public Controls Controls = new Controls();
 		private Vector2 PrebattlePosition = new Vector2(0, 0);
+		public bool IsInBattle = false;
 		#region Mundane Objects
 		private List<MundaneThing> MundaneObjectsInteractedWith = new List<MundaneThing>();
 		// mundane objects count
@@ -67,37 +68,45 @@ namespace SummerFediverseJam {
 		// todo ✏ add param for monster information
 		public void EnterBattle(MonsterOption option)
 		{
-            var mask = GetNode<ColorRect>("Node2D/BattleTransitionMask");
-            var player = GetNode<AnimationPlayer>("Node2D/BattleTransitionMask/AnimationPlayer");
-            mask.Show();
-            var timer = GetNode<Timer>("Node2D/BattleTransitionTimer");
-            player.CurrentAnimation = "fade-out";
-            __battleScene.CurrentMonster = option;
-            __battleScene.CurrentOption = BattleOption.None;
-            __battleScene.CurrentOption = BattleOption.Fight;
-			timer.WaitTime = 2.5f;
-			timer.Start();
-			__backgroundMusic.Stop();
-            __battleScene.PlayMusic();
-            timer.Connect("timeout", this, nameof(EnterBattleCallback));
+			if (!IsInBattle)
+			{
+				var mask = GetNode<ColorRect>("Node2D/BattleTransitionMask");
+				var player = GetNode<AnimationPlayer>("Node2D/BattleTransitionMask/AnimationPlayer");
+				mask.Show();
+				var timer = GetNode<Timer>("Node2D/BattleTransitionTimer");
+				player.CurrentAnimation = "fade-out";
+				__battleScene.CurrentMonster = option;
+				__battleScene.CurrentOption = BattleOption.None;
+				__battleScene.CurrentOption = BattleOption.Fight;
+				timer.WaitTime = 2.5f;
+				timer.Start();
+				__backgroundMusic.Stop();
+				__battleScene.PlayMusic();
+				timer.Connect("timeout", this, nameof(EnterBattleCallback));
+				IsInBattle = true;
+			}
         }
 
 		public void ExitBattle()
 		{
-			GetParent().RemoveChild(this);
-			var camera = __battleScene.GetNode<Camera2D>("camera");
-			__battleScene.RemoveChild(camera);
-			camera.Position = new Vector2(0, 0);
-			AddChild(camera);
-			Scale = new Vector2(3, 3);
-			Position = PrebattlePosition;
-			__root.AddChildBelowNode(__root.GetNode<TileMap>("Environment layer 2"), this);
-			CollisionLayer = 1;
-			CollisionMask = 1;
-			__battleScene.StopMusic();
-            var player = GetNode<AnimationPlayer>("Node2D/BattleTransitionMask/AnimationPlayer");
-			player.CurrentAnimation = "fade-in";
-			__backgroundMusic.Play(0);
+			if (IsInBattle)
+			{
+				GetParent().RemoveChild(this);
+				var camera = __battleScene.GetNode<Camera2D>("camera");
+				__battleScene.RemoveChild(camera);
+				camera.Position = new Vector2(0, 0);
+				AddChild(camera);
+				Scale = new Vector2(3, 3);
+				Position = PrebattlePosition;
+				__root.AddChildBelowNode(__root.GetNode<TileMap>("Environment layer 2"), this);
+				CollisionLayer = 1;
+				CollisionMask = 1;
+				__battleScene.StopMusic();
+				var player = GetNode<AnimationPlayer>("Node2D/BattleTransitionMask/AnimationPlayer");
+				player.CurrentAnimation = "fade-in";
+				__backgroundMusic.Play(0);
+				IsInBattle = false;
+			}
         }
 
 		public override void _UnhandledInput(InputEvent @event)
@@ -133,7 +142,7 @@ namespace SummerFediverseJam {
 			{
 				Controls.Down = false;
 			}
-			if (@event.IsActionPressed("ui_accept") && !(__battleScene.moverSwitch == true && CollisionLayer == 2))
+			if (@event.IsActionPressed("ui_accept") && !IsInBattle)
 			{
 				__dialog.NextPhrase();
 			}

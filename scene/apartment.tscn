@@ -748,7 +748,7 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=88]
 atlas = ExtResource( 12 )
 region = Rect2( 0, 17, 16, 17 )
 
@@ -756,39 +756,39 @@ region = Rect2( 0, 17, 16, 17 )
 atlas = ExtResource( 12 )
 region = Rect2( 0, 34, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=89]
 atlas = ExtResource( 12 )
 region = Rect2( 48, 0, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=90]
 atlas = ExtResource( 12 )
 region = Rect2( 48, 17, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=91]
 atlas = ExtResource( 12 )
 region = Rect2( 48, 34, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=92]
 atlas = ExtResource( 12 )
 region = Rect2( 16, 0, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=93]
 atlas = ExtResource( 12 )
 region = Rect2( 16, 17, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=94]
 atlas = ExtResource( 12 )
 region = Rect2( 16, 34, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=95]
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=96]
 atlas = ExtResource( 12 )
 region = Rect2( 32, 17, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=34]
+[sub_resource type="AtlasTexture" id=97]
 atlas = ExtResource( 12 )
 region = Rect2( 32, 34, 16, 17 )
 
@@ -799,45 +799,45 @@ animations = [ {
 "name": "ddefault",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 88 ), SubResource( 25 ) ],
 "loop": true,
 "name": "dwalk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 26 ) ],
+"frames": [ SubResource( 89 ) ],
 "loop": true,
 "name": "ldefault",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 27 ), SubResource( 28 ) ],
+"frames": [ SubResource( 90 ), SubResource( 91 ) ],
 "loop": true,
 "name": "lwalk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 29 ) ],
+"frames": [ SubResource( 92 ) ],
 "loop": true,
 "name": "rdefault",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 30 ), SubResource( 31 ) ],
+"frames": [ SubResource( 93 ), SubResource( 94 ) ],
 "loop": true,
 "name": "rwalk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 32 ) ],
+"frames": [ SubResource( 95 ) ],
 "loop": true,
 "name": "udefault",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 33 ), SubResource( 34 ) ],
+"frames": [ SubResource( 96 ), SubResource( 97 ) ],
 "loop": true,
 "name": "uwalk",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=43]
+[sub_resource type="CapsuleShape2D" id=98]
 radius = 4.33334
-height = 8.66666
+height = 6.66663
 
 [sub_resource type="Animation" id=86]
 length = 0.001
@@ -1106,7 +1106,6 @@ script = ExtResource( 6 )
 
 [node name="camera" type="Camera2D" parent="Player"]
 scale = Vector2( 0.333, 0.333 )
-current = true
 
 [node name="character" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 22 )
@@ -1114,8 +1113,8 @@ animation = "ddefault"
 playing = true
 
 [node name="collision shape" type="CollisionShape2D" parent="Player"]
-position = Vector2( -0.333336, 1.66667 )
-shape = SubResource( 43 )
+position = Vector2( -1.19209e-07, 0.66667 )
+shape = SubResource( 98 )
 
 [node name="Dialog" parent="Player" instance=ExtResource( 4 )]
 position = Vector2( -170, -99 )

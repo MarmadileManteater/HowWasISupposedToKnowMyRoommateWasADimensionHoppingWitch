@@ -18,11 +18,12 @@ config/icon="res://icon.png"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
+window/stretch/aspect="keep"
 
 [global]
 
 pixel=false
+viewport=false
 
 [gui]
 
