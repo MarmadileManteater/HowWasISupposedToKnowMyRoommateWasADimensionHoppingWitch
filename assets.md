@@ -69,3 +69,74 @@
 **URL:** [https://opengameart.org/content/blue-rain](https://opengameart.org/content/blue-rain)
 
 **License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+---
+
+**Title:**  [6 Short water splashes](https://opengameart.org/content/6-short-water-splashes)
+
+**Author:** [ezwa](http://www.pdsounds.org/users/ezwa)
+
+**URL:** [https://opengameart.org/content/6-short-water-splashes](https://opengameart.org/content/6-short-water-splashes)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+---
+
+**Title:**  [NES Sounds](https://opengameart.org/content/nes-sounds)
+
+**Author:** [Baŝto](https://opengameart.org/users/ba%C5%9Dto)
+
+**URL:** [https://opengameart.org/content/nes-sounds](https://opengameart.org/content/nes-sounds)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+---
+
+**Title:** [Animated emote bubbles](https://opengameart.org/content/animated-emote-bubbles)
+
+**Author:** [Game Dev Alliance](https://opengameart.org/users/game-dev-alliance)
+
+**URL:** [https://opengameart.org/content/animated-emote-bubbles](https://opengameart.org/content/animated-emote-bubbles)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+---
+
+**Title:** [16x16 Pixel Island Assets](https://opengameart.org/content/16x16-pixel-island-assets)
+
+**Author:** [heartsynth](https://opengameart.org/users/heartsynth)
+
+**URL:** [https://opengameart.org/content/16x16-pixel-island-assets](https://opengameart.org/content/16x16-pixel-island-assets)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+---
+
+**Title:** [Skipping into the abyss (loop)](https://opengameart.org/content/skipping-into-the-abyss-loop)
+
+**Author:** [Alex McCulloch](https://opengameart.org/users/heartsynth)
+
+**URL:** [https://opengameart.org/content/skipping-into-the-abyss-loop](https://opengameart.org/content/skipping-into-the-abyss-loop)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+---
+
+**Title:** [Modern Ringtone [Chirptone]](https://opengameart.org/content/modern-ringtone-chirptone)
+
+**Author:** [Zane Little](https://opengameart.org/users/zane-little-music)
+
+**URL:** [https://opengameart.org/content/modern-ringtone-chirptone](https://opengameart.org/content/modern-ringtone-chirptone)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+
+---
+
+**Title:** [Kenney fonts](https://opengameart.org/content/kenney-fonts)
+
+**Author:** [Kenney](https://opengameart.org/users/kenney)
+
+**URL:** [https://opengameart.org/content/kenney-fonts](https://opengameart.org/content/kenney-fonts)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )

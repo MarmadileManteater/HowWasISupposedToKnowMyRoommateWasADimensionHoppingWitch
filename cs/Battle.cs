@@ -174,23 +174,25 @@ namespace SummerFediverseJam
 
 		public override void _UnhandledInput(InputEvent @event)
 		{
-			var player = GetNode<Player>("FieldOfFloatingIslands/Player");
-			if (player != null)
-			{
-				if (@event.IsActionPressed("ui_left"))
+			if (HasNode("FieldOfFloatingIslands/Player")) {
+				var player = GetNode<Player>("FieldOfFloatingIslands/Player");
+				if (player != null)
 				{
-					player.ExitBattle();
-				}
-				if (@event.IsActionPressed("ui_down"))
-				{
-					CurrentOption++;
-				}
-				if (@event.IsActionPressed("ui_up"))
-				{
-					CurrentOption--;
-				}
-				if (@event.IsActionPressed("ui_accept") && player.IsInBattle)
-				{
+					if (@event.IsActionPressed("ui_left"))
+					{
+						player.ExitBattle();
+					}
+					if (@event.IsActionPressed("ui_down"))
+					{
+						CurrentOption++;
+					}
+					if (@event.IsActionPressed("ui_up"))
+					{
+						CurrentOption--;
+					}
+					if (@event.IsActionPressed("ui_accept") && player.IsInBattle)
+					{
+					}
 				}
 			}
 			base._UnhandledInput(@event);

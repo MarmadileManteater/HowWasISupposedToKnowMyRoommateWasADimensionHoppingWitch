@@ -21,7 +21,10 @@ public class KitchenMask : ColorRect
 		__animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		var parent = GetParent();
 		while (__player == null) {
-			__player = parent.GetNode<Player>("Player");
+			if (parent.HasNode("Player"))
+			{
+				__player = parent.GetNode<Player>("Player");
+			}
 			parent = parent.GetParent();
 		}
 	}

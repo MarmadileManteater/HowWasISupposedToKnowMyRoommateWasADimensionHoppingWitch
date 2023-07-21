@@ -58,6 +58,7 @@ public class Dialog : Node2D
 		} else
 		{
 			__timer.Stop();
+
 		}
 	}
 
@@ -97,8 +98,23 @@ public class Dialog : Node2D
 				}
 				__name.BbcodeText = dialog[PhraseNum].Name;
 				__text.BbcodeText = dialog[PhraseNum].Text;
+				if (dialog[PhraseNum].OnDisplay != null)
+				{
+					dialog[PhraseNum].OnDisplay();
+				}
 				__text.VisibleCharacters = 0;
-				__timer.Connect("timeout", this, nameof(TypewriterLoop));
+				if (dialog[PhraseNum].TextSpeed != 0)
+				{
+					__timer.WaitTime = dialog[PhraseNum].TextSpeed;
+				} else {
+					__timer.WaitTime = TextSpeed;
+
+				}
+
+				if (!__timer.IsConnected("timeout", this, nameof(TypewriterLoop)))
+				{
+					__timer.Connect("timeout", this, nameof(TypewriterLoop));
+				}
 				__timer.Start();
 				if (dialog[PhraseNum].Options != null)
 				{

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://img/indoor-tileseta.png" type="Texture" id=1]
 [ext_resource path="res://img/shower.png" type="Texture" id=2]
@@ -23,6 +23,13 @@
 [ext_resource path="res://scene/RoomateDoorCollider.cs" type="Script" id=21]
 [ext_resource path="res://scene/battle.tscn" type="PackedScene" id=22]
 [ext_resource path="res://audio/briefing.ogg" type="AudioStream" id=23]
+[ext_resource path="res://audio/water_splash-01.ogg" type="AudioStream" id=24]
+[ext_resource path="res://audio/coin.ogg" type="AudioStream" id=25]
+[ext_resource path="res://audio/kerchunk.ogg" type="AudioStream" id=26]
+[ext_resource path="res://audio/achieved.ogg" type="AudioStream" id=27]
+[ext_resource path="res://img/ImanorBalloonx2.png" type="Texture" id=28]
+[ext_resource path="res://scene/perpendicular-dimension.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scene/title-screen.tscn" type="PackedScene" id=30]
 
 [sub_resource type="VisualShader" id=7]
 code = "shader_type spatial;
@@ -311,6 +318,340 @@ points = PoolVector2Array( 34, 0, 35, 0, 35, 24, 34, 24 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 37 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
+11/name = "indoor-tileseta.png 11"
+11/texture = ExtResource( 1 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 432, 0, 24, 24 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "indoor-tileseta.png 12"
+12/texture = ExtResource( 1 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 456, 0, 24, 24 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "indoor-tileseta.png 13"
+13/texture = ExtResource( 1 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 480, 0, 24, 24 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+14/name = "indoor-tileseta.png 14"
+14/texture = ExtResource( 1 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 504, 0, 24, 24 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+15/name = "indoor-tileseta.png 15"
+15/texture = ExtResource( 1 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 528, 0, 24, 24 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+
+[sub_resource type="ConvexPolygonShape2D" id=138]
+points = PoolVector2Array( 24, 12, 0, 12, 0, 0, 24, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=139]
+points = PoolVector2Array( 24, 12, 0, 12, 0, 0, 24, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=140]
+points = PoolVector2Array( 24, 24, 0, 24, 0, 0, 24, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=141]
+points = PoolVector2Array( 24, 12, 0, 12, 0, 0, 24, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=142]
+points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=143]
+points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=144]
+points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=145]
+points = PoolVector2Array( 48, 12, 0, 12, 0, 0, 48, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=146]
+points = PoolVector2Array( 14, 23, 0, 23, 0, 0, 14, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=147]
+points = PoolVector2Array( 48, 23, 35, 23, 35, 0, 48, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=148]
+points = PoolVector2Array( 34, 0, 35, 0, 35, 24, 34, 24 )
+
+[sub_resource type="TileSet" id=149]
+0/name = "indoor-tileseta.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 24, 24 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 138 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 138 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "indoor-tileseta.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 24, 0, 24, 24 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 139 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 139 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "indoor-tileseta.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 48, 0, 24, 24 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 141 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 141 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "indoor-tileseta.png 3"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 72, 0, 48, 24 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 142 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 142 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "indoor-tileseta.png 4"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 120, 0, 48, 24 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 143 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 143 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "indoor-tileseta.png 5"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 168, 0, 48, 24 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 144 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 144 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "indoor-tileseta.png 6"
+6/texture = ExtResource( 1 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 216, 0, 48, 24 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 145 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 145 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "indoor-tileseta.png 7"
+7/texture = ExtResource( 1 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 264, 0, 48, 24 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 146 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 146 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 147 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 148 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "indoor-tileseta.png 8"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 312, 0, 48, 24 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "indoor-tileseta.png 9"
+9/texture = ExtResource( 1 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 360, 0, 48, 24 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "indoor-tileseta.png 10"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 408, 0, 24, 24 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 140 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 140 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 10/z_index = 0
@@ -748,7 +1089,7 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=88]
+[sub_resource type="AtlasTexture" id=124]
 atlas = ExtResource( 12 )
 region = Rect2( 0, 17, 16, 17 )
 
@@ -756,31 +1097,31 @@ region = Rect2( 0, 17, 16, 17 )
 atlas = ExtResource( 12 )
 region = Rect2( 0, 34, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=89]
+[sub_resource type="AtlasTexture" id=125]
 atlas = ExtResource( 12 )
 region = Rect2( 48, 0, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=90]
+[sub_resource type="AtlasTexture" id=126]
 atlas = ExtResource( 12 )
 region = Rect2( 48, 17, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=91]
+[sub_resource type="AtlasTexture" id=127]
 atlas = ExtResource( 12 )
 region = Rect2( 48, 34, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=92]
+[sub_resource type="AtlasTexture" id=128]
 atlas = ExtResource( 12 )
 region = Rect2( 16, 0, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=93]
+[sub_resource type="AtlasTexture" id=129]
 atlas = ExtResource( 12 )
 region = Rect2( 16, 17, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=94]
+[sub_resource type="AtlasTexture" id=130]
 atlas = ExtResource( 12 )
 region = Rect2( 16, 34, 16, 17 )
 
-[sub_resource type="AtlasTexture" id=95]
+[sub_resource type="AtlasTexture" id=131]
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 16, 17 )
 
@@ -799,32 +1140,32 @@ animations = [ {
 "name": "ddefault",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 88 ), SubResource( 25 ) ],
+"frames": [ SubResource( 124 ), SubResource( 25 ) ],
 "loop": true,
 "name": "dwalk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 89 ) ],
+"frames": [ SubResource( 125 ) ],
 "loop": true,
 "name": "ldefault",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 90 ), SubResource( 91 ) ],
+"frames": [ SubResource( 126 ), SubResource( 127 ) ],
 "loop": true,
 "name": "lwalk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 92 ) ],
+"frames": [ SubResource( 128 ) ],
 "loop": true,
 "name": "rdefault",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 93 ), SubResource( 94 ) ],
+"frames": [ SubResource( 129 ), SubResource( 130 ) ],
 "loop": true,
 "name": "rwalk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 95 ) ],
+"frames": [ SubResource( 131 ) ],
 "loop": true,
 "name": "udefault",
 "speed": 5.0
@@ -839,7 +1180,7 @@ animations = [ {
 radius = 4.33334
 height = 6.66663
 
-[sub_resource type="Animation" id=86]
+[sub_resource type="Animation" id=132]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_size")
@@ -854,7 +1195,7 @@ tracks/0/keys = {
 "values": [ Vector2( 444, 250 ) ]
 }
 
-[sub_resource type="Animation" id=85]
+[sub_resource type="Animation" id=133]
 resource_name = "fade-in"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_size")
@@ -869,7 +1210,7 @@ tracks/0/keys = {
 "values": [ Vector2( 444, 250 ), Vector2( 0, 250 ) ]
 }
 
-[sub_resource type="Animation" id=87]
+[sub_resource type="Animation" id=134]
 resource_name = "fade-out"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_size")
@@ -883,6 +1224,125 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 250 ), Vector2( 404, 250 ) ]
 }
+
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 28 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 28 )
+region = Rect2( 64, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 28 )
+region = Rect2( 96, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=112]
+atlas = ExtResource( 28 )
+region = Rect2( 128, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=113]
+atlas = ExtResource( 28 )
+region = Rect2( 160, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=114]
+atlas = ExtResource( 28 )
+region = Rect2( 192, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=115]
+atlas = ExtResource( 28 )
+region = Rect2( 224, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 28 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 28 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 28 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 28 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 28 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=105]
+atlas = ExtResource( 28 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 28 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=116]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=117]
+atlas = ExtResource( 28 )
+region = Rect2( 32, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=118]
+atlas = ExtResource( 28 )
+region = Rect2( 64, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=119]
+atlas = ExtResource( 28 )
+region = Rect2( 96, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=120]
+atlas = ExtResource( 28 )
+region = Rect2( 128, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=121]
+atlas = ExtResource( 28 )
+region = Rect2( 160, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=122]
+atlas = ExtResource( 28 )
+region = Rect2( 192, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=123]
+atlas = ExtResource( 28 )
+region = Rect2( 224, 96, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=107]
+animations = [ {
+"frames": [ SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ) ],
+"loop": true,
+"name": "alert",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ) ],
+"loop": true,
+"name": "love",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ) ],
+"loop": true,
+"name": "wonder",
+"speed": 5.0
+} ]
 
 [sub_resource type="TileSet" id=58]
 0/name = "bafroom.png 0"
@@ -913,6 +1373,53 @@ tracks/0/keys = {
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
+
+[sub_resource type="Animation" id=150]
+resource_name = "Fade in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=151]
+resource_name = "Fade out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=152]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
 
 [sub_resource type="TileSet" id=66]
 1/name = "puter.png 1"
@@ -979,6 +1486,61 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=84]
 extents = Vector2( 33, 14 )
 
+[sub_resource type="Animation" id=135]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=136]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+
+[sub_resource type="Animation" id=137]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
 material = SubResource( 8 )
 
@@ -999,6 +1561,14 @@ cell_size = Vector2( 24, 24 )
 format = 1
 tile_data = PoolIntArray( -262135, 10, 0, -131073, 10, 0, -196608, 1, 0, -196607, 7, 0, -196605, 7, 0, -196603, 1, 0, -196602, 2, 0, -196601, 13, 0, -196600, 13, 0, -196599, 10, 0, -65537, 10, 0, -131072, 11, 0, -131071, 11, 0, -131070, 11, 0, -131069, 11, 0, -131068, 11, 0, -131067, 11, 0, -131066, 11, 0, -131065, 13, 0, -131064, 13, 0, -131063, 10, 0, -1, 10, 0, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0, -65533, 10, 0, -65532, 10, 0, -65531, 11, 0, -65530, 10, 0, -65529, 10, 0, -65528, 10, 0, -65527, 10, 0, 0, 10, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 11, 0, 6, 10, 0, 131067, 10, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 10, 0, 65537, 10, 0, 65538, 10, 0, 65539, 10, 0, 65540, 10, 0, 65541, 11, 0, 65542, 10, 0, 65543, 10, 0, 65544, 10, 0, 65545, 10, 0, 65546, 10, 0, 65547, 10, 0, 196603, 10, 0, 196604, 12, 0, 196605, 12, 0, 196606, 12, 0, 196607, 12, 0, 131072, 0, 0, 131073, 6, 0, 131075, 1, 0, 131076, 2, 0, 131077, 11, 0, 131078, 0, 0, 131079, 3, 0, 131081, 4, 0, 131083, 10, 0, 262139, 10, 0, 262140, 10, 0, 262141, 10, 0, 262142, 10, 0, 262143, 12, 0, 196608, 11, 0, 196609, 11, 0, 196610, 11, 0, 196611, 11, 0, 196612, 11, 0, 196613, 11, 0, 196614, 11, 0, 196615, 11, 0, 196616, 11, 0, 196617, 11, 0, 196618, 11, 0, 196619, 10, 0, 327675, 10, 0, 327676, 10, 0, 327677, 10, 0, 327678, 10, 0, 327679, 10, 0, 262144, 11, 0, 262145, 11, 0, 262146, 11, 0, 262147, 11, 0, 262148, 11, 0, 262149, 11, 0, 262150, 11, 0, 262151, 11, 0, 262152, 11, 0, 262153, 11, 0, 262154, 11, 0, 262155, 10, 0, 393211, 10, 0, 393212, 10, 0, 393213, 10, 0, 393214, 10, 0, 393215, 10, 0, 327680, 10, 0, 327681, 10, 0, 327682, 10, 0, 327683, 10, 0, 327684, 14, 0, 327685, 10, 0, 327686, 10, 0, 327687, 10, 0, 327688, 10, 0, 327689, 10, 0, 327690, 10, 0, 327691, 10, 0, 393217, 10, 0, 393218, 10, 0, 393219, 10, 0, 393220, 10, 0, 393221, 10, 0, 393222, 10, 0, 393223, 10, 0, 393224, 10, 0, 393225, 10, 0, 393226, 10, 0 )
 
+[node name="Room" type="TileMap" parent="."]
+position = Vector2( -38, -288 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 149 )
+cell_size = Vector2( 24, 24 )
+format = 1
+tile_data = PoolIntArray( -131075, 10, 0, -131074, 10, 0, -131073, 10, 0, -196608, 10, 0, -196607, 10, 0, -196606, 10, 0, -196605, 10, 0, -65539, 10, 0, -65538, 1, 0, -65537, 3, 0, -131071, 1, 0, -131070, 1, 0, -131069, 10, 0, -3, 10, 0, -2, 15, 0, -1, 15, 0, -65536, 15, 0, -65535, 15, 0, -65534, 15, 0, -65533, 10, 0, 65533, 10, 0, 65534, 15, 0, 65535, 15, 0, 0, 15, 0, 1, 15, 0, 2, 15, 0, 3, 10, 0, 131069, 10, 0, 65538, 536870927, 0 )
+
 [node name="Walls in weird places" type="TileMap" parent="."]
 position = Vector2( 0, 60 )
 scale = Vector2( 3, 3 )
@@ -1009,12 +1579,6 @@ tile_data = PoolIntArray( -262137, 1, 0, -262136, 1, 0, 262142, 10, 0 )
 
 [node name="Roomate Door" type="AnimatedSprite" parent="."]
 position = Vector2( 288, -180 )
-scale = Vector2( 3, 3 )
-frames = SubResource( 5 )
-animation = "opendoor"
-
-[node name="Door" type="AnimatedSprite" parent="."]
-position = Vector2( 144, -180 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 5 )
 animation = "opendoor"
@@ -1038,6 +1602,9 @@ frames = SubResource( 80 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roomate Door Activator"]
 scale = Vector2( 2, 2 )
 shape = SubResource( 78 )
+
+[node name="kerchunk" type="AudioStreamPlayer" parent="Roomate Door Activator"]
+stream = ExtResource( 26 )
 
 [node name="bafroom hidden" type="TileMap" parent="."]
 position = Vector2( -1, 73 )
@@ -1100,12 +1667,13 @@ format = 1
 tile_data = PoolIntArray( 458767, 4, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 364, 264 )
+position = Vector2( -22, -298 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 6 )
 
 [node name="camera" type="Camera2D" parent="Player"]
 scale = Vector2( 0.333, 0.333 )
+current = true
 
 [node name="character" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 22 )
@@ -1136,11 +1704,18 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Node2D/BattleTransitionMask"]
 reset_on_save = false
-anims/RESET = SubResource( 86 )
-anims/fade-in = SubResource( 85 )
-anims/fade-out = SubResource( 87 )
+anims/RESET = SubResource( 132 )
+anims/fade-in = SubResource( 133 )
+anims/fade-out = SubResource( 134 )
 
 [node name="BattleTransitionTimer" type="Timer" parent="Player/Node2D"]
+
+[node name="Emotes" type="AnimatedSprite" parent="Player"]
+position = Vector2( -0.332, -15.333 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+frames = SubResource( 107 )
+playing = true
 
 [node name="bafroom" type="TileMap" parent="."]
 position = Vector2( 24, 24 )
@@ -1158,6 +1733,35 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -262132, 0, 0 )
 
+[node name="Room Mask" type="ColorRect" parent="."]
+margin_left = -203.0
+margin_top = -460.0
+margin_right = 189.0
+margin_bottom = -144.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 14 )
+BottomPadding = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Room Mask"]
+"anims/Fade in" = SubResource( 150 )
+"anims/Fade out" = SubResource( 151 )
+anims/RESET = SubResource( 152 )
+
+[node name="Room2" type="TileMap" parent="."]
+position = Vector2( -4.76837e-07, -288 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 149 )
+cell_size = Vector2( 24, 24 )
+format = 1
+tile_data = PoolIntArray( -131075, 10, 0, -131074, 10, 0, -131073, 10, 0, -196608, 10, 0, -196607, 10, 0, -196606, 10, 0, -196605, 10, 0, -65539, 10, 0, -3, 10, 0, 65533, 10, 0, 131069, 10, 0, 65536, 536870913, 0 )
+
+[node name="Door" type="AnimatedSprite" parent="."]
+position = Vector2( 144, -180 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 5 )
+animation = "opendoor"
+frame = 2
+
 [node name="Environment layer 3" type="TileMap" parent="."]
 position = Vector2( 112, 12 )
 scale = Vector2( 3, 3 )
@@ -1171,7 +1775,7 @@ scale = Vector2( 3, 3 )
 tile_set = SubResource( 23 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -262143, 3, 0, 262159, 3, 0, 393228, 2, 0, 393229, 0, 0 )
+tile_data = PoolIntArray( -262144, 536870915, 0, 262159, 3, 0, 393228, 2, 0, 393229, 0, 0 )
 
 [node name="Waste Basket" type="KinematicBody2D" parent="."]
 script = ExtResource( 15 )
@@ -1223,6 +1827,9 @@ frames = SubResource( 72 )
 position = Vector2( -194, -105 )
 shape = SubResource( 73 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Indoor Plant"]
+stream = ExtResource( 24 )
+
 [node name="Monitor" type="AnimatedSprite" parent="."]
 position = Vector2( 657.5, 276 )
 scale = Vector2( 2.6875, 3 )
@@ -1232,13 +1839,38 @@ frames = SubResource( 69 )
 script = ExtResource( 21 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roomate Door Collider"]
-position = Vector2( 288, -187 )
+position = Vector2( 288, -185 )
 shape = SubResource( 84 )
 
+[node name="ApartmentMask" type="ColorRect" parent="."]
+margin_left = -293.0
+margin_top = -568.0
+margin_right = 1017.0
+margin_bottom = 598.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="Battle" parent="." instance=ExtResource( 22 )]
+visible = false
 position = Vector2( 3682, -80 )
 CurrentOption = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 23 )
-autoplay = true
+
+[node name="UnlockSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+
+[node name="AchievedSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+
+[node name="DimensionAnimation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 135 )
+anims/collapse = SubResource( 136 )
+anims/expand = SubResource( 137 )
+
+[node name="Perpendicular Dimension" parent="." instance=ExtResource( 29 )]
+visible = false
+position = Vector2( -4738, 32 )
+
+[node name="TitleCard" parent="." instance=ExtResource( 30 )]
+position = Vector2( -534, -592 )

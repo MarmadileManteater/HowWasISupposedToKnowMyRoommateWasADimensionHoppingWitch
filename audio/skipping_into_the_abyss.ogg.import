@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/skipping_into_the_abyss.ogg-aa1aaa590ac331a19ab247ed21ac3a6d.oggstr"
+
+[deps]
+
+source_file="res://audio/skipping_into_the_abyss.ogg"
+dest_files=[ "res://.import/skipping_into_the_abyss.ogg-aa1aaa590ac331a19ab247ed21ac3a6d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://font/Kenney Pixel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://cs/MainMenu.cs" type="Script" id=2]
+[ext_resource path="res://audio/chirptone.ogg" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 225.0
+margin_top = 183.0
+margin_right = 283.0
+margin_bottom = 202.0
+rect_scale = Vector2( 10, 10 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Roommates"
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 224.0
+margin_top = 337.0
+margin_right = 339.0
+margin_bottom = 364.0
+rect_scale = Vector2( 5, 5 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Press 'Enter' to shut alarm off and wake up"
+scroll_active = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 195.0
+margin_top = 307.0
+margin_right = 871.0
+margin_bottom = 497.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+reset_on_save = false
+"anims/Fade in" = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

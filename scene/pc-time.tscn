@@ -159,5 +159,5 @@ anims/RESET = SubResource( 1 )
 position = Vector2( 71, 17 )
 scale = Vector2( 16.5, 16.5 )
 frames = SubResource( 26 )
-frame = 14
+frame = 7
 playing = true

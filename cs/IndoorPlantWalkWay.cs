@@ -7,6 +7,7 @@ namespace SummerFediverseJam
 	public class IndoorPlantWalkWay : DialogBody
 	{
 		private int WaterLevel = 0;
+		private AudioStreamPlayer __player;
 		// Declare member variables here. Examples:
 		// private int a = 2;
 		// private string b = "text";
@@ -14,7 +15,7 @@ namespace SummerFediverseJam
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-
+			__player = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		}
 
 		public override DialogText[] GetDialog(Player player)
@@ -29,8 +30,13 @@ namespace SummerFediverseJam
 					new DialogText
 					{
 						Text = "Whoops~ I guess I can move it out of the walk-way now",
+						OnDisplay = () =>
+						{
+                            player.PlayUnlockJingle();
+                        },
 						AfterDequeue = () =>
 						{
+							player.stats.KilledRoommatePlant = true;
 							Hide();
 							GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
 							var tree = player.GetParent().GetNode<RigidBody2D>("Plant After It Has Drowned");
@@ -55,6 +61,8 @@ namespace SummerFediverseJam
 							{
 								"Water", () => {
 									WaterLevel++;
+									player.stats.WateredPlantTimes++;
+									__player.Play();
 									return "water-too-much";
 								}
 							},
@@ -95,7 +103,9 @@ namespace SummerFediverseJam
 							{
 								"Water", () => {
 									WaterLevel++;
-									return "water-more";
+                                    player.stats.WateredPlantTimes++;
+                                    __player.Play();
+                                    return "water-more";
 								}
 							},
 							{
@@ -131,8 +141,9 @@ namespace SummerFediverseJam
 						{ 
 							"Water", () => {
 								WaterLevel++;
-								GD.Print(WaterLevel);
-								return "water-fine";
+                                 player.stats.WateredPlantTimes++;
+                                __player.Play();
+                                return "water-fine";
 							}
 						},
 						{

@@ -58,7 +58,7 @@ tracks/0/keys = {
 
 [node name="Dialog" type="Node2D"]
 visible = false
-z_index = 1
+z_index = 2
 script = ExtResource( 3 )
 
 [node name="Padding" type="ColorRect" parent="."]

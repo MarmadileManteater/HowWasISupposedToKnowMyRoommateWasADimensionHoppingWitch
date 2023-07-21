@@ -14,6 +14,7 @@ namespace SummerFediverseJam {
 		private AnimatedSprite __roommateDoor;
 		private KitchenMask __roommateMask;
 		private CollisionShape2D __roommateDoorCollider;
+		private AudioStreamPlayer __audioPlayer;
 		private bool IsActivated;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
@@ -25,6 +26,7 @@ namespace SummerFediverseJam {
 			__roommateDoor = GetParent().GetNode<AnimatedSprite>("Roomate Door");
 			__roommateMask = GetParent().GetNode<KitchenMask>("Roomate Room/Roommate mask");
 			__roommateDoorCollider = GetParent().GetNode<CollisionShape2D>("Roomate Door Collider/CollisionShape2D");
+			__audioPlayer = GetNode<AudioStreamPlayer>("kerchunk");
 		}
 		private void Activate()
 		{
@@ -32,8 +34,14 @@ namespace SummerFediverseJam {
 				new DialogText
 				{
 					Text = "[i]*ker-chunk*[/i]",
+					OnDisplay = () =>
+					{
+						__audioPlayer.Play();
+					},
 					AfterDequeue = () =>
 					{
+						__player.stats.UsedRoommatesPlantToOpenDoor = true;
+						__player.PlayAchievedJingle();
 						__roommateMask.ExtraCondition = true;
 						__roommateDoor.Play("opendoor");
 						__roommateDoor.ZIndex = 2;

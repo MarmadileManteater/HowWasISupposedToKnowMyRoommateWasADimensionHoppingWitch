@@ -21,13 +21,13 @@ namespace SummerFediverseJam
 		
 		public override DialogText[] GetDialog(Player player)
 		{
-            return AddBaseDialog(player,  new[]
-            {
-                    new DialogText {
-                        Text = "This is the toilet."
+			return AddBaseDialog(player,  new[]
+			{
+					new DialogText {
+						Text = "This is the toilet."
 					}
 			});
-        }
+		}
 
 	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	//  public override void _Process(float delta)

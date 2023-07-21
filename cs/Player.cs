@@ -1,15 +1,29 @@
 using Godot;
-
+using SummerFediverseJam.cs;
 using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 
 namespace SummerFediverseJam {
+	public enum Emotes
+	{
+		Alert,
+		Love,
+		Wonder,
+		None
+	}
 	public class Player : KinematicBody2D
 	{
-		private Node __root;
+		public GameStats stats = new GameStats();
+		public Node2D root;
 		private Dialog __dialog;
 		private Battle __battleScene;
 		private AudioStreamPlayer __backgroundMusic;
+		private AudioStreamPlayer __unlockSoundEffect;
+		private AudioStreamPlayer __achievedSoundEffect;
+		private AnimatedSprite __emotes;
+		private AnimationPlayer __dimensionAnimation;
+		private ColorRect __apartmentMask;
 		private Vector2 DialogExpireLocation = new Vector2(0, 0);
 		public Controls Controls = new Controls();
 		private Vector2 PrebattlePosition = new Vector2(0, 0);
@@ -33,13 +47,81 @@ namespace SummerFediverseJam {
 		
 		public override void _Ready()
 		{
-			__root = GetParent();
+			root = GetParent<Node2D>();
 			__dialog = GetNode<Dialog>("Dialog");
 			__dialog.dialog = new DialogText[0];
 			__battleScene = GetParent().GetNode<Battle>("Battle");
 			__backgroundMusic = GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+			__unlockSoundEffect = GetParent().GetNode<AudioStreamPlayer>("UnlockSoundEffect");
+			__achievedSoundEffect = GetParent().GetNode<AudioStreamPlayer>("AchievedSoundEffect");
+			__emotes = GetNode<AnimatedSprite>("Emotes");
+			__dimensionAnimation = root.GetNode<AnimationPlayer>("DimensionAnimation");
+			__apartmentMask = root.GetNode<ColorRect>("ApartmentMask");
+		}
+
+		public void ShowAptMask()
+		{
+			__apartmentMask.Show();
+		}
+        public void HideAptMask()
+        {
+            __apartmentMask.Hide();
+        }
+
+        public void CollapseDimension()
+		{
+			__dimensionAnimation.CurrentAnimation = "collapse";
+		}
+
+        public void ExpandDimension()
+        {
+            __dimensionAnimation.CurrentAnimation = "expand";
+        }
+
+		public void PauseBackgroundMusic()
+		{
+			__backgroundMusic.Stop();
+		}
+
+		public void PlayBackgroundMusic()
+		{
+			__backgroundMusic.Play(0);
+		}
+
+        public void ShowEmotion(Emotes emote)
+		{
+			switch(emote)
+			{
+				case Emotes.Alert:
+					__emotes.Animation = "alert";
+					break;
+				case Emotes.Love:
+					__emotes.Animation = "love";
+					break;
+				case Emotes.Wonder:
+					__emotes.Animation = "wonder";
+					break;
+				default:
+					__emotes.Animation = "default";
+					break;
+			}
+		}
+
+		public void FaceDirection(string direction)
+		{
+            GetNode<AnimatedSprite>("character").Animation = $"{direction}default";
+        }
+
+		public void PlayUnlockJingle()
+		{
+			__unlockSoundEffect.Play();
 		}
 		
+		public void PlayAchievedJingle()
+		{
+			__achievedSoundEffect.Play();
+		}
+
 		public void NewDialog(DialogText[] dialog)
 		{
 			__dialog.dialog = dialog;
@@ -98,7 +180,7 @@ namespace SummerFediverseJam {
 				AddChild(camera);
 				Scale = new Vector2(3, 3);
 				Position = PrebattlePosition;
-				__root.AddChildBelowNode(__root.GetNode<TileMap>("Environment layer 2"), this);
+				root.AddChildBelowNode(root.GetNode<TileMap>("Environment layer 2"), this);
 				CollisionLayer = 1;
 				CollisionMask = 1;
 				__battleScene.StopMusic();
@@ -106,6 +188,7 @@ namespace SummerFediverseJam {
 				player.CurrentAnimation = "fade-in";
 				__backgroundMusic.Play(0);
 				IsInBattle = false;
+				__battleScene.Hide();
 			}
         }
 
@@ -158,7 +241,7 @@ namespace SummerFediverseJam {
 			// otherwise the animation won't play if it keeps flipping back and forth before the animation plays
 			var animation = sprite.Animation;
 			// only activate controls if the dialog is closed or unpopulated
-			if (__dialog.PhraseNum == -1 && !(__battleScene.moverSwitch == true && CollisionLayer == 2)) {
+			if (__dialog.PhraseNum == -1 && !(__battleScene.moverSwitch == true && CollisionLayer == 2) && root.GetNode<MainMenu>("TitleCard").isPlaying) {
 				Godot.Object collider = null;
 				Vector2 direction = Vector2.Zero;
 				if (Controls.Left) {
@@ -177,7 +260,7 @@ namespace SummerFediverseJam {
 					direction += Vector2.Down;
 					animation = "dwalk";
 				}
-				if (direction != Vector2.Zero)
+				if (direction != Vector2.Zero && root.Scale.x == 1)
 				{
 					MoveAndSlide(direction * delta * 10000, Vector2.Up, false, 4, (float) Math.PI / 4, false);
 					collider = GetLastSlideCollision()?.Collider;

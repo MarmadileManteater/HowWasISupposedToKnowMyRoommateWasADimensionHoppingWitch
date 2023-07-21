@@ -15,6 +15,8 @@ namespace SummerFediverseJam
         public Dictionary<string, Func<string>> Options { get; set; }
         public string Next { get; set; }
         public bool End { get; set; }
+        public Action OnDisplay { get; set; }
         public Action AfterDequeue { get; set; }
+        public float TextSpeed { get; set; }
     }
 }
