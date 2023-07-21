@@ -490,10 +490,9 @@ format = 1
 tile_data = PoolIntArray( -131075, 10, 0, -131074, 10, 0, -131073, 10, 0, -196608, 10, 0, -196607, 10, 0, -196606, 10, 0, -196605, 10, 0, -65539, 10, 0, -65538, 1, 0, -65537, 3, 0, -131071, 1, 0, -131070, 1, 0, -131069, 10, 0, -3, 10, 0, -2, 15, 0, -1, 15, 0, -65536, 15, 0, -65535, 15, 0, -65534, 15, 0, -65533, 10, 0, 65533, 10, 0, 65534, 15, 0, 65535, 15, 0, 0, 15, 0, 1, 15, 0, 2, 15, 0, 3, 10, 0, 131069, 10, 0, 131070, 15, 0 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 111, -78.6228 )
+position = Vector2( 111, -84.0838 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 87 )
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]

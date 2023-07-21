@@ -24,9 +24,13 @@ namespace SummerFediverseJam {
 		private AnimatedSprite __emotes;
 		private AnimationPlayer __dimensionAnimation;
 		private ColorRect __apartmentMask;
+		private AnimationPlayer __apartmentMaskAnimationPlayer;
+		private Roommate __roommate;
+		private BadRoommateEndingCard __badEndCard;
 		private Vector2 DialogExpireLocation = new Vector2(0, 0);
 		public Controls Controls = new Controls();
 		private Vector2 PrebattlePosition = new Vector2(0, 0);
+		public bool GameOver = false;
 		public bool IsInBattle = false;
 		#region Mundane Objects
 		private List<MundaneThing> MundaneObjectsInteractedWith = new List<MundaneThing>();
@@ -57,26 +61,50 @@ namespace SummerFediverseJam {
 			__emotes = GetNode<AnimatedSprite>("Emotes");
 			__dimensionAnimation = root.GetNode<AnimationPlayer>("DimensionAnimation");
 			__apartmentMask = root.GetNode<ColorRect>("ApartmentMask");
+			__apartmentMaskAnimationPlayer = __apartmentMask.GetNode<AnimationPlayer>("AnimationPlayer");
+			__roommate = root.GetNode<Roommate>("Roommate character");
+			__badEndCard = GetNode<BadRoommateEndingCard>("BadRoommateEnding2");
+		}
+
+		public void ShowBadEndCard()
+		{
+			__badEndCard.SetScore(stats.Score);
+			__badEndCard.Show();
+		}
+
+		public Roommate GetRoommate()
+		{
+			return __roommate;
+		}
+
+		public void FadeOutAptMask()
+		{
+			__apartmentMaskAnimationPlayer.CurrentAnimation = "Fade out";
+			__apartmentMask.Show();
+		}
+		public void FadeInAptMask()
+		{
+			__apartmentMaskAnimationPlayer.CurrentAnimation = "Fade in";
 		}
 
 		public void ShowAptMask()
 		{
 			__apartmentMask.Show();
 		}
-        public void HideAptMask()
-        {
-            __apartmentMask.Hide();
-        }
+		public void HideAptMask()
+		{
+			__apartmentMask.Hide();
+		}
 
-        public void CollapseDimension()
+		public void CollapseDimension()
 		{
 			__dimensionAnimation.CurrentAnimation = "collapse";
 		}
 
-        public void ExpandDimension()
-        {
-            __dimensionAnimation.CurrentAnimation = "expand";
-        }
+		public void ExpandDimension()
+		{
+			__dimensionAnimation.CurrentAnimation = "expand";
+		}
 
 		public void PauseBackgroundMusic()
 		{
@@ -88,7 +116,7 @@ namespace SummerFediverseJam {
 			__backgroundMusic.Play(0);
 		}
 
-        public void ShowEmotion(Emotes emote)
+		public void ShowEmotion(Emotes emote)
 		{
 			switch(emote)
 			{
@@ -109,8 +137,8 @@ namespace SummerFediverseJam {
 
 		public void FaceDirection(string direction)
 		{
-            GetNode<AnimatedSprite>("character").Animation = $"{direction}default";
-        }
+			GetNode<AnimatedSprite>("character").Animation = $"{direction}default";
+		}
 
 		public void PlayUnlockJingle()
 		{
@@ -130,22 +158,22 @@ namespace SummerFediverseJam {
 
 		public void EnterBattleCallback()
 		{
-            var mask = GetNode<ColorRect>("Node2D/BattleTransitionMask");
-            GetNode<Timer>("Node2D/BattleTransitionTimer").Stop();
-            GetParent().RemoveChild(this);
-            __battleScene.GetNode<TileMap>("FieldOfFloatingIslands").AddChild(this);
-            var camera = GetNode<Camera2D>("camera");
-            RemoveChild(camera);
-            camera.Position = new Vector2(500, 300);
-            PrebattlePosition = Position;
-            Position = new Vector2(167, 128);
-            Scale = new Vector2(1, 1);
-            __battleScene.AddChild(camera);
-            __battleScene.Show();
-            CollisionLayer = 2;
-            CollisionMask = 2;
+			var mask = GetNode<ColorRect>("Node2D/BattleTransitionMask");
+			GetNode<Timer>("Node2D/BattleTransitionTimer").Stop();
+			GetParent().RemoveChild(this);
+			__battleScene.GetNode<TileMap>("FieldOfFloatingIslands").AddChild(this);
+			var camera = GetNode<Camera2D>("camera");
+			RemoveChild(camera);
+			camera.Position = new Vector2(500, 300);
+			PrebattlePosition = Position;
+			Position = new Vector2(167, 128);
+			Scale = new Vector2(1, 1);
+			__battleScene.AddChild(camera);
+			__battleScene.Show();
+			CollisionLayer = 2;
+			CollisionMask = 2;
 			mask.Hide();
-        }
+		}
 
 		// todo ✏ add param for monster information
 		public void EnterBattle(MonsterOption option)
@@ -167,7 +195,7 @@ namespace SummerFediverseJam {
 				timer.Connect("timeout", this, nameof(EnterBattleCallback));
 				IsInBattle = true;
 			}
-        }
+		}
 
 		public void ExitBattle()
 		{
@@ -190,7 +218,7 @@ namespace SummerFediverseJam {
 				IsInBattle = false;
 				__battleScene.Hide();
 			}
-        }
+		}
 
 		public override void _UnhandledInput(InputEvent @event)
 		{
@@ -229,6 +257,10 @@ namespace SummerFediverseJam {
 			{
 				__dialog.NextPhrase();
 			}
+			if (@event.IsActionPressed("ui_accept") && __badEndCard.Visible) {
+				GetTree().ReloadCurrentScene();
+			}
+
 			base._UnhandledInput(@event);
 		}
 
@@ -241,7 +273,7 @@ namespace SummerFediverseJam {
 			// otherwise the animation won't play if it keeps flipping back and forth before the animation plays
 			var animation = sprite.Animation;
 			// only activate controls if the dialog is closed or unpopulated
-			if (__dialog.PhraseNum == -1 && !(__battleScene.moverSwitch == true && CollisionLayer == 2) && root.GetNode<MainMenu>("TitleCard").isPlaying) {
+			if (__dialog.PhraseNum == -1 && !(__battleScene.moverSwitch == true && CollisionLayer == 2) && root.GetNode<MainMenu>("TitleCard").isPlaying && !GameOver) {
 				Godot.Object collider = null;
 				Vector2 direction = Vector2.Zero;
 				if (Controls.Left) {

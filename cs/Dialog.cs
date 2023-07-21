@@ -91,10 +91,12 @@ public class Dialog : Node2D
 			if (PhraseNum < dialog.Length) {
 				if (dialog[PhraseNum].Name == null)
 				{
-					__text.RectPosition = __name.RectPosition;
-				} else
+					GetNode<ColorRect>("Name").Hide();
+
+				}
+				else
 				{
-					__text.RectPosition = __name.RectPosition + new Vector2(0, __name.RectSize.y);
+					GetNode<ColorRect>("Name").Show();
 				}
 				__name.BbcodeText = dialog[PhraseNum].Name;
 				__text.BbcodeText = dialog[PhraseNum].Text;

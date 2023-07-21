@@ -46,28 +46,28 @@ namespace SummerFediverseJam
 		public override void NotifyOverlapChange(bool overlap)
 		{
 			if (currentAction == null && overlap)
-            {
+			{
 				__player.PauseBackgroundMusic();
 				__audioStreamPlayer.Play();
 				__player.CollapseDimension();
 
-                
-                DelayAction(() =>
+				
+				DelayAction(() =>
 				{
-                    __animationPlayer.Stop();
+					__animationPlayer.Stop();
 					__perpendicularDimension.Hide();
 					__player.GetParent().RemoveChild(__player);
 					__player.CollisionLayer = 1;
 					__player.CollisionMask = 1;
 					var node = __player.root.GetNode<TileMap>("Environment layer 2");
-                    __player.root.AddChildBelowNode(__player.root.GetNode<TileMap>("Environment layer 2"), __player);
+					__player.root.AddChildBelowNode(__player.root.GetNode<TileMap>("Environment layer 2"), __player);
 					__player.Position = new Vector2(491.816f, -273.374f);
 					__player.FaceDirection("d");
-                    __player.HideAptMask();
-                    __player.ExpandDimension();
+					__player.HideAptMask();
+					__player.ExpandDimension();
 					__perpendicularDimension.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stop();
 					__player.PlayBackgroundMusic();
-                }, 2);
+				}, 2);
 			}
 			base.NotifyOverlapChange(overlap);
 		}

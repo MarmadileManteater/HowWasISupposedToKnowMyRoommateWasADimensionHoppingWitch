@@ -39,9 +39,9 @@ namespace SummerFediverseJam
 
         public DialogText[] GetMundaneDialog(Player player)
         {
+            player.stats.MundaneObjectsLookedAt = player.MundaneObjectsCount;
             if (player.MundaneObjectsCount == 3)
             {
-                player.stats.LooksAtMundaneObjects = true;
                 return new[]
                 {
                     new DialogText

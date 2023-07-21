@@ -12,12 +12,14 @@ namespace SummerFediverseJam
 		private AudioStreamPlayer __stream;
 		private Timer __timer;
 		public bool isPlaying;
+		public bool canStart;
 
 		public void AlarmTimeout()
 		{
 			__startCommandMask.CurrentAnimation = "Fade in";
 			__timer.Stop();
 			__stream.Play();
+			canStart = true;
 		}
 
 		// Called when the node enters the scene tree for the first time.
@@ -33,7 +35,7 @@ namespace SummerFediverseJam
 
 		public override void _UnhandledInput(InputEvent @event)
 		{
-			if (@event.IsActionPressed("ui_accept") && !isPlaying)
+			if (@event.IsActionPressed("ui_accept") && !isPlaying && canStart)
 			{
 				__stream.Stop();
 				__startCommandMask.CurrentAnimation = null;
@@ -42,7 +44,7 @@ namespace SummerFediverseJam
 				GetParent().GetNode<Player>("Player").PlayBackgroundMusic();
 				isPlaying = true;
 
-            }
+			}
 			base._UnhandledInput(@event);
 		}
 	}
