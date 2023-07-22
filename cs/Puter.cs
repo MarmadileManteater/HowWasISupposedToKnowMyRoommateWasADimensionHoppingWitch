@@ -19,6 +19,7 @@ namespace SummerFediverseJam
 		}
 		public void AfterWork()
 		{
+			__player.SetSkyColor(new Color("7f73c3"));
 			__player.FadeInAptMask();
 			__timer.Stop();
 			__timer.Disconnect("timeout", this, nameof(AfterWork));

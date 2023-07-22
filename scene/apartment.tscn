@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=2]
+[gd_scene load_steps=181 format=2]
 
 [ext_resource path="res://img/indoor-tileseta.png" type="Texture" id=1]
 [ext_resource path="res://img/shower.png" type="Texture" id=2]
@@ -1093,146 +1093,6 @@ points = PoolVector2Array( 8, 4, 10, 4, 10, 16, 8, 16 )
 } ]
 4/z_index = 0
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=124]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 17, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 34, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=125]
-atlas = ExtResource( 12 )
-region = Rect2( 48, 0, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=126]
-atlas = ExtResource( 12 )
-region = Rect2( 48, 17, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=127]
-atlas = ExtResource( 12 )
-region = Rect2( 48, 34, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=128]
-atlas = ExtResource( 12 )
-region = Rect2( 16, 0, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=129]
-atlas = ExtResource( 12 )
-region = Rect2( 16, 17, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=130]
-atlas = ExtResource( 12 )
-region = Rect2( 16, 34, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=131]
-atlas = ExtResource( 12 )
-region = Rect2( 32, 0, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=96]
-atlas = ExtResource( 12 )
-region = Rect2( 32, 17, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=97]
-atlas = ExtResource( 12 )
-region = Rect2( 32, 34, 16, 17 )
-
-[sub_resource type="SpriteFrames" id=22]
-animations = [ {
-"frames": [ SubResource( 21 ) ],
-"loop": true,
-"name": "ddefault",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 124 ), SubResource( 25 ) ],
-"loop": true,
-"name": "dwalk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 125 ) ],
-"loop": true,
-"name": "ldefault",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 126 ), SubResource( 127 ) ],
-"loop": true,
-"name": "lwalk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 128 ) ],
-"loop": true,
-"name": "rdefault",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 129 ), SubResource( 130 ) ],
-"loop": true,
-"name": "rwalk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 131 ) ],
-"loop": true,
-"name": "udefault",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 96 ), SubResource( 97 ) ],
-"loop": true,
-"name": "uwalk",
-"speed": 5.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=98]
-radius = 4.33334
-height = 6.66663
-
-[sub_resource type="Animation" id=132]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 444, 250 ) ]
-}
-
-[sub_resource type="Animation" id=133]
-resource_name = "fade-in"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 444, 250 ), Vector2( 0, 250 ) ]
-}
-
-[sub_resource type="Animation" id=134]
-resource_name = "fade-out"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 250 ), Vector2( 404, 250 ) ]
-}
-
 [sub_resource type="AtlasTexture" id=108]
 atlas = ExtResource( 28 )
 region = Rect2( 0, 64, 32, 32 )
@@ -1652,6 +1512,34 @@ tracks/1/keys = {
 "values": [ "ddefault", "dwalk", "lwalk", "uwalk", "rdefault" ]
 }
 
+[sub_resource type="Animation" id=181]
+resource_name = "WalkUpToPortal"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 287, -304 ), Vector2( 501, -304 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("roomate:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "rdefault", "rwalk", "udefault" ]
+}
+
 [sub_resource type="AtlasTexture" id=153]
 atlas = ExtResource( 31 )
 region = Rect2( 0, 0, 16, 17 )
@@ -1742,6 +1630,146 @@ animations = [ {
 "name": "uwalk",
 "speed": 5.0
 } ]
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=124]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=125]
+atlas = ExtResource( 12 )
+region = Rect2( 48, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=126]
+atlas = ExtResource( 12 )
+region = Rect2( 48, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=127]
+atlas = ExtResource( 12 )
+region = Rect2( 48, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=128]
+atlas = ExtResource( 12 )
+region = Rect2( 16, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=129]
+atlas = ExtResource( 12 )
+region = Rect2( 16, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=130]
+atlas = ExtResource( 12 )
+region = Rect2( 16, 34, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=131]
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=96]
+atlas = ExtResource( 12 )
+region = Rect2( 32, 17, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 12 )
+region = Rect2( 32, 34, 16, 17 )
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ SubResource( 21 ) ],
+"loop": true,
+"name": "ddefault",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 124 ), SubResource( 25 ) ],
+"loop": true,
+"name": "dwalk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 125 ) ],
+"loop": true,
+"name": "ldefault",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 126 ), SubResource( 127 ) ],
+"loop": true,
+"name": "lwalk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 128 ) ],
+"loop": true,
+"name": "rdefault",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 129 ), SubResource( 130 ) ],
+"loop": true,
+"name": "rwalk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 131 ) ],
+"loop": true,
+"name": "udefault",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 96 ), SubResource( 97 ) ],
+"loop": true,
+"name": "uwalk",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=98]
+radius = 4.33334
+height = 6.66663
+
+[sub_resource type="Animation" id=132]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 444, 250 ) ]
+}
+
+[sub_resource type="Animation" id=133]
+resource_name = "fade-in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 444, 250 ), Vector2( 0, 250 ) ]
+}
+
+[sub_resource type="Animation" id=134]
+resource_name = "fade-out"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 250 ), Vector2( 404, 250 ) ]
+}
 
 [sub_resource type="TileSet" id=58]
 0/name = "bafroom.png 0"
@@ -2001,8 +2029,29 @@ cell_size = Vector2( 24, 24 )
 format = 1
 tile_data = PoolIntArray( -196602, 11, 0, 131072, 11, 0, 262142, 10, 0 )
 
+[node name="Sky3" type="ColorRect" parent="."]
+margin_left = 317.0
+margin_top = -424.0
+margin_right = 469.0
+margin_bottom = -235.0
+color = Color( 0.466667, 0.827451, 0.92549, 1 )
+
 [node name="Roomate Room" parent="." instance=ExtResource( 20 )]
 position = Vector2( 396, -288 )
+
+[node name="Sky" type="ColorRect" parent="."]
+margin_left = 504.0
+margin_top = 156.0
+margin_right = 656.0
+margin_bottom = 199.0
+color = Color( 0.466667, 0.827451, 0.92549, 1 )
+
+[node name="Sky2" type="ColorRect" parent="."]
+margin_left = -111.0
+margin_top = -422.0
+margin_right = 41.0
+margin_bottom = -233.0
+color = Color( 0.466667, 0.827451, 0.92549, 1 )
 
 [node name="World" type="TileMap" parent="."]
 scale = Vector2( 3, 3 )
@@ -2116,6 +2165,44 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 458767, 4, 0 )
 
+[node name="Roommate character" type="KinematicBody2D" parent="."]
+visible = false
+position = Vector2( 324, 400 )
+scale = Vector2( 3, 3 )
+script = ExtResource( 32 )
+
+[node name="Emotes" type="AnimatedSprite" parent="Roommate character"]
+visible = false
+position = Vector2( 0, -16.6667 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+frames = SubResource( 107 )
+animation = "alert"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roommate character"]
+position = Vector2( 0.333336, 0.333328 )
+shape = SubResource( 167 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Roommate character"]
+reset_on_save = false
+anims/GettingHomeDeadPlant = SubResource( 170 )
+anims/GettingHomePlantIsOkay = SubResource( 168 )
+anims/RESET = SubResource( 169 )
+anims/StormingOffBadEnding = SubResource( 176 )
+anims/WalkIntoBedroom = SubResource( 179 )
+anims/WalkToBedroom = SubResource( 178 )
+anims/WalkToBedroom2 = SubResource( 180 )
+anims/WalkUpToPortal = SubResource( 181 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Roommate character"]
+stream = ExtResource( 34 )
+volume_db = 9.613
+
+[node name="roomate" type="AnimatedSprite" parent="Roommate character"]
+frames = SubResource( 157 )
+animation = "udefault"
+playing = true
+
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( -22, -298 )
 scale = Vector2( 3, 3 )
@@ -2172,43 +2259,6 @@ position = Vector2( -0.332, -15.333 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 frames = SubResource( 107 )
-playing = true
-
-[node name="Roommate character" type="KinematicBody2D" parent="."]
-visible = false
-position = Vector2( 287, -304 )
-scale = Vector2( 3, 3 )
-script = ExtResource( 32 )
-
-[node name="Emotes" type="AnimatedSprite" parent="Roommate character"]
-visible = false
-position = Vector2( 0, -16.6667 )
-scale = Vector2( 0.5, 0.5 )
-z_index = 1
-frames = SubResource( 107 )
-animation = "alert"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Roommate character"]
-position = Vector2( 0.333336, 0.333328 )
-shape = SubResource( 167 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Roommate character"]
-reset_on_save = false
-anims/GettingHomeDeadPlant = SubResource( 170 )
-anims/GettingHomePlantIsOkay = SubResource( 168 )
-anims/RESET = SubResource( 169 )
-anims/StormingOffBadEnding = SubResource( 176 )
-anims/WalkIntoBedroom = SubResource( 179 )
-anims/WalkToBedroom = SubResource( 178 )
-anims/WalkToBedroom2 = SubResource( 180 )
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Roommate character"]
-stream = ExtResource( 34 )
-volume_db = 9.613
-
-[node name="roomate" type="AnimatedSprite" parent="Roommate character"]
-frames = SubResource( 157 )
-animation = "ddefault"
 playing = true
 
 [node name="bafroom" type="TileMap" parent="."]

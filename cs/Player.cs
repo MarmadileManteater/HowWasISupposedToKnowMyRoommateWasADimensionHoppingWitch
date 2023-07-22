@@ -27,6 +27,7 @@ namespace SummerFediverseJam {
 		private AnimationPlayer __apartmentMaskAnimationPlayer;
 		private Roommate __roommate;
 		private BadRoommateEndingCard __badEndCard;
+		private ColorRect[] __sky;
 		private Vector2 DialogExpireLocation = new Vector2(0, 0);
 		public Controls Controls = new Controls();
 		private Vector2 PrebattlePosition = new Vector2(0, 0);
@@ -64,6 +65,20 @@ namespace SummerFediverseJam {
 			__apartmentMaskAnimationPlayer = __apartmentMask.GetNode<AnimationPlayer>("AnimationPlayer");
 			__roommate = root.GetNode<Roommate>("Roommate character");
 			__badEndCard = GetNode<BadRoommateEndingCard>("BadRoommateEnding2");
+			__sky = new ColorRect[]
+			{
+				root.GetNode<ColorRect>("Sky"),
+				root.GetNode<ColorRect>("Sky2"),
+				root.GetNode<ColorRect>("Sky3")
+			};
+		}
+
+		public void SetSkyColor(Color color)
+		{
+			foreach (var rect in __sky)
+			{
+				rect.Color = color;
+			}
 		}
 
 		public void ShowBadEndCard()

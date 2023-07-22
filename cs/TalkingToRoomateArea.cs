@@ -107,7 +107,7 @@ namespace SummerFediverseJam
 					new DialogText
 					{
 						Name = "Taylor",
-						Text = "We know alternate universes must exist because"
+						Text = "We know alternate universes must exist because-"
 					},
 					new DialogText
 					{
@@ -127,11 +127,101 @@ namespace SummerFediverseJam
 					new DialogText
 					{
 						Name = "Taylor",
-						Text = "Do universes exist that don't intersect with ours?",
+						Text = "If a universe falls in the woods and you don't happen to-"
+					},
+					new DialogText {
+						Name = "Taylor",
+						Text = "live in a reality that intersects with it on an etherial plane"
+					},
+					new DialogText {
+						Name = "Taylor",
+						Text = " does that universe even exist from your perspective?",
 						Options = new Dictionary<string, Func<string>>
 						{
 							{ "Yes", () => { return "RightAnswer";  } },
 							{ "No", () => { return "WrongAnswer";  } }
+						}
+					},
+					new DialogText
+					{
+						Id = "RightAnswer",
+						Name = "You",
+						Text = "Of course, it exists. You just can't navigate to it-"
+					},
+					new DialogText
+					{
+						Name = "You",
+						Text = "with your typical, everyday variety of black magic."
+					},
+					new DialogText
+					{
+						Name = "You",
+						Text = "But, this isn't typical."
+					},
+					new DialogText
+					{
+						Name = "Taylor",
+						Text = "That is correct.",
+						Next = "Continue"
+					},
+					new DialogText
+					{
+						Id = "WrongAnswer",
+						Name = "Taylor",
+						Text = "You are incorrect. Although, that is a common misconception."
+					},
+					new DialogText
+					{
+						Id = "Continue",
+						Name = "Taylor",
+						Text = "To my knowledge, this is the first ever, established-"
+					},
+					new DialogText
+					{
+						Name = "Taylor",
+						Text = "connection with a parallel universe in human history.",
+						OnDisplay = () =>
+						{
+							__player.ShowEmotion(Emotes.Alert);
+						}
+					},
+					new DialogText
+					{
+						Name = "You",
+						Text = "How did you do it? How can we connect to them-",
+						OnDisplay = () =>
+						{
+							__player.ShowEmotion(Emotes.Wonder);
+						}
+
+					},
+					new DialogText
+					{
+						Name = "You",
+						Text = "if they are parallel to us? That's the whole point of-"
+					},
+					new DialogText
+					{
+						Name = "You",
+						Text = "being parallel. Parallel lines don't intersect."
+					},
+					new DialogText
+					{
+						Name = "Taylor",
+						Text = "Well, maybe, if you follow me through this portal-",
+						OnDisplay = () =>
+						{
+							__player.ShowEmotion(Emotes.None);
+						}
+					},
+					new DialogText
+					{
+						Name = "Taylor",
+						Text = "You just might find out.",
+						AfterDequeue = () =>
+						{
+							__player.GetRoommate().PlayAnimation("WalkUpToPortal");
+							__player.GetRoommate().PlayAnimation();
 						}
 					}
 				});
