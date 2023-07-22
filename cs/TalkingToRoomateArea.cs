@@ -220,11 +220,10 @@ namespace SummerFediverseJam
 						Text = "You just might find out.",
 						AfterDequeue = () =>
 						{
-							__player.GetRoommate().CollisionMask = 10;
-							__player.GetRoommate().CollisionLayer = 10;
-
+							__player.GetRoommate().GetNode<Godot.CollisionShape2D>("CollisionShape2D").Disabled = true;
 							__player.GetRoommate().PlayAnimation("WalkUpToPortal");
 							__player.GetRoommate().PlayAnimation();
+							__player.stats.IsRoommateInParty = true;
 						}
 					}
 				});

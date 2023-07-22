@@ -22,6 +22,8 @@ namespace SummerFediverseJam
 				__timer.Stop();
 				__stream.Play();
 				canStart = true;
+			} else {
+				__stream.Stop();
 			}
 		}
 
@@ -48,6 +50,10 @@ namespace SummerFediverseJam
 				isPlaying = true;
 
 			}
+			if (isPlaying)
+			{
+                __stream.Stop();
+            }
 			base._UnhandledInput(@event);
 		}
 	}

@@ -15,6 +15,7 @@ namespace SummerFediverseJam.cs
         public int MundaneObjectsLookedAt { get; set; }
         public bool IsBadRoommateEnding { get; set; }
         public bool IsFunParallelDimensionTimeWRommate { get; set; }
+        public bool IsRoommateInParty { get; set; }
         public int Score
         {
             get
@@ -37,6 +38,10 @@ namespace SummerFediverseJam.cs
                     score += MundaneObjectsLookedAt;
                 } else {
                     score -= MundaneObjectsLookedAt;
+                }
+                if (IsRoommateInParty)
+                {
+                    score += 5;
                 }
                 return score;
             }

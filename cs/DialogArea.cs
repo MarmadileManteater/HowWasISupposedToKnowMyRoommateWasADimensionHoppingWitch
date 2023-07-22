@@ -5,6 +5,7 @@ namespace SummerFediverseJam
 {
     public class DialogArea : Area2D
     {
+        protected bool DisableCheck = false;
         private bool isPlayerOverlapping { get; set; }
         protected bool IsPlayerOverlapping { 
             get
@@ -50,6 +51,8 @@ namespace SummerFediverseJam
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _Process(float delta)
         {
+            if (DisableCheck)
+                return;
             // 3 is the magic number
             bool isLessThanX = __player.GlobalPosition.x < GlobalPosition.x + __collisionShape.Extents.x * 3;
             bool isGreaterThanX = __player.GlobalPosition.x > GlobalPosition.x - __collisionShape.Extents.x * 3;

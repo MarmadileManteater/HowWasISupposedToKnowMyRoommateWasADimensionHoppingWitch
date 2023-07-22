@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummerFediverseJam
 {
-	public class PortalToPerpendicularUniverse : DialogArea
+	public class PortalToDimension1 : DialogArea
 	{
 		private AnimationPlayer __animationPlayer;
 		private AudioStreamPlayer __audioStreamPlayer;
@@ -19,7 +19,7 @@ namespace SummerFediverseJam
 		{
 			__timer = GetNode<Timer>("Timer");
 			__timer.WaitTime = 1;
-			__perpendicularDimension = GetParent().GetParent().GetNode<Node2D>("Perpendicular Dimension");
+			__perpendicularDimension = GetParent().GetParent<Node2D>();
 			__animationPlayer = GetParent().GetNode<AnimationPlayer>("AnimatedSprite/AnimationPlayer");
 			__audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 			__animationPlayer.CurrentAnimation = "Bob";
@@ -50,19 +50,23 @@ namespace SummerFediverseJam
 				__player.PauseBackgroundMusic();
 				__audioStreamPlayer.Play();
 				__player.CollapseDimension();
+
+				
 				DelayAction(() =>
 				{
-                    __animationPlayer.Stop();
-					__perpendicularDimension.Show();
+					__animationPlayer.Stop();
+					__perpendicularDimension.Hide();
 					__player.GetParent().RemoveChild(__player);
-					__player.CollisionLayer = 4;
-					__player.CollisionMask = 4;
-					__perpendicularDimension.AddChildBelowNode(__perpendicularDimension.GetNode<KinematicBody2D>("ClosedSign"), __player);
-					__player.Position = new Vector2(514.414f, 180.354f);
+					__player.CollisionLayer = 1;
+					__player.CollisionMask = 1;
+					var node = __player.root.GetNode<TileMap>("Environment layer 2");
+					__player.root.AddChildBelowNode(__player.root.GetNode<TileMap>("Environment layer 2"), __player);
+					__player.Position = new Vector2(491.816f, -273.374f);
 					__player.FaceDirection("d");
-					__player.ShowAptMask();
+					__player.HideAptMask();
 					__player.ExpandDimension();
-					__perpendicularDimension.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
+					__perpendicularDimension.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stop();
+					__player.PlayBackgroundMusic();
 				}, 2);
 			}
 			base.NotifyOverlapChange(overlap);
