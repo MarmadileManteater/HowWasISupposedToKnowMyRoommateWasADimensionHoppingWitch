@@ -55,7 +55,7 @@ namespace SummerFediverseJam
 					{
 
 						Name = "Taylor",
-						Text = "we didn't pay the black magic deposit?"
+						Text = "we didn't pay the dark magic deposit?"
 					},
 					new DialogText
 					{
@@ -97,7 +97,7 @@ namespace SummerFediverseJam
 					{
 						Id = "RunOfTheMill",
 						Name = "Taylor",
-						Text = "This isn't your regular, run of the mill, black magic portal."
+						Text = "This isn't your regular, run of the mill, dark magic portal."
 					},
 					new DialogText
 					{
@@ -151,7 +151,7 @@ namespace SummerFediverseJam
 					new DialogText
 					{
 						Name = "You",
-						Text = "with your typical, everyday variety of black magic."
+						Text = "with your typical, everyday variety of dark magic."
 					},
 					new DialogText
 					{
@@ -220,6 +220,9 @@ namespace SummerFediverseJam
 						Text = "You just might find out.",
 						AfterDequeue = () =>
 						{
+							__player.GetRoommate().CollisionMask = 10;
+							__player.GetRoommate().CollisionLayer = 10;
+
 							__player.GetRoommate().PlayAnimation("WalkUpToPortal");
 							__player.GetRoommate().PlayAnimation();
 						}
