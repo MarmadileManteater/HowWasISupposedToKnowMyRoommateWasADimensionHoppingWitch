@@ -2345,7 +2345,6 @@ position = Vector2( 288, -185 )
 shape = SubResource( 84 )
 
 [node name="ApartmentMask" type="ColorRect" parent="."]
-visible = false
 margin_left = -293.0
 margin_top = -568.0
 margin_right = 1017.0

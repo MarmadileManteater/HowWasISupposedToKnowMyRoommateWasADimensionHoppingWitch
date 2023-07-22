@@ -320,7 +320,7 @@ namespace SummerFediverseJam {
 					}
 					catch (Exception ex)
 					{
-						GD.PushWarning($"Issue creating dialog with collider {ex}");
+						//GD.PushWarning($"Issue creating dialog with collider {ex}");
 					}
 				}
 				else if (animation[0] != sprite.Animation[0] || Math.Abs(distanceFromDialogExpiry.x) > 0 || Math.Abs(distanceFromDialogExpiry.y) > 0)
