@@ -15,7 +15,7 @@ namespace SummerFediverseJam
 		public override void _Ready()
 		{
 			__emotes = GetNode<AnimatedSprite>("Emotes");
-			__sprite = GetNode<AnimatedSprite>("roommate");
+			__sprite = GetNode<AnimatedSprite>("roomate");
 			__animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		}
 
@@ -46,6 +46,14 @@ namespace SummerFediverseJam
 		public void PlayAnimation(string name)
 		{
 			__animationPlayer.CurrentAnimation = name;
+		}
+		public void PauseAnimation()
+		{
+			__animationPlayer.Stop();
+		}
+		public void PlayAnimation()
+		{
+			__animationPlayer.Play();
 		}
 
 		//  // Called every frame. 'delta' is the elapsed time since the previous frame.

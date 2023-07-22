@@ -21,6 +21,12 @@ namespace SummerFediverseJam
             __roommateDoorCollider = GetParent().GetNode<CollisionShape2D>("Roomate Door Collider/CollisionShape2D");
             base._Ready();
 		}
+		
+		public void SecondTimeout()
+		{
+			__player.GetRoommate().PauseAnimation();
+		}
+
 		public void FirstTimeout()
 		{
             __roommateMask.ExtraCondition = true;
@@ -28,7 +34,12 @@ namespace SummerFediverseJam
             __roommateDoor.ZIndex = 2;
             __roommateDoorCollider.Disabled = true;
 			__player.GetRoommate().PlayAnimation("WalkIntoBedroom");
+			__timer.Disconnect("timeout", this, nameof(FirstTimeout));
+			__timer.Connect("timeout", this, nameof(SecondTimeout));
+			__timer.WaitTime = 5;
+			__timer.Start();
             __roommateMask.ForceOn = true;
+            __player.stats.RoommateTrustedYouAndOpenedDoorForYou = true;
         }
 
 		public override void NotifyOverlapChange(bool overlap)

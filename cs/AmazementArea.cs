@@ -62,11 +62,7 @@ namespace SummerFediverseJam
 					},
 					new DialogText
 					{
-						Text = "It's like 100 dollars a month per practioner."
-					},
-					new DialogText
-					{
-						Text = "That's coming out of the deposit."
+						Text = "They might as well have painted the walls a different color."
 					}
 				});
 			}

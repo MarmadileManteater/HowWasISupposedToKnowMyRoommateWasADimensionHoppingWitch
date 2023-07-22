@@ -11,6 +11,7 @@ namespace SummerFediverseJam.cs
         public int WateredPlantTimes { get; set; }
         public bool KilledRoommatePlant { get; set; }
         public bool UsedRoommatesPlantToOpenDoor { get; set; }
+        public bool RoommateTrustedYouAndOpenedDoorForYou { get; set; }
         public int MundaneObjectsLookedAt { get; set; }
         public bool IsBadRoommateEnding { get; set; }
         public bool IsFunParallelDimensionTimeWRommate { get; set; }

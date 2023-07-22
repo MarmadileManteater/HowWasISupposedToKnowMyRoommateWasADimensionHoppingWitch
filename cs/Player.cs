@@ -89,6 +89,7 @@ namespace SummerFediverseJam {
 
 		public void ShowAptMask()
 		{
+			__apartmentMask.Color = new Color(__apartmentMask.Color.r, __apartmentMask.Color.g, __apartmentMask.Color.b, 255);
 			__apartmentMask.Show();
 		}
 		public void HideAptMask()

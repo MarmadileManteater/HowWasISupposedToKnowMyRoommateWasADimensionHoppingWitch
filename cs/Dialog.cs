@@ -17,6 +17,10 @@ public class Dialog : Node2D
 	private float TextSpeed = 0.025f;
 	public DialogText[] dialog { get; set; }
 	private int SelectedOption { get; set; }
+	// this is a mutilpier:
+	// - x1 if the player is not mashing enter
+	// - x2 of the player is
+	private int TextSpeedModifier { get; set; }
 	// Declare member variables here. Examples:
 	// private int a = 2;
 	// private string b = "text";
@@ -55,15 +59,19 @@ public class Dialog : Node2D
 		if (__text.VisibleCharacters < __text.Text.Length)
 		{
 			__text.VisibleCharacters++;
-		} else
-		{
+		} else {
 			__timer.Stop();
-
 		}
 	}
 
 	public void NextPhrase(string choice = null)
 	{
+		if (__text.VisibleCharacters < __text.Text.Length)
+		{
+			// treat the player mashing a as increasing the reveal speed of the text
+			__text.VisibleCharacters++;
+			return;
+		}
 		if (PhraseNum != -1) {
 			if (dialog[PhraseNum].AfterDequeue != null)
 			{
@@ -112,14 +120,8 @@ public class Dialog : Node2D
 					__timer.WaitTime = TextSpeed;
 
 				}
-
-				if (!__timer.IsConnected("timeout", this, nameof(TypewriterLoop)))
-				{
-					__timer.Connect("timeout", this, nameof(TypewriterLoop));
-				}
-				__timer.Start();
 				if (dialog[PhraseNum].Options != null)
-				{
+					{
 					if (dialog[PhraseNum].Options.Count > __options.Length)
 					{
 						GD.PushWarning("Options for dialog text are greater than currently supported number");
@@ -129,6 +131,11 @@ public class Dialog : Node2D
 						__options[i].Text = dialog[PhraseNum].Options.ToList()[i].Key;
 					}
 				}
+				if (!__timer.IsConnected("timeout", this, nameof(TypewriterLoop)))
+				{
+					__timer.Connect("timeout", this, nameof(TypewriterLoop));
+				}
+				__timer.Start();
 			} else {
 				Close();
 			}
@@ -172,7 +179,7 @@ public class Dialog : Node2D
 		if (PhraseNum < 0) {
 			Hide();
 		} else {
-			if (PhraseNum  >= 0 && dialog.Length > PhraseNum && dialog[PhraseNum].Options != null)
+			if (PhraseNum  >= 0 && dialog.Length > PhraseNum && dialog[PhraseNum].Options != null && __text.VisibleCharacters >= __text.Text.Length)
 			{
 				__decideTimeBox.Show();
 				__selector.Position = new Vector2(0,7 + SelectedOption * 10);

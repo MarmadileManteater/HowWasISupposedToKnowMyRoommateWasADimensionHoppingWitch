@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=2]
+[gd_scene load_steps=180 format=2]
 
 [ext_resource path="res://img/indoor-tileseta.png" type="Texture" id=1]
 [ext_resource path="res://img/shower.png" type="Texture" id=2]
@@ -1442,6 +1442,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=169]
 length = 0.001
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("roomate:animation")
 tracks/0/interp = 1
@@ -1569,7 +1570,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=179]
 resource_name = "WalkIntoBedroom"
-length = 4.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -1621,6 +1622,34 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ "rdefault", "uwalk", "ddefault" ]
+}
+
+[sub_resource type="Animation" id=180]
+resource_name = "WalkToBedroom2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 388, -144 ), Vector2( 388, -117 ), Vector2( 287, -117 ), Vector2( 287, -304 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("roomate:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "ddefault", "dwalk", "lwalk", "uwalk", "rdefault" ]
 }
 
 [sub_resource type="AtlasTexture" id=153]
@@ -2147,7 +2176,7 @@ playing = true
 
 [node name="Roommate character" type="KinematicBody2D" parent="."]
 visible = false
-position = Vector2( 324, 400 )
+position = Vector2( 287, -304 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 32 )
 
@@ -2171,6 +2200,7 @@ anims/RESET = SubResource( 169 )
 anims/StormingOffBadEnding = SubResource( 176 )
 anims/WalkIntoBedroom = SubResource( 179 )
 anims/WalkToBedroom = SubResource( 178 )
+anims/WalkToBedroom2 = SubResource( 180 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Roommate character"]
 stream = ExtResource( 34 )
@@ -2178,7 +2208,7 @@ volume_db = 9.613
 
 [node name="roomate" type="AnimatedSprite" parent="Roommate character"]
 frames = SubResource( 157 )
-animation = "udefault"
+animation = "ddefault"
 playing = true
 
 [node name="bafroom" type="TileMap" parent="."]
