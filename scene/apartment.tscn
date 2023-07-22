@@ -913,7 +913,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=77]
-extents = Vector2( 10.5, 23.5 )
+extents = Vector2( 8, 23.5 )
 
 [sub_resource type="Animation" id=52]
 resource_name = "Fade in"
@@ -2091,7 +2091,7 @@ scale = Vector2( 3, 3 )
 frames = SubResource( 76 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plant After It Has Drowned"]
-position = Vector2( 0.5, 0.5 )
+position = Vector2( 0, 0.5 )
 shape = SubResource( 77 )
 disabled = true
 
@@ -2345,6 +2345,7 @@ position = Vector2( 288, -185 )
 shape = SubResource( 84 )
 
 [node name="ApartmentMask" type="ColorRect" parent="."]
+visible = false
 margin_left = -293.0
 margin_top = -568.0
 margin_right = 1017.0

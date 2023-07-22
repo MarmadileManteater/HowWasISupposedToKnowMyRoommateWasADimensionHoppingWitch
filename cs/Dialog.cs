@@ -59,8 +59,10 @@ public class Dialog : Node2D
 		if (__text.VisibleCharacters < __text.Text.Length)
 		{
 			__text.VisibleCharacters++;
+			__indicator.Hide();
 		} else {
 			__timer.Stop();
+			__indicator.Show();
 		}
 	}
 

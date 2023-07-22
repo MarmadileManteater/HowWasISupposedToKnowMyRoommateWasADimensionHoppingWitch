@@ -22,11 +22,7 @@ namespace SummerFediverseJam
 					Text = "It's a waste basket."
 				},
 				new DialogText {
-					Text = "No one has thrown anything interesting away recently :(",
-					AfterDequeue = () =>
-					{
-						player.EnterBattle(MonsterOption.SpiderWithFingers);
-					}
+					Text = "No one has thrown anything interesting away recently :("
 				}
 			}); 
 		}

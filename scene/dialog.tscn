@@ -110,6 +110,7 @@ custom_fonts/bold_font = SubResource( 7 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "asdasdasdas"
+visible_characters = 11
 text = "asdasdasdas"
 scroll_active = false
 __meta__ = {
@@ -163,6 +164,7 @@ frames = SubResource( 3 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Indicator" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 823, 535.035 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
