@@ -16,10 +16,13 @@ namespace SummerFediverseJam
 
 		public void AlarmTimeout()
 		{
-			__startCommandMask.CurrentAnimation = "Fade in";
-			__timer.Stop();
-			__stream.Play();
-			canStart = true;
+
+			if (!isPlaying) {
+				__startCommandMask.CurrentAnimation = "Fade in";
+				__timer.Stop();
+				__stream.Play();
+				canStart = true;
+			}
 		}
 
 		// Called when the node enters the scene tree for the first time.

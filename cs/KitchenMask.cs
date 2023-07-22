@@ -10,6 +10,8 @@ public class KitchenMask : ColorRect
 	[Export]
 	public bool ExtraCondition = true;
 	[Export]
+	public bool ForceOn = false;
+	[Export]
 	public int BottomPadding = 24 * 3;
 
 	private AnimationPlayer __animationPlayer;
@@ -40,7 +42,7 @@ public class KitchenMask : ColorRect
 				modifier = -1;
 			}
             var position = RectGlobalPosition * modifier;
-			if (__player.Position.x < position.x + RectSize.x && __player.Position.x > position.x &&
+			if (ForceOn || __player.Position.x < position.x + RectSize.x && __player.Position.x > position.x &&
 				__player.Position.y < position.y + RectSize.y + BottomPadding * (modifier == -1?2:1) && __player.Position.y > position.y)
 			{
 				if (Color.a == 1)

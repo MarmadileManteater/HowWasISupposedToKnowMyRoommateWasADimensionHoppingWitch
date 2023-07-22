@@ -30,11 +30,11 @@ namespace SummerFediverseJam.cs
                 {
                     score -= 1;
                 }
+                // simillarly, you get a bonus for the amount of mundane things you look at, until you look at all of them, and it becomes a negative modifier
                 if (MundaneObjectsLookedAt < 5)
                 {
                     score += MundaneObjectsLookedAt;
-                } else
-                {
+                } else {
                     score -= MundaneObjectsLookedAt;
                 }
                 return score;

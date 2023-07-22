@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 namespace SummerFediverseJam
 {
@@ -9,7 +10,8 @@ namespace SummerFediverseJam
 		// private int a = 2;
 		// private string b = "text";
 		private Timer __timer { get; set; }
-		private Player __player { get; set; } 
+		private Player __player { get; set; }
+		private bool once = false;
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
@@ -33,21 +35,44 @@ namespace SummerFediverseJam
 		}
 		public override DialogText[] GetDialog(Player player)
 		{
-			return new DialogText[]
-			{
-				new DialogText
+			if (!once) {
+				return new DialogText[]
 				{
-					Text = "Well, I guess I should be getting to work. . .",
-					AfterDequeue = () =>
+					new DialogText
 					{
-						__player = player;
-						player.FadeOutAptMask();
-						__timer.WaitTime = 5;
-						__timer.Start();
-						__timer.Connect("timeout", this, nameof(AfterWork));
-					}
-				}
-			};
+						Text = "It is my computer. It is also where I work.",
+                        Options = new Dictionary<string, Func<string>>
+                        {
+                            { "Work", () => { return "Work";  } },
+							{ "No", () => { return "NoWork";  } }
+                        }
+                    },
+					new DialogText
+					{
+						Id = "Work",
+						Text = "I guess I should be getting to work. . .",
+						OnDisplay = () =>
+						{
+							once = true;
+						},
+						AfterDequeue = () =>
+						{
+							__player = player;
+							player.FadeOutAptMask();
+							__timer.WaitTime = 5;
+							__timer.Start();
+							__timer.Connect("timeout", this, nameof(AfterWork));
+						},
+						End = true
+					},
+                    new DialogText
+                    {
+                        Id = "NoWork",
+                        Text = "I can't work right now. I haven't even woken up yet."
+                    }
+                };
+			}
+			return new DialogText[0];
 		}
 
 		//  // Called every frame. 'delta' is the elapsed time since the previous frame.
