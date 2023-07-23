@@ -35,7 +35,7 @@ jobs:
           # Defining all the required inputs
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_linux_headless_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_export_templates.tpz
-          relative_project_path: ./godot/
+          relative_project_path: ./
           archive_output: true
           export_debug: true
           wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
