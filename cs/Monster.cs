@@ -11,6 +11,9 @@ namespace SummerFediverseJam
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageName { get; set; }
+        public int ChanceToDie { get; set; }
+        public int DamageDone { get; set; }
+        public DialogText[] Speak { get; set; }
 
     }
 }

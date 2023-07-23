@@ -8,6 +8,7 @@ namespace SummerFediverseJam.cs
 {
     public struct GameStats
     {
+        public int GoodPersonIndex { get; set; }
         public int WateredPlantTimes { get; set; }
         public bool KilledRoommatePlant { get; set; }
         public bool UsedRoommatesPlantToOpenDoor { get; set; }
@@ -60,6 +61,9 @@ namespace SummerFediverseJam.cs
                 {
                     score += 5;
                 }
+                score += GoodPersonIndex;
+                score += MonstersAquianted.Count;
+                score -= MonstersVanquished.Count;
                 return score;
             }
         }

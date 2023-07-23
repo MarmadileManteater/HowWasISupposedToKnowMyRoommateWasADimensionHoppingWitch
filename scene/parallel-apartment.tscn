@@ -836,7 +836,7 @@ shape = SubResource( 114 )
 position = Vector2( 725, -103.375 )
 
 [node name="Spider" type="Area2D" parent="."]
-position = Vector2( 121.313, -138 )
+position = Vector2( -67.7314, 335 )
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spider"]
@@ -849,7 +849,7 @@ anims/roam = SubResource( 117 )
 script = ExtResource( 11 )
 
 [node name="EyeballMonster" type="Area2D" parent="."]
-position = Vector2( 525, 400 )
+position = Vector2( 713.83, 400 )
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeballMonster"]
