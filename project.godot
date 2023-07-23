@@ -14,6 +14,7 @@ config/name="Summer Fediverse Jam"
 run/main_scene="res://scene/apartment.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 
@@ -24,6 +25,7 @@ window/stretch/aspect="keep"
 
 pixel=false
 viewport=false
+icon=false
 
 [gui]
 
