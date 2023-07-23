@@ -48,9 +48,7 @@ jobs:
       
       - name: 🚚 Move license info into output directories
         run: |
-          cp LICENSE ./artifacts/HTML5/
           cp GODOT_LICENSE.txt ./artifacts/HTML5/
-          cp LICENSE ./artifacts/Windows/
           cp GODOT_LICENSE.txt ./artifacts/Windows/
 
       - name: ⬆ Upload HTML5 Artifact
