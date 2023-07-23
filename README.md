@@ -8,13 +8,15 @@ The jam's theme is "Parallel Worlds".
 
 ---------------
 
-<img src="screenshots/screenshot-1.png" /> <img src="screenshots/screenshot-3.png" /> <img src="screenshots/screenshot-2.png" />
+<img src="screenshots/screenshot-1.png" width="300" /> <img src="screenshots/screenshot-3.png" width="300" /> <img src="screenshots/screenshot-2.png" width="300" />
 
 ---------------
 
 This game was made with Godot which is [licensed under the MIT license](https://godotengine.org/license/).
 
-## External assets used
+---------------
+
+### External assets used
 
 **Title:** [Office Space Tileset](https://opengameart.org/content/office-space-tileset)
 
