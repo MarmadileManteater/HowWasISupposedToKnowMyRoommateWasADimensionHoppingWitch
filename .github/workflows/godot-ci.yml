@@ -1,0 +1,66 @@
+name: "godot-ci export"
+on: push
+
+env:
+  GODOT_VERSION: 3.5.1
+  EXPORT_NAME: HowWasISupposedToKnowMyRoommateWasADimensionHoppingWitch
+  PROJECT_PATH: ./
+  
+jobs:
+  build:
+    name: Export
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          
+      - name: 🍷 Setup WINE
+        id: wine_install
+        run: |
+          sudo apt-get install wine
+          echo "WINE_PATH=$(which wine64)" >> $GITHUB_OUTPUT
+
+      - name: Get tag from version
+        id: tag_version
+        run: |
+            echo "TAG_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: 📤 Export game
+        id: export
+        # Use latest version (see releases for all versions)
+        uses: firebelley/godot-export@v4.7.0
+        with:
+          # Defining all the required inputs
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_linux_headless_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_export_templates.tpz
+          relative_project_path: ./godot/
+          archive_output: true
+          export_debug: true
+          wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
+          
+      - name: 🤐 Unzip build artifacts
+        run: |
+          mkdir ./artifacts
+          unzip -qq ${{ steps.export.outputs.archive_directory }}/HTML5.zip -d ./artifacts/HTML5
+          unzip -qq '${{ steps.export.outputs.archive_directory }}/Windows Desktop.zip' -d ./artifacts/Windows/
+      
+      - name: 🚚 Move license info into output directories
+        run: |
+          cp LICENSE ./artifacts/HTML5/
+          cp GODOT_LICENSE.txt ./artifacts/HTML5/
+          cp LICENSE ./artifacts/Windows/
+          cp GODOT_LICENSE.txt ./artifacts/Windows/
+
+      - name: ⬆ Upload HTML5 Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ env.EXPORT_NAME }}-HTML5
+          path: ./artifacts/HTML5
+          
+      - name: ⬆ Upload Windows Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ env.EXPORT_NAME }}-Windows
+          path: ./artifacts/Windows
