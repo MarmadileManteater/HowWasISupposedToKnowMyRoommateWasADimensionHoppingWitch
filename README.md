@@ -1,6 +1,6 @@
 
 # How was I supposed to know my roommate was a dimension hopping witch!?
-[![Made with Godot](https://img.shields.io/badge/Made%20with-Godot-478CBF?style=flat&logo=godot%20engine&logoColor=white)](https://godotengine.org) 
+[![Made with Godot](https://img.shields.io/badge/Made%20with-Godot-478CBF?style=flat&logo=godot%20engine&logoColor=white)](https://godotengine.org) [![ci badge](https://github.com/MarmadileManteater/HowWasISupposedToKnowMyRoommateWasADimensionHoppingWitch/actions/workflows/godot-ci.yml/badge.svg)](https://github.com/MarmadileManteater/HowWasISupposedToKnowMyRoommateWasADimensionHoppingWitch/actions/workflows/godot-ci.yml)
 
 This is a game about being roommates and my submission for [Summer Fediverse Jam](https://itch.io/jam/summer-fediverse-jam).
 
