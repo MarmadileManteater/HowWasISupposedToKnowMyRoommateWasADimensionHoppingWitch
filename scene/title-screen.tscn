@@ -42,30 +42,30 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 225.0
-margin_top = 183.0
-margin_right = 283.0
-margin_bottom = 202.0
-rect_scale = Vector2( 10, 10 )
+margin_left = 50.0
+margin_top = 65.0
+margin_right = 202.0
+margin_bottom = 104.0
+rect_scale = Vector2( 6.38833, 7.13274 )
 custom_fonts/normal_font = SubResource( 1 )
-text = "Roommates"
+text = "How was I supposed to know my roommate was a dimension hopping witch!?"
 scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-margin_left = 224.0
-margin_top = 337.0
-margin_right = 339.0
-margin_bottom = 364.0
+margin_left = 218.0
+margin_top = 387.0
+margin_right = 333.0
+margin_bottom = 414.0
 rect_scale = Vector2( 5, 5 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "Press 'Enter' to shut alarm off and wake up"
 scroll_active = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 195.0
-margin_top = 307.0
-margin_right = 871.0
-margin_bottom = 497.0
+margin_left = 189.0
+margin_top = 357.0
+margin_right = 865.0
+margin_bottom = 547.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
