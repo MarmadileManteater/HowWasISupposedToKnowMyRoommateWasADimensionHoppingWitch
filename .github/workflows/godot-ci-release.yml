@@ -72,7 +72,7 @@ jobs:
 
       - name: Create release body
         run: |
-          echo "${{ github.event.head_commit.message }}" >> release.txt
+          echo "${{ github.event.head_commit.hash }}" >> release.txt
           echo "" >> release.txt
       
       - name: 📝 Create Draft Release
@@ -81,8 +81,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.versionNumber.outputs.result }}
-          release_name: ${{ steps.versionNumber.outputs.result }}
+          tag_name: ${{ github.event.head_commit.hash }}
+          release_name: ${{ github.event.head_commit.hash }}
           draft: true
           prerelease: false
           body_path: release.txt
