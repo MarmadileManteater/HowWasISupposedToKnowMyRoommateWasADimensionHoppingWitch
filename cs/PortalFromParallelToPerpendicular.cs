@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummerFediverseJam
 {
-	public class PortalToDimensionA : DialogArea
+	public class PortalFromParallelToPerpendicular : DialogArea
 	{
 		private AnimationPlayer __animationPlayer;
 		private AudioStreamPlayer __audioStreamPlayer;
@@ -19,7 +19,7 @@ namespace SummerFediverseJam
 		{
 			__timer = GetNode<Timer>("Timer");
 			__timer.WaitTime = 1;
-			__perpendicularDimension = GetParent().GetParent<Node2D>();
+			__perpendicularDimension = GetParent().GetParent().GetParent().GetNode<Node2D>("Perpendicular Dimension");
 			__animationPlayer = GetParent().GetNode<AnimationPlayer>("AnimatedSprite/AnimationPlayer");
 			__audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 			__animationPlayer.CurrentAnimation = "Bob";
@@ -45,31 +45,24 @@ namespace SummerFediverseJam
 		}
 		public override void NotifyOverlapChange(bool overlap)
 		{
-			if (currentAction == null && overlap && !__player.IsTransitionCurrentlyHappening)
+			if (currentAction == null && overlap)
 			{
-				__player.IsTransitionCurrentlyHappening = true;
-
-				__player.PauseBackgroundMusic();
+				__player.GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stop();
 				__audioStreamPlayer.Play();
 				__player.CollapseDimension();
-
 				DelayAction(() =>
 				{
 					__animationPlayer.Stop();
-					__perpendicularDimension.Hide();
+					__perpendicularDimension.Show();
 					__player.GetParent().RemoveChild(__player);
-					__player.CollisionLayer = 1;
-					__player.CollisionMask = 1;
-					var node = __player.root.GetNode<TileMap>("Environment layer 2");
-					__player.root.AddChildBelowNode(__player.root.GetNode<TileMap>("Environment layer 2"), __player);
-					__player.Position = new Vector2(491.816f, -273.374f);
+					__player.CollisionLayer = 4;
+					__player.CollisionMask = 4;
+					__perpendicularDimension.AddChildBelowNode(__perpendicularDimension.GetNode<KinematicBody2D>("ClosedSign"), __player);
+					__player.Position = new Vector2(1069f, 189f);
 					__player.FaceDirection("d");
-					__player.HideAptMask();
+					__player.ShowAptMask();
 					__player.ExpandDimension();
-					__perpendicularDimension.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stop();
-					__player.PlayBackgroundMusic();
-					__player.IsTransitionCurrentlyHappening = false;
-
+					__perpendicularDimension.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 				}, 2);
 			}
 			base.NotifyOverlapChange(overlap);

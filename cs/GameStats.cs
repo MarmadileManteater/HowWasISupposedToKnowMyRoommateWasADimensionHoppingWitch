@@ -16,6 +16,23 @@ namespace SummerFediverseJam.cs
         public bool IsBadRoommateEnding { get; set; }
         public bool IsFunParallelDimensionTimeWRommate { get; set; }
         public bool IsRoommateInParty { get; set; }
+        public bool HasGun { get; set; }
+        public int HP { get; set; }
+        public int Lvl { get; set; }
+        public int Exp { get; set; }
+        public List<MonsterOption> MonstersVanquished { get; set; }
+        public List<MonsterOption> MonstersAquianted { get; set; }
+        public bool IsOutOfCirculation(MonsterOption option)
+        {
+            return MonstersVanquished.Contains(option) || MonstersAquianted.Contains(option);
+        }
+        public int MonstersOutOfCirculation
+        {
+            get
+            {
+                return MonstersAquianted.Count + MonstersVanquished.Count;
+            }
+        }
         public int Score
         {
             get

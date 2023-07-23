@@ -2,6 +2,7 @@ using Godot;
 using SummerFediverseJam.cs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Policy;
 
 namespace SummerFediverseJam {
@@ -14,7 +15,7 @@ namespace SummerFediverseJam {
 	}
 	public class Player : KinematicBody2D
 	{
-		public GameStats stats = new GameStats();
+		public GameStats stats = new GameStats { HP = 10, MonstersVanquished = new List<MonsterOption>(), MonstersAquianted = new List<MonsterOption>() };
 		public Node2D root;
 		private Dialog __dialog;
 		private Battle __battleScene;
@@ -33,6 +34,15 @@ namespace SummerFediverseJam {
 		private Vector2 PrebattlePosition = new Vector2(0, 0);
 		public bool GameOver = false;
 		public bool IsInBattle = false;
+		public bool IsTransitionCurrentlyHappening = false;
+		private Node2D ParentBeforeBattle;
+		public bool HasDialog
+		{
+			get
+			{
+				return __dialog.dialog.Length > 0 && __dialog.PhraseNum > -1;
+			}
+		}
 		#region Mundane Objects
 		private List<MundaneThing> MundaneObjectsInteractedWith = new List<MundaneThing>();
 		// mundane objects count
@@ -53,7 +63,7 @@ namespace SummerFediverseJam {
 		public override void _Ready()
 		{
 			root = GetParent<Node2D>();
-			__dialog = GetNode<Dialog>("Dialog");
+			__dialog = GetNode<Dialog>("camera/Dialog");
 			__dialog.dialog = new DialogText[0];
 			__battleScene = GetParent().GetNode<Battle>("Battle");
 			__backgroundMusic = GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer");
@@ -84,6 +94,14 @@ namespace SummerFediverseJam {
 		public void ShowBadEndCard()
 		{
 			__badEndCard.SetScore(stats.Score);
+			__badEndCard.Show();
+		}
+
+		public void ShowEndCard(string message)
+		{
+			// i'm just reusing this, need to fix names at some point
+			__badEndCard.SetScore(stats.Score);
+			__badEndCard.SetCardTitle(message);
 			__badEndCard.Show();
 		}
 
@@ -176,6 +194,7 @@ namespace SummerFediverseJam {
 		{
 			var mask = GetNode<ColorRect>("Node2D/BattleTransitionMask");
 			GetNode<Timer>("Node2D/BattleTransitionTimer").Stop();
+			ParentBeforeBattle = GetParent<Node2D>();
 			GetParent().RemoveChild(this);
 			__battleScene.GetNode<TileMap>("FieldOfFloatingIslands").AddChild(this);
 			var camera = GetNode<Camera2D>("camera");
@@ -207,6 +226,12 @@ namespace SummerFediverseJam {
 				timer.WaitTime = 2.5f;
 				timer.Start();
 				__backgroundMusic.Stop();
+				if (GetParent() != root)
+				{
+					GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stop();
+				}
+				__dialog.Scale *= 3;
+				__dialog.Position *= 3;
 				__battleScene.PlayMusic();
 				timer.Connect("timeout", this, nameof(EnterBattleCallback));
 				IsInBattle = true;
@@ -224,15 +249,25 @@ namespace SummerFediverseJam {
 				AddChild(camera);
 				Scale = new Vector2(3, 3);
 				Position = PrebattlePosition;
-				root.AddChildBelowNode(root.GetNode<TileMap>("Environment layer 2"), this);
+				if (ParentBeforeBattle == root)
+				{
+					root.AddChildBelowNode(root.GetNode<TileMap>("Environment layer 2"), this);
+                    __backgroundMusic.Play(0);
+                } else
+				{
+					ParentBeforeBattle.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
+					ParentBeforeBattle.AddChild(this);
+				}
 				CollisionLayer = 1;
 				CollisionMask = 1;
 				__battleScene.StopMusic();
 				var player = GetNode<AnimationPlayer>("Node2D/BattleTransitionMask/AnimationPlayer");
 				player.CurrentAnimation = "fade-in";
-				__backgroundMusic.Play(0);
 				IsInBattle = false;
-				__battleScene.Hide();
+
+                __dialog.Scale = new Vector2(1, 1);
+				__dialog.Position /= 3;
+                __battleScene.Hide();
 			}
 		}
 
@@ -269,7 +304,7 @@ namespace SummerFediverseJam {
 			{
 				Controls.Down = false;
 			}
-			if (@event.IsActionPressed("ui_accept") && !IsInBattle)
+			if (@event.IsActionPressed("ui_accept"))
 			{
 				__dialog.NextPhrase();
 			}

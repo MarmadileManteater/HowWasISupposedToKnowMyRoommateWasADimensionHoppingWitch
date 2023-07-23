@@ -74,7 +74,8 @@ public class Dialog : Node2D
 			__text.VisibleCharacters++;
 			return;
 		}
-		if (PhraseNum != -1) {
+        __indicator.Hide();
+        if (PhraseNum != -1) {
 			if (dialog[PhraseNum].AfterDequeue != null)
 			{
 				dialog[PhraseNum].AfterDequeue();

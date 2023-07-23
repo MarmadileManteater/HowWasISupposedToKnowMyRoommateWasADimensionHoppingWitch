@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=2]
+[gd_scene load_steps=183 format=2]
 
 [ext_resource path="res://img/indoor-tileseta.png" type="Texture" id=1]
 [ext_resource path="res://img/shower.png" type="Texture" id=2]
@@ -38,6 +38,8 @@
 [ext_resource path="res://img/tiles_packed.png" type="Texture" id=36]
 [ext_resource path="res://scene/bad-roommate-ending.tscn" type="PackedScene" id=37]
 [ext_resource path="res://cs/MainGameEndingStart.cs" type="Script" id=38]
+[ext_resource path="res://scene/shop.tscn" type="PackedScene" id=39]
+[ext_resource path="res://scene/parallel-apartment.tscn" type="PackedScene" id=40]
 
 [sub_resource type="VisualShader" id=7]
 code = "shader_type spatial;
@@ -2328,15 +2330,14 @@ position = Vector2( -22, -298 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 6 )
 
-[node name="BadRoommateEnding2" parent="Player" instance=ExtResource( 37 )]
-visible = false
-position = Vector2( -170.667, -98.6668 )
-scale = Vector2( 0.333333, 0.333333 )
-z_index = 4
-
 [node name="camera" type="Camera2D" parent="Player"]
 scale = Vector2( 0.333, 0.333 )
 current = true
+
+[node name="Dialog" parent="Player/camera" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( -510.51, -297.297 )
+scale = Vector2( 1.001, 1.001 )
 
 [node name="character" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 22 )
@@ -2347,17 +2348,12 @@ playing = true
 position = Vector2( -1.19209e-07, 0.66667 )
 shape = SubResource( 98 )
 
-[node name="Dialog" parent="Player" instance=ExtResource( 4 )]
-visible = false
-position = Vector2( -170, -99 )
-scale = Vector2( 0.333333, 0.333333 )
-
 [node name="PC Time" parent="Player" instance=ExtResource( 3 )]
 visible = false
 scale = Vector2( 0.333333, 0.333333 )
 
 [node name="Node2D" type="Node2D" parent="Player"]
-z_index = 1
+z_index = 2
 
 [node name="BattleTransitionMask" type="ColorRect" parent="Player/Node2D"]
 margin_left = -172.0
@@ -2380,6 +2376,12 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 1
 frames = SubResource( 107 )
 playing = true
+
+[node name="BadRoommateEnding2" parent="Player" instance=ExtResource( 37 )]
+visible = false
+position = Vector2( -168.333, -99 )
+scale = Vector2( 0.3, 0.3 )
+z_index = 4
 
 [node name="bafroom" type="TileMap" parent="."]
 position = Vector2( 24, 24 )
@@ -2528,7 +2530,6 @@ anims/RESET = SubResource( 173 )
 
 [node name="Battle" parent="." instance=ExtResource( 22 )]
 visible = false
-position = Vector2( 3682, -80 )
 CurrentOption = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -2576,3 +2577,10 @@ shape = SubResource( 175 )
 position = Vector2( 376, -171 )
 stream = ExtResource( 26 )
 volume_db = 12.117
+
+[node name="Shop" parent="." instance=ExtResource( 39 )]
+visible = false
+position = Vector2( 127, 1368 )
+
+[node name="Parallel Dimension" parent="." instance=ExtResource( 40 )]
+position = Vector2( 800, -1900 )

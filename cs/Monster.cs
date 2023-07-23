@@ -11,7 +11,6 @@ namespace SummerFediverseJam
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageName { get; set; }
-        public Dictionary<string, Action<Battle>> SpeakOptions { get; set; }
-        public Action<Battle>[] Actions { get; set; }
+
     }
 }

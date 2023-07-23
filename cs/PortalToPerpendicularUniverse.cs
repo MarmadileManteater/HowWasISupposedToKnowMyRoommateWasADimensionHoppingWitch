@@ -61,7 +61,13 @@ namespace SummerFediverseJam
 					__player.Position = new Vector2(514.414f, 180.354f);
 					__player.FaceDirection("d");
 					__player.ShowAptMask();
-					__player.ExpandDimension();
+					if (__player.stats.IsRoommateInParty)
+					{
+						__perpendicularDimension.GetNode<ColorRect>("Houses/BuildingDoorOpen1").Show();
+						__perpendicularDimension.GetNode<ColorRect>("Houses/BuildingDoorOpen2").Show();
+						__perpendicularDimension.GetNode<CollisionShape2D>("ClosedSign/CollisionShape2D").Disabled = true;
+					}
+                    __player.ExpandDimension();
 					__perpendicularDimension.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 				}, 2);
 			}

@@ -52,8 +52,8 @@ namespace SummerFediverseJam
 			}
 			if (isPlaying)
 			{
-                __stream.Stop();
-            }
+				__stream.Stop();
+			}
 			base._UnhandledInput(@event);
 		}
 	}

@@ -52,6 +52,10 @@ namespace SummerFediverseJam
 		private AnimationPlayer __itemIcon;
 		private AnimationPlayer __speakIcon;
 		private AudioStreamPlayer __audioStream;
+		private AnimationPlayer __flash;
+		private AnimationPlayer __shake;
+		private AudioStreamPlayer __magicSound;
+		private RichTextLabel __hp;
 		private bool __moverSwitch = true;
 		[Export]
 		public bool moverSwitch
@@ -160,6 +164,11 @@ namespace SummerFediverseJam
 			__fightIcon = GetNode<AnimationPlayer>("PhoneNode/Phone Menu/Fight Icon/AnimationPlayer");
 			__speakIcon = GetNode<AnimationPlayer>("PhoneNode/Phone Menu/Speak Icon/AnimationPlayer");
 			__itemIcon = GetNode<AnimationPlayer>("PhoneNode/Phone Menu/Item Icon/AnimationPlayer");
+			__hp = GetNode<RichTextLabel>("PhoneNode/Phone Menu/HP");
+			__flash = GetNode<AnimationPlayer>("Flash/ColorRect/AnimationPlayer");
+			__shake = GetNode<AnimationPlayer>("AnimationPlayer");
+			__magicSound = GetNode<AudioStreamPlayer>("Flash/AudioStreamPlayer");
+			__monsterMover.CurrentAnimation = "StayStill";
 		}
 
 		public void PlayMusic()
@@ -178,20 +187,63 @@ namespace SummerFediverseJam
 				var player = GetNode<Player>("FieldOfFloatingIslands/Player");
 				if (player != null)
 				{
-					if (@event.IsActionPressed("ui_left"))
-					{
-						player.ExitBattle();
-					}
-					if (@event.IsActionPressed("ui_down"))
-					{
-						CurrentOption++;
-					}
-					if (@event.IsActionPressed("ui_up"))
-					{
-						CurrentOption--;
-					}
-					if (@event.IsActionPressed("ui_accept") && player.IsInBattle)
-					{
+					if (moverSwitch && !player.HasDialog) {
+						if (@event.IsActionPressed("ui_left"))
+						{
+							player.ExitBattle();
+						}
+						if (@event.IsActionPressed("ui_down"))
+						{
+							CurrentOption++;
+						}
+						if (@event.IsActionPressed("ui_up"))
+						{
+							CurrentOption--;
+						}
+						if (@event.IsActionPressed("ui_accept") && player.IsInBattle)
+						{
+							if (CurrentOption == BattleOption.Item)
+							{
+								CurrentOption = BattleOption.None;
+								if (!player.stats.HasGun)
+								{
+									player.NewDialog(new[] {
+										new DialogText
+										{
+											Text = "You don't have any items."
+										}
+									});
+								} else {
+									__flash.Play("Flash");
+									__magicSound.Play();
+									player.NewDialog(new[]
+									{
+										new DialogText
+										{
+											Text = "You used your laser gun."
+										},
+										new DialogText
+										{
+											Text = "The foe was defeated!",
+											OnDisplay = () =>
+											{
+												__monsterMover.CurrentAnimation = "Fade out";
+											},
+											AfterDequeue = () =>
+											{
+												player.stats.MonstersVanquished.Add(CurrentMonster);
+												if (player.stats.MonstersVanquished.Count == 4)
+												{
+													player.root.GetNode<Node2D>("Parallel Dimension/SemiBadEnding").Show();
+												}
+												player.ExitBattle();
+												__monsterMover.CurrentAnimation = "StayStill";
+											}
+										}
+									});
+								}
+							}
+						}
 					}
 				}
 			}
@@ -200,6 +252,18 @@ namespace SummerFediverseJam
 
 		public override void _Process(float delta)
 		{
+			if (HasNode("FieldOfFloatingIslands/Player"))
+			{
+				var player = GetNode<Player>("FieldOfFloatingIslands/Player");
+				GD.Print(player.stats.HP);
+				GD.Print($"HP ${player.stats.HP}/10");
+				__hp.Text = $"HP {player.stats.HP}/10";
+				if (player.HasDialog) {
+					GetNode<Node2D>("PhoneNode").Hide();
+				} else {
+					GetNode<Node2D>("PhoneNode").Show();
+				}
+			}
 			base._Process(delta);
 		}
 

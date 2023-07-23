@@ -1,21 +1,16 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://img/tiles_packed.png" type="Texture" id=1]
-[ext_resource path="res://img/F_03.png" type="Texture" id=2]
-[ext_resource path="res://cs/Player.cs" type="Script" id=3]
+[ext_resource path="res://audio/secret.ogg" type="AudioStream" id=2]
+[ext_resource path="res://img/portal.png" type="Texture" id=3]
 [ext_resource path="res://cs/EntranceIntoParallelDimension.cs" type="Script" id=4]
-[ext_resource path="res://scene/pc-time.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scene/dialog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://cs/PortalFromParallelToPerpendicular.cs" type="Script" id=5]
+[ext_resource path="res://img/portal2.png" type="Texture" id=6]
 [ext_resource path="res://audio/blue_rain.ogg" type="AudioStream" id=7]
-[ext_resource path="res://font/Kenney Pixel.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://audio/spaceship.ogg" type="AudioStream" id=9]
-[ext_resource path="res://img/eyeball-monster.png" type="Texture" id=10]
-[ext_resource path="res://img/finger-spider.png" type="Texture" id=11]
-[ext_resource path="res://img/pepper-lips.png" type="Texture" id=12]
-[ext_resource path="res://img/icons.png" type="Texture" id=13]
-[ext_resource path="res://img/phone.png" type="Texture" id=14]
-[ext_resource path="res://img/cup-with-teeth.png" type="Texture" id=15]
-[ext_resource path="res://cs/Battle.cs" type="Script" id=16]
+[ext_resource path="res://cs/RandomEncounter.cs" type="Script" id=8]
+[ext_resource path="res://cs/KilledEveryoneBadEnding.cs" type="Script" id=9]
+[ext_resource path="res://img/F_08.png" type="Texture" id=10]
+[ext_resource path="res://cs/PlayRoam.cs" type="Script" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=23]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -539,105 +534,67 @@ points = PoolVector2Array( 22, 0, 22, 4, 24, 4, 26, 8, 22, 12, 10, 12, 8, 10, 8,
 17/shapes = [  ]
 17/z_index = 0
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=88]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 17, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 34, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=89]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 16, 17 )
-
-[sub_resource type="AtlasTexture" id=90]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 17, 16, 17 )
+[sub_resource type="RectangleShape2D" id=90]
+extents = Vector2( 34.7071, 16.051 )
 
 [sub_resource type="AtlasTexture" id=91]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 34, 16, 17 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=92]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 17 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 24, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=93]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 17, 16, 17 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 48, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=94]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 34, 16, 17 )
+[sub_resource type="AtlasTexture" id=84]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=95]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 16, 17 )
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 24, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=96]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 17, 16, 17 )
+[sub_resource type="AtlasTexture" id=86]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 48, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=97]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 34, 16, 17 )
-
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=87]
 animations = [ {
-"frames": [ SubResource( 21 ) ],
+"frames": [ SubResource( 91 ), SubResource( 92 ), SubResource( 93 ) ],
 "loop": true,
-"name": "ddefault",
+"name": "alternate",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 88 ), SubResource( 25 ) ],
+"frames": [ SubResource( 84 ), SubResource( 85 ), SubResource( 86 ) ],
 "loop": true,
-"name": "dwalk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 89 ) ],
-"loop": true,
-"name": "ldefault",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 90 ), SubResource( 91 ) ],
-"loop": true,
-"name": "lwalk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 92 ) ],
-"loop": true,
-"name": "rdefault",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 93 ), SubResource( 94 ) ],
-"loop": true,
-"name": "rwalk",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 95 ) ],
-"loop": true,
-"name": "udefault",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 96 ), SubResource( 97 ) ],
-"loop": true,
-"name": "uwalk",
-"speed": 5.0
+"name": "default",
+"speed": 7.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=98]
-radius = 4.33334
-height = 6.66663
+[sub_resource type="Animation" id=94]
+resource_name = "Bob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 111, -76 ), Vector2( 111, -90 ), Vector2( 111, -76 ) ]
+}
 
-[sub_resource type="Animation" id=86]
+[sub_resource type="Animation" id=95]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_size")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -646,91 +603,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 444, 250 ) ]
-}
-
-[sub_resource type="Animation" id=85]
-resource_name = "fade-in"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 444, 250 ), Vector2( 0, 250 ) ]
-}
-
-[sub_resource type="Animation" id=87]
-resource_name = "fade-out"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 250 ), Vector2( 404, 250 ) ]
-}
-
-[sub_resource type="Gradient" id=99]
-offsets = PoolRealArray( 0.463687, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.910156, 0.29509, 0.29509, 1 )
-
-[sub_resource type="GradientTexture2D" id=100]
-gradient = SubResource( 99 )
-width = 1200
-height = 1024
-
-[sub_resource type="Animation" id=2]
-resource_name = "Fall down"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 476 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "Fall up"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 476 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:cell_custom_transform")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Transform2D( 64, 0, 0, 64, 0, 0 ) ]
+"values": [ Vector2( 121, -79 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -742,262 +615,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="SpriteFrames" id=54]
-animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "cup-with-teeth.png",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "eyeball-monster.png",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "finger-spider.png",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "pepper-lips.png",
-"speed": 5.0
-} ]
-
-[sub_resource type="Animation" id=6]
-resource_name = "Fall down"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 502, 104 ), Vector2( 502, 300 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Fall up"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 502, 300 ), Vector2( 502, 104 ) ]
-}
-
-[sub_resource type="Animation" id=8]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 502, 104 ) ]
-}
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 8 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 13 )
-region = Rect2( 96, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 9 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="Animation" id=15]
-resource_name = "Float"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -10.25, -12.75 ), Vector2( -10.25, -13.5 ) ]
-}
-
-[sub_resource type="Animation" id=16]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -10.25, -12.75 ) ]
-}
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 13 )
-region = Rect2( 160, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=12]
-animations = [ {
-"frames": [ SubResource( 11 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="Animation" id=17]
-resource_name = "Float"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -10.25, 20.192 ), Vector2( -10.25, 20.942 ), Vector2( -10.25, 20.192 ) ]
-}
-
-[sub_resource type="Animation" id=18]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -10.25, 20.192 ) ]
-}
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=14]
-animations = [ {
-"frames": [ SubResource( 13 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="Animation" id=19]
-resource_name = "Float"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -10.25, 3.25 ), Vector2( -10.25, 4 ), Vector2( -10.25, 3.25 ) ]
-}
-
-[sub_resource type="Animation" id=20]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -10.25, 3.25 ) ]
-}
-
-[sub_resource type="Animation" id=55]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 253, 4 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=56]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 253, 4 ) ]
-}
-
-[sub_resource type="Animation" id=53]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 111, -76 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=112]
@@ -1029,6 +647,100 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=114]
 
+[sub_resource type="RectangleShape2D" id=115]
+extents = Vector2( 25, 25 )
+
+[sub_resource type="Animation" id=116]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 120, -138 ) ]
+}
+
+[sub_resource type="Animation" id=117]
+resource_name = "roam"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 9, 12, 15, 17, 19.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 120, -138 ), Vector2( 307, -138 ), Vector2( 307, 120 ), Vector2( 525, 120 ), Vector2( 525, 400 ), Vector2( -100, 380 ), Vector2( -100, 335 ), Vector2( -8, 335 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=118]
+extents = Vector2( 25, 25 )
+
+[sub_resource type="Animation" id=119]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 800, 125 ) ]
+}
+
+[sub_resource type="Animation" id=120]
+resource_name = "roam"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6, 12, 15, 17.4, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 800, 400 ), Vector2( 525, 400 ), Vector2( 525, 400 ), Vector2( 700, 400 ), Vector2( 500, 454 ), Vector2( 200, 454 ), Vector2( 200, 401 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=122]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 17 )
+
+[sub_resource type="AtlasTexture" id=124]
+atlas = ExtResource( 10 )
+region = Rect2( 48, 0, 16, 17 )
+
+[sub_resource type="SpriteFrames" id=123]
+animations = [ {
+"frames": [ SubResource( 122 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 124 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=121]
+extents = Vector2( 16.5, 21.0579 )
+
 [node name="Parallel Dimension" type="Node2D"]
 scale = Vector2( 1, 1.04474 )
 
@@ -1047,184 +759,48 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -65530, 10, 0, -65526, 10, 0, 5, 13, 0, 6, 11, 0, 7, 13, 0, 9, 13, 0, 10, 11, 0, 11, 13, 0, 65542, 12, 0, 65546, 12, 0, 65549, 13, 0, 65550, 13, 0, 131084, 16, 0, 131085, 8, 0, 131086, 8, 0, 131087, 9, 0, 131089, 14, 0, 196613, 14, 0, 196621, 13, 0, 196622, 13, 0, 458753, 13, 0, 458754, 13, 0, 524288, 16, 0, 524289, 8, 0, 524290, 8, 0, 524291, 9, 0, 589825, 13, 0, 589826, 13, 0, 589828, 14, 0 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 402, 391 )
+[node name="Portal to Dimension 1" type="Node2D" parent="."]
+position = Vector2( 606, -83.2743 )
+
+[node name="Portal" type="Area2D" parent="Portal to Dimension 1"]
+position = Vector2( 111, -84 )
 scale = Vector2( 3, 3 )
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 
-[node name="camera" type="Camera2D" parent="Player"]
-scale = Vector2( 0.333, 0.333 )
-current = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Portal to Dimension 1/Portal"]
+stream = ExtResource( 2 )
+volume_db = 2.0
 
-[node name="character" type="AnimatedSprite" parent="Player"]
-frames = SubResource( 22 )
-animation = "ddefault"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal to Dimension 1/Portal"]
+scale = Vector2( 0.33, 0.33 )
+shape = SubResource( 90 )
+
+[node name="Timer" type="Timer" parent="Portal to Dimension 1/Portal"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Portal to Dimension 1"]
+position = Vector2( 111, -77.0389 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 87 )
+animation = "alternate"
+frame = 1
 playing = true
 
-[node name="collision shape" type="CollisionShape2D" parent="Player"]
-position = Vector2( -7.7486e-06, 0.333326 )
-shape = SubResource( 98 )
-
-[node name="Dialog" parent="Player" instance=ExtResource( 6 )]
-position = Vector2( -170, -99 )
-scale = Vector2( 0.333333, 0.333333 )
-
-[node name="PC Time" parent="Player" instance=ExtResource( 5 )]
-visible = false
-scale = Vector2( 0.333333, 0.333333 )
-
-[node name="Node2D" type="Node2D" parent="Player"]
-z_index = 1
-
-[node name="BattleTransitionMask" type="ColorRect" parent="Player/Node2D"]
-margin_left = -172.0
-margin_top = -105.0
-margin_right = -172.0
-margin_bottom = 145.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Node2D/BattleTransitionMask"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Portal to Dimension 1/AnimatedSprite"]
 reset_on_save = false
-anims/RESET = SubResource( 86 )
-anims/fade-in = SubResource( 85 )
-anims/fade-out = SubResource( 87 )
-
-[node name="BattleTransitionTimer" type="Timer" parent="Player/Node2D"]
+anims/Bob = SubResource( 94 )
+anims/RESET = SubResource( 95 )
 
 [node name="FieldOfFloatingIslands4" type="TileMap" parent="."]
 scale = Vector2( 3, 3 )
+z_index = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -65520, 15, 0, 4, 15, 0, 5, 13, 0, 11, 13, 0, 65549, 13, 0, 65550, 13, 0, 196621, 13, 0, 196622, 13, 0, 393219, 15, 0, 458753, 13, 0, 458754, 13, 0, 589825, 13, 0, 589826, 13, 0 )
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -10.0
-autoplay = true
-
-[node name="Battle" type="Node2D" parent="."]
-visible = false
-position = Vector2( 1, 3 )
-script = ExtResource( 16 )
-
-[node name="TextureRect" type="TextureRect" parent="Battle"]
-margin_left = -19.0
-margin_top = 988.0
-margin_right = 1181.0
-margin_bottom = 2012.0
-rect_rotation = 270.0
-rect_scale = Vector2( 1.00101, 1.08347 )
-texture = SubResource( 100 )
-
-[node name="FieldOfFloatingIslands" type="TileMap" parent="Battle"]
-position = Vector2( 0, 476 )
-scale = Vector2( 3, 3 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 16, 16 )
-collision_layer = 2
-collision_mask = 2
-format = 1
-tile_data = PoolIntArray( 196621, 0, 131074, 262157, 6, 0, 327683, 0, 131074, 393219, 6, 0, 393223, 0, 0, 393224, 0, 2, 393225, 0, 4, 393226, 0, 3, 393227, 0, 3, 393228, 0, 4, 393229, 0, 5, 458759, 0, 131072, 458760, 0, 65540, 458761, 0, 196612, 458762, 0, 131076, 458763, 0, 65540, 458764, 0, 65540, 458765, 0, 65541, 458767, 0, 131074, 524293, 0, 131074, 524295, 0, 131072, 524296, 0, 131076, 524297, 0, 196612, 524298, 0, 196612, 524299, 0, 65540, 524300, 0, 65540, 524301, 0, 65541, 524303, 6, 0, 589829, 6, 0, 589831, 0, 262144, 589832, 0, 262148, 589833, 0, 262147, 589834, 0, 262148, 589835, 0, 262148, 589836, 0, 262146, 589837, 0, 262149, 589842, 0, 131074, 655367, 1, 0, 655368, 2, 0, 655369, 2, 0, 655370, 2, 0, 655371, 2, 0, 655372, 2, 0, 655373, 5, 0, 655378, 6, 0, 720900, 0, 131074, 786436, 6, 0 )
-
-[node name="Island Mover" type="AnimationPlayer" parent="Battle/FieldOfFloatingIslands"]
-reset_on_save = false
-"anims/Fall down" = SubResource( 2 )
-"anims/Fall up" = SubResource( 3 )
-anims/RESET = SubResource( 4 )
-
-[node name="Monster" type="AnimatedSprite" parent="Battle"]
-position = Vector2( 502, 300 )
-scale = Vector2( 0.632, 0.632 )
-frames = SubResource( 54 )
-animation = "cup-with-teeth.png"
-
-[node name="Monster Mover" type="AnimationPlayer" parent="Battle/Monster"]
-reset_on_save = false
-"anims/Fall down" = SubResource( 6 )
-"anims/Fall up" = SubResource( 7 )
-anims/RESET = SubResource( 8 )
-
-[node name="PhoneNode" type="Node2D" parent="Battle"]
-z_index = 1
-
-[node name="ColorRect" type="ColorRect" parent="Battle/PhoneNode"]
-margin_left = 812.0
-margin_top = 302.0
-margin_right = 948.0
-margin_bottom = 500.0
-rect_scale = Vector2( 1.33267, 1.37 )
-
-[node name="Phone Menu" type="Sprite" parent="Battle/PhoneNode"]
-position = Vector2( 902, 435 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 14 )
-
-[node name="FightLabel" type="RichTextLabel" parent="Battle/PhoneNode/Phone Menu"]
-margin_left = -2.25
-margin_top = -16.0
-margin_right = 23.75
-margin_bottom = -3.99997
-rect_scale = Vector2( 0.75, 0.75 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "Fight"
-scroll_active = false
-
-[node name="Fight Icon" type="AnimatedSprite" parent="Battle/PhoneNode/Phone Menu"]
-position = Vector2( -10.25, -13.4644 )
-frames = SubResource( 10 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/PhoneNode/Phone Menu/Fight Icon"]
-reset_on_save = false
-anims/Float = SubResource( 15 )
-anims/RESET = SubResource( 16 )
-
-[node name="SpeakLabel" type="RichTextLabel" parent="Battle/PhoneNode/Phone Menu"]
-margin_left = -2.25
-margin_top = 15.25
-margin_right = 28.75
-margin_bottom = 27.25
-rect_scale = Vector2( 0.75, 0.75 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "Speak"
-scroll_active = false
-
-[node name="Speak Icon" type="AnimatedSprite" parent="Battle/PhoneNode/Phone Menu"]
-position = Vector2( -10.25, 20.192 )
-frames = SubResource( 12 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/PhoneNode/Phone Menu/Speak Icon"]
-anims/Float = SubResource( 17 )
-anims/RESET = SubResource( 18 )
-
-[node name="ItemLabel" type="RichTextLabel" parent="Battle/PhoneNode/Phone Menu"]
-margin_left = -2.25
-margin_top = -0.416977
-margin_right = 23.75
-margin_bottom = 11.583
-rect_scale = Vector2( 0.75, 0.75 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "Item"
-scroll_active = false
-
-[node name="Item Icon" type="AnimatedSprite" parent="Battle/PhoneNode/Phone Menu"]
-position = Vector2( -10.25, 3.25 )
-frames = SubResource( 14 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/PhoneNode/Phone Menu/Item Icon"]
-anims/Float = SubResource( 19 )
-anims/RESET = SubResource( 20 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/PhoneNode"]
-"anims/Fall in" = SubResource( 55 )
-"anims/Fall side" = SubResource( 56 )
-anims/RESET = SubResource( 53 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle"]
-stream = ExtResource( 9 )
 
 [node name="Rock 1" type="KinematicBody2D" parent="."]
 position = Vector2( 728, 423 )
@@ -1248,10 +824,54 @@ frames = SubResource( 108 )
 position = Vector2( -0.333328, 3.33334 )
 shape = SubResource( 109 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="EntranceAmazement" type="Area2D" parent="."]
 position = Vector2( 504, 26.8008 )
 scale = Vector2( 4, 3 )
 script = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceAmazement"]
 shape = SubResource( 114 )
+
+[node name="Entrance" type="Node2D" parent="."]
+position = Vector2( 725, -103.375 )
+
+[node name="Spider" type="Area2D" parent="."]
+position = Vector2( 121.313, -138 )
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider"]
+shape = SubResource( 115 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider"]
+reset_on_save = false
+anims/RESET = SubResource( 116 )
+anims/roam = SubResource( 117 )
+script = ExtResource( 11 )
+
+[node name="EyeballMonster" type="Area2D" parent="."]
+position = Vector2( 525, 400 )
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EyeballMonster"]
+shape = SubResource( 118 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EyeballMonster"]
+reset_on_save = false
+anims/RESET = SubResource( 119 )
+anims/roam = SubResource( 120 )
+script = ExtResource( 11 )
+
+[node name="SemiBadEnding" type="Area2D" parent="."]
+visible = false
+position = Vector2( 638, -143.576 )
+scale = Vector2( 3, 3 )
+script = ExtResource( 9 )
+
+[node name="GuardianOfTheForest" type="AnimatedSprite" parent="SemiBadEnding"]
+frames = SubResource( 123 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SemiBadEnding"]
+position = Vector2( -5.5, 5.10494 )
+shape = SubResource( 121 )
+
+[node name="Timer" type="Timer" parent="SemiBadEnding"]

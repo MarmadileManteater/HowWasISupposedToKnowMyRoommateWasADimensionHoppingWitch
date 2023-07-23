@@ -82,7 +82,7 @@ namespace SummerFediverseJam
 					new DialogText
 					{
 						Name = "Taylor",
-						Text = "-your brain can only comprehend that you can't see me."
+						Text = "-your brain can't comprehend where I am in space."
 					},
 					new DialogText
 					{
