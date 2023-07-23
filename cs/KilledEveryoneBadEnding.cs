@@ -105,7 +105,7 @@ namespace SummerFediverseJam
 							new DialogText
 							{
 								Name = "Ada",
-								Text = "Vanquished? Monsters? You murdered all our residents!"
+								Text = "Vanquished? Monsters? You murdered all of our residents!"
 							},
 							new DialogText
 							{
