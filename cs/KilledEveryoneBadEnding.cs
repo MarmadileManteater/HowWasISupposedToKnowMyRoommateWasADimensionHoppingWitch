@@ -100,8 +100,8 @@ namespace SummerFediverseJam
 							new DialogText
 							{
 								Name = "Taylor",
-								Text = "We met all the creat"
-							},
+								Text = "We vanquished all of the monsters in this forest."
+                            },
 							new DialogText
 							{
 								Name = "Ada",
@@ -165,7 +165,7 @@ namespace SummerFediverseJam
 							new DialogText
 							{
 								Name = "You",
-								Text = "uhhh, okay, I guess it was nice while it lasted",
+								Text = "uhhh, okay, I guess it was nice while it lasted.",
                                 AfterDequeue = () =>
                                 {
                                     __player.GameOver = true;
@@ -218,7 +218,7 @@ namespace SummerFediverseJam
                             new DialogText
                             {
                                 Name = "Ada",
-                                Text = "Don't",
+                                Text = "Don't.",
                                 AfterDequeue = () =>
                                 {
                                     __player.GameOver = true;
