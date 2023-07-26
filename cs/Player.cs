@@ -36,6 +36,7 @@ namespace SummerFediverseJam {
 		public bool IsInBattle = false;
 		public bool IsTransitionCurrentlyHappening = false;
 		private Node2D ParentBeforeBattle;
+		public bool TouchEnabled = false;
 		private bool UsingMouse;
 		public bool HasDialog
 		{
@@ -83,7 +84,7 @@ namespace SummerFediverseJam {
 				root.GetNode<ColorRect>("Sky3")
 			};
 
-        }
+		}
 
 		public void SetSkyColor(Color color)
 		{
@@ -320,15 +321,18 @@ namespace SummerFediverseJam {
 		public override void _Process(float delta)
 		{
 			if (Input.IsMouseButtonPressed(1)) {
-				Controls.Left = GetViewport().GetMousePosition().x + (GetViewport().Size.x / 10) < GetViewport().Size.x / 2;
-				Controls.Right = GetViewport().GetMousePosition().x - (GetViewport().Size.x / 10) > GetViewport().Size.x / 2;
-				Controls.Up = GetViewport().GetMousePosition().y + (GetViewport().Size.y / 10) < GetViewport().Size.y / 2;
-				Controls.Down = GetViewport().GetMousePosition().y - (GetViewport().Size.y / 10) > GetViewport().Size.y / 2;
-                if (!UsingMouse && __badEndCard.Visible)
-                {
-                    GetTree().ReloadCurrentScene();
-                }
-                if (!UsingMouse && !__badEndCard.Visible)
+				if (!TouchEnabled)
+				{
+					Controls.Left = GetViewport().GetMousePosition().x + (GetViewport().Size.x / 10) < GetViewport().Size.x / 2;
+					Controls.Right = GetViewport().GetMousePosition().x - (GetViewport().Size.x / 10) > GetViewport().Size.x / 2;
+					Controls.Up = GetViewport().GetMousePosition().y + (GetViewport().Size.y / 10) < GetViewport().Size.y / 2;
+					Controls.Down = GetViewport().GetMousePosition().y - (GetViewport().Size.y / 10) > GetViewport().Size.y / 2;
+				}
+				if (!UsingMouse && __badEndCard.Visible)
+				{
+					GetTree().ReloadCurrentScene();
+				}
+				if (!UsingMouse && !__badEndCard.Visible && !Controls.Any)
 				{
 					__dialog.NextPhrase(true);
 				}
@@ -407,5 +411,40 @@ namespace SummerFediverseJam {
 			}
 			sprite.Animation = animation;
 		}
+
+		private void _on_Right_gui_input(object @event)
+		{
+			if (@event is InputEventScreenTouch touchEvent)
+			{
+				Controls.Right = touchEvent.Pressed;
+			}
+		}
+
+		private void _on_Left_gui_input(object @event)
+		{
+			if (@event is InputEventScreenTouch touchEvent)
+			{
+				Controls.Left = touchEvent.Pressed;
+			}
+		}
+
+
+		private void _on_Up_gui_input(object @event)
+		{
+			if (@event is InputEventScreenTouch touchEvent)
+			{
+				Controls.Up = touchEvent.Pressed;
+			}
+		}
+
+		private void _on_Down_gui_input(object @event)
+		{
+			if (@event is InputEventScreenTouch touchEvent)
+			{
+				Controls.Down = touchEvent.Pressed;
+			}
+		}
+
+
 	}
 }

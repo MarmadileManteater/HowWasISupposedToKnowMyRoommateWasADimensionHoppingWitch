@@ -158,3 +158,13 @@ This game was made with Godot which is [licensed under the MIT license](https://
 **URL:** [https://opengameart.org/content/kenney-fonts](https://opengameart.org/content/kenney-fonts)
 
 **License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+---
+
+**Title:** [Directional Touch Control UI](https://opengameart.org/content/directional-touch-control-ui)
+
+**Author:** [SpicyCatGames](https://opengameart.org/users/spicycatgames)
+
+**URL:** [https://opengameart.org/content/directional-touch-control-ui](https://opengameart.org/content/directional-touch-control-ui)
+
+**License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )

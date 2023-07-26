@@ -19,6 +19,7 @@ public class Dialog : Node2D
 	private int SelectedOption { get; set; }
 	private bool HoveringA { get; set; }
 	private bool HoveringB { get; set; }
+	private bool TouchEnabled { get; set; }
 	// this is a mutilpier:
 	// - x1 if the player is not mashing enter
 	// - x2 of the player is
@@ -38,7 +39,8 @@ public class Dialog : Node2D
 		__options = new[] { GetNode<RichTextLabel>("DecideTimeBox/Option A"), GetNode<RichTextLabel>("DecideTimeBox/Option B") };
 		__selector = GetNode<AnimatedSprite>("DecideTimeBox/Selector");
 		__timer.WaitTime = TextSpeed;
-	}
+
+    }
 
 	private int FindDialogChoiceById(string id)
 	{
@@ -71,7 +73,7 @@ public class Dialog : Node2D
 	public void NextPhrase(bool IsMouseInput = false)
 	{
 		string choice = null;
-		if (IsMouseInput && PhraseNum > -1 && dialog[PhraseNum].Options != null && dialog[PhraseNum].Options.Count != 0 && !(HoveringA || HoveringB))
+		if (IsMouseInput && PhraseNum > -1 && dialog[PhraseNum].Options != null && dialog[PhraseNum].Options.Count != 0 && !(HoveringA || HoveringB || TouchEnabled))
 		{
 			return;
 		}
@@ -186,7 +188,11 @@ public class Dialog : Node2D
 	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
-		if (PhraseNum < 0) {
+        if (GetParent().GetParent() is Player player)
+        {
+            TouchEnabled = player.TouchEnabled;
+        }
+        if (PhraseNum < 0) {
 			Hide();
 		} else {
 			if (PhraseNum  >= 0 && dialog.Length > PhraseNum && dialog[PhraseNum].Options != null && __text.VisibleCharacters >= __text.Text.Length)

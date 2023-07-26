@@ -20,13 +20,14 @@ config/windows_native_icon="res://icon.ico"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_height"
 
 [global]
 
 pixel=false
 viewport=false
 icon=false
+touch=true
 
 [gui]
 

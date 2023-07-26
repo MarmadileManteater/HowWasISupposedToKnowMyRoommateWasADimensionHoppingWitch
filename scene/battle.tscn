@@ -926,12 +926,12 @@ position = Vector2( 1, 3 )
 script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -19.0
-margin_top = 988.0
-margin_right = 1181.0
-margin_bottom = 2012.0
+margin_left = -1022.0
+margin_top = 1013.0
+margin_right = 178.0
+margin_bottom = 2037.0
 rect_rotation = 270.0
-rect_scale = Vector2( 1.00101, 1.08347 )
+rect_scale = Vector2( 0.989031, 3.03504 )
 texture = SubResource( 100 )
 
 [node name="FieldOfFloatingIslands" type="TileMap" parent="."]
@@ -970,10 +970,11 @@ visible = false
 z_index = 1
 
 [node name="BattleFadeOut" type="ColorRect" parent="BattleFade"]
-margin_left = -248.0
-margin_top = -279.0
-margin_right = 1334.0
-margin_bottom = 725.0
+margin_left = -1385.0
+margin_top = -312.0
+margin_right = 197.0
+margin_bottom = 692.0
+rect_scale = Vector2( 2.43487, 1.54782 )
 color = Color( 0, 0, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleFade/BattleFadeOut"]
@@ -984,10 +985,11 @@ anims/RESET = SubResource( 110 )
 z_index = 1
 
 [node name="ColorRect" type="ColorRect" parent="Flash"]
-margin_left = -158.0
-margin_top = -136.0
-margin_right = 1180.0
-margin_bottom = 660.0
+margin_left = -977.0
+margin_top = -301.0
+margin_right = 361.0
+margin_bottom = 495.0
+rect_scale = Vector2( 2.26197, 1.87307 )
 color = Color( 1, 1, 1, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Flash/ColorRect"]
