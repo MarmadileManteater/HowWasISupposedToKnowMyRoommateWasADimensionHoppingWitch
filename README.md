@@ -10,13 +10,11 @@ The jam's theme is "Parallel Worlds".
 
 <img src="screenshots/screenshot-1.png" width="300" /> <img src="screenshots/screenshot-3.png" width="300" /> <img src="screenshots/screenshot-2.png" width="300" />
 
----------------
-
-This game was made with Godot which is [licensed under the MIT license](https://godotengine.org/license/).
+[Play on itch.io &raquo;](https://marmadilemanteater.itch.io/how-was-i-supposed-to-know-my-roommate-was-a-dimension-hopping-witch)
 
 ---------------
 
-### External assets used
+### External assets used:
 
 **Title:** [Office Space Tileset](https://opengameart.org/content/office-space-tileset)
 
@@ -148,7 +146,6 @@ This game was made with Godot which is [licensed under the MIT license](https://
 
 **License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
 
-
 ---
 
 **Title:** [Kenney fonts](https://opengameart.org/content/kenney-fonts)
@@ -168,3 +165,9 @@ This game was made with Godot which is [licensed under the MIT license](https://
 **URL:** [https://opengameart.org/content/directional-touch-control-ui](https://opengameart.org/content/directional-touch-control-ui)
 
 **License(s):** CC0 ( [https://creativecommons.org/publicdomain/zero/1.0/](https://creativecommons.org/publicdomain/zero/1.0/) )
+
+
+---------------
+
+This game was made with Godot which is [licensed under the MIT license](https://godotengine.org/license/).
+
