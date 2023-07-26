@@ -37,7 +37,19 @@ namespace SummerFediverseJam {
 		public bool IsInBattle = false;
 		public bool IsTransitionCurrentlyHappening = false;
 		private Node2D ParentBeforeBattle;
-		public bool TouchEnabled = false;
+		private bool touchEnabled = false;
+		public bool TouchEnabled
+		{
+			get
+			{
+				return touchEnabled;
+			}
+			set
+			{
+				__dialog.TouchEnabled = value;
+				touchEnabled = value;
+			}
+		}
 		private bool UsingMouse;
 		public bool HasDialog
 		{
@@ -66,7 +78,7 @@ namespace SummerFediverseJam {
 		public override void _Ready()
 		{
 			root = GetParent<Node2D>();
-			__dialog = GetNode<Dialog>("camera/Dialog");
+			__dialog = GetNode<Dialog>("camera/CanvasLayer/Dialog");
 			__dialog.dialog = new DialogText[0];
 			__battleScene = GetParent().GetNode<Battle>("Battle");
 			__backgroundMusic = GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer");
@@ -244,8 +256,6 @@ namespace SummerFediverseJam {
 				{
 					GetParent().GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stop();
 				}
-				__dialog.Scale *= 3;
-				__dialog.Position *= 3;
 				__battleScene.PlayMusic();
 				timer.Connect("timeout", this, nameof(EnterBattleCallback));
 				IsInBattle = true;
@@ -279,8 +289,6 @@ namespace SummerFediverseJam {
 				player.CurrentAnimation = "fade-in";
 				IsInBattle = false;
 
-				__dialog.Scale = new Vector2(1, 1);
-				__dialog.Position /= 3;
 				__battleScene.Hide();
 			}
 		}
@@ -436,6 +444,7 @@ namespace SummerFediverseJam {
 
 		private void _on_Right_gui_input(object @event)
 		{
+			TouchEnabled = true;
 			if (@event is InputEventScreenTouch touchEvent)
 			{
 				Controls.Right = touchEvent.Pressed;

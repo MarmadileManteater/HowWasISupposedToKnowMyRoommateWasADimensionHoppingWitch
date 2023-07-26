@@ -19,7 +19,7 @@ public class Dialog : Node2D
 	private int SelectedOption { get; set; }
 	private bool HoveringA { get; set; }
 	private bool HoveringB { get; set; }
-	private bool TouchEnabled { get; set; }
+	public bool TouchEnabled { get; set; }
 	// this is a mutilpier:
 	// - x1 if the player is not mashing enter
 	// - x2 of the player is
