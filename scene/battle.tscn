@@ -723,6 +723,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 4 )
+
 [sub_resource type="Animation" id=17]
 resource_name = "Float"
 length = 0.4
@@ -842,9 +845,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( -10.25, -12.75 ) ]
 }
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=55]
 length = 0.4
@@ -1029,6 +1029,19 @@ scroll_active = false
 position = Vector2( -10.25, 20.192 )
 frames = SubResource( 12 )
 
+[node name="SpeakLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu/Speak Icon"]
+margin_left = -5.75
+margin_top = -5.38
+margin_right = 43.25
+margin_bottom = 6.62
+rect_scale = Vector2( 0.75, 0.75 )
+mouse_default_cursor_shape = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_text = "         Speak"
+text = "         Speak"
+scroll_active = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneNode/Phone Menu/Speak Icon"]
 anims/Float = SubResource( 17 )
 anims/RESET = SubResource( 18 )
@@ -1036,6 +1049,18 @@ anims/RESET = SubResource( 18 )
 [node name="Item Icon" type="AnimatedSprite" parent="PhoneNode/Phone Menu"]
 position = Vector2( -10.25, 3.25 )
 frames = SubResource( 14 )
+
+[node name="ItemLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu/Item Icon"]
+margin_left = -6.75
+margin_top = -3.25
+margin_right = 37.25
+margin_bottom = 8.75
+rect_scale = Vector2( 0.75, 0.75 )
+mouse_default_cursor_shape = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 5 )
+text = "          Item"
+scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneNode/Phone Menu/Item Icon"]
 anims/Float = SubResource( 19 )
@@ -1046,45 +1071,22 @@ position = Vector2( -10.25, -12.75 )
 scale = Vector2( 0.99975, 0.99975 )
 frames = SubResource( 10 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneNode/Phone Menu/Fight Icon"]
-reset_on_save = false
-anims/Float = SubResource( 15 )
-anims/RESET = SubResource( 16 )
-
-[node name="SpeakLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
-margin_left = -16.0
-margin_top = 15.0
-margin_right = 33.0
-margin_bottom = 27.0
-rect_scale = Vector2( 0.75, 0.75 )
-mouse_default_cursor_shape = 2
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "         Speak"
-scroll_active = false
-
-[node name="ItemLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
-margin_left = -17.0
-margin_right = 27.0
-margin_bottom = 12.0
-rect_scale = Vector2( 0.75, 0.75 )
-mouse_default_cursor_shape = 2
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "          Item"
-scroll_active = false
-
-[node name="FightLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
-margin_left = -19.0
-margin_top = -16.0
-margin_right = 29.0
-margin_bottom = -3.0
+[node name="FightLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu/Fight Icon"]
+margin_left = -8.75218
+margin_top = -2.9167
+margin_right = 39.2478
+margin_bottom = 10.0833
 rect_scale = Vector2( 0.75, 0.75 )
 mouse_default_cursor_shape = 2
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 5 )
 text = "           Fight"
 scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneNode/Phone Menu/Fight Icon"]
+reset_on_save = false
+anims/Float = SubResource( 15 )
+anims/RESET = SubResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneNode"]
 "anims/Fall in" = SubResource( 55 )
@@ -1100,9 +1102,9 @@ anims/Shake = SubResource( 105 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="gui_input" from="PhoneNode/Phone Menu/SpeakLabel" to="." method="_on_gui_input"]
-[connection signal="mouse_entered" from="PhoneNode/Phone Menu/SpeakLabel" to="." method="_on_SpeakLabel_mouse_entered"]
-[connection signal="gui_input" from="PhoneNode/Phone Menu/ItemLabel" to="." method="_on_gui_input"]
-[connection signal="mouse_entered" from="PhoneNode/Phone Menu/ItemLabel" to="." method="_on_ItemLabel_mouse_entered"]
-[connection signal="gui_input" from="PhoneNode/Phone Menu/FightLabel" to="." method="_on_gui_input"]
-[connection signal="mouse_entered" from="PhoneNode/Phone Menu/FightLabel" to="." method="_on_FightLabel_mouse_entered"]
+[connection signal="gui_input" from="PhoneNode/Phone Menu/Speak Icon/SpeakLabel" to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="PhoneNode/Phone Menu/Speak Icon/SpeakLabel" to="." method="_on_SpeakLabel_mouse_entered"]
+[connection signal="gui_input" from="PhoneNode/Phone Menu/Item Icon/ItemLabel" to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="PhoneNode/Phone Menu/Item Icon/ItemLabel" to="." method="_on_ItemLabel_mouse_entered"]
+[connection signal="gui_input" from="PhoneNode/Phone Menu/Fight Icon/FightLabel" to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="PhoneNode/Phone Menu/Fight Icon/FightLabel" to="." method="_on_FightLabel_mouse_entered"]
