@@ -82,7 +82,8 @@ namespace SummerFediverseJam {
 				root.GetNode<ColorRect>("Sky2"),
 				root.GetNode<ColorRect>("Sky3")
 			};
-		}
+
+        }
 
 		public void SetSkyColor(Color color)
 		{

@@ -4,7 +4,7 @@
 [ext_resource path="res://img/environmental-objects.png" type="Texture" id=2]
 [ext_resource path="res://cs/Dialog.cs" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=111]
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -90,7 +90,7 @@ margin_top = -13.8732
 margin_right = 39.7619
 margin_bottom = -1.87318
 rect_scale = Vector2( 0.25, 1.004 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 111 )
 bbcode_enabled = true
 bbcode_text = "test"
 text = "test"
@@ -107,7 +107,7 @@ margin_bottom = 30.5138
 rect_scale = Vector2( 0.25, 1.004 )
 custom_fonts/italics_font = SubResource( 6 )
 custom_fonts/bold_font = SubResource( 7 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 111 )
 bbcode_enabled = true
 bbcode_text = "asdasdasdas"
 visible_characters = 11
@@ -130,7 +130,8 @@ margin_left = 2.0
 margin_right = 42.0
 margin_bottom = 10.0
 rect_scale = Vector2( 0.25, 1.004 )
-custom_fonts/normal_font = SubResource( 1 )
+mouse_filter = 1
+custom_fonts/normal_font = SubResource( 111 )
 bbcode_enabled = true
 text = "Yes"
 scroll_active = false
@@ -144,9 +145,10 @@ margin_top = 10.276
 margin_right = 42.0
 margin_bottom = 22.276
 rect_scale = Vector2( 0.25, 1.004 )
+mouse_filter = 1
 custom_fonts/italics_font = SubResource( 6 )
 custom_fonts/bold_font = SubResource( 7 )
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 111 )
 bbcode_enabled = true
 text = "No"
 scroll_active = false

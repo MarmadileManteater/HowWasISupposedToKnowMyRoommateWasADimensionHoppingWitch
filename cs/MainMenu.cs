@@ -59,23 +59,27 @@ namespace SummerFediverseJam
 			}
 			base._UnhandledInput(@event);
 		}
-        public override void _Process(float delta)
-        {
-            if (Input.IsMouseButtonPressed(1) && !isPlaying && canStart)
-            {
-                __stream.Stop();
-                __startCommandMask.CurrentAnimation = null;
-                Hide();
-                GetParent().GetNode<Player>("Player").HideAptMask();
-                GetParent().GetNode<Player>("Player").PlayBackgroundMusic();
-                isPlaying = true;
-            }
-            base._Process(delta);
-        }
-    }
+		public override void _Process(float delta)
+		{
+			if (Input.IsMouseButtonPressed(1) && !isPlaying && canStart)
+			{
+				__stream.Stop();
+				__startCommandMask.CurrentAnimation = null;
+				Hide();
+				GetParent().GetNode<Player>("Player").HideAptMask();
+				GetParent().GetNode<Player>("Player").PlayBackgroundMusic();
+				isPlaying = true;
+			}
+			base._Process(delta);
+		}
+	}
+	
+
 }
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)
 //  {
 //      
 //  }
+
+

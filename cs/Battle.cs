@@ -517,6 +517,130 @@ namespace SummerFediverseJam
 			__audioStream.Stop();
 		}
 
+		private void HandleBattle(Player player)
+		{
+			if (CurrentOption == BattleOption.Speak)
+			{
+				if (Bestiary[(int)CurrentMonster].Speak != null)
+				{
+					CurrentOption = BattleOption.None;
+					player.NewDialog(Bestiary[(int)CurrentMonster].Speak);
+				}
+			}
+			if (CurrentOption == BattleOption.Fight)
+			{
+				CurrentOption = BattleOption.None;
+				if (rng.Next(0, 100) < Bestiary[(int)CurrentMonster].ChanceToDie)
+				{
+					__flash.Play("Flash");
+					// ouchie monster is dead 
+					player.NewDialog(new[]
+					{
+						new DialogText
+						{
+							Text = "You attacked the foe."
+						},
+						new DialogText
+						{
+							Text = "The foe was defeated!",
+							OnDisplay = () =>
+							{
+								__monsterMover.CurrentAnimation = "Fade out";
+							},
+							AfterDequeue = () =>
+							{
+								player.stats.MonstersVanquished.Add(CurrentMonster);
+								if (player.stats.MonstersOutOfCirculation == 4)
+								{
+									player.root.GetNode<Node2D>("Parallel Dimension/SemiBadEnding").Show();
+								}
+								player.ExitBattle();
+								__monsterMover.CurrentAnimation = "StayStill";
+							}
+						}
+					});
+				} else {
+					player.stats.HP -= Bestiary[(int)CurrentMonster].DamageDone;
+					__shake.CurrentAnimation = "Shake";
+					__shake.Play();
+					if (player.stats.HP <= 0)
+					{
+						player.GameOver = true;
+					}
+					player.NewDialog(new[] {
+						new DialogText
+						{
+							Text = "~you missed~"
+						},
+						new DialogText
+						{
+							Text = $"~you took {Bestiary[(int)CurrentMonster].DamageDone} points of damage~",
+							AfterDequeue = () =>
+							{
+								CurrentOption = BattleOption.None;
+								if (player.stats.HP <= 0)
+								{
+									player.GameOver = true;
+									var timer = GetNode<Timer>("Timer");
+									timer.WaitTime = 1;
+									timer.Connect("timeout", this, nameof(GameoverTimeout));
+									timer.Start();
+									GetNode<AnimationPlayer>("BattleFade/BattleFadeOut/AnimationPlayer").CurrentAnimation = "FadeOut";
+								}
+							},
+							End = player.stats.HP > 0
+						},
+						new DialogText
+						{
+							Text = "You died."
+						}
+					});
+				}
+
+			}
+			if (CurrentOption == BattleOption.Item)
+			{
+				CurrentOption = BattleOption.None;
+				if (!player.stats.HasGun)
+				{
+					player.NewDialog(new[] {
+						new DialogText
+						{
+							Text = "You don't have any items."
+						}
+					});
+				} else {
+					__flash.Play("Flash");
+					__magicSound.Play();
+					player.NewDialog(new[]
+					{
+						new DialogText
+						{
+							Text = "You used your laser gun."
+						},
+						new DialogText
+						{
+							Text = "The foe was defeated!",
+							OnDisplay = () =>
+							{
+								__monsterMover.CurrentAnimation = "Fade out";
+							},
+							AfterDequeue = () =>
+							{
+								player.stats.MonstersVanquished.Add(CurrentMonster);
+								if (player.stats.MonstersOutOfCirculation == 4)
+								{
+									player.root.GetNode<Node2D>("Parallel Dimension/SemiBadEnding").Show();
+								}
+								player.ExitBattle();
+								__monsterMover.CurrentAnimation = "StayStill";
+							}
+						}
+					});
+				}
+			}
+		}
+
 		public override void _UnhandledInput(InputEvent @event)
 		{
 			if (HasNode("FieldOfFloatingIslands/Player")) {
@@ -534,126 +658,7 @@ namespace SummerFediverseJam
 						}
 						if (@event.IsActionPressed("ui_accept") && player.IsInBattle)
 						{
-							if (CurrentOption == BattleOption.Speak)
-							{
-								if (Bestiary[(int)CurrentMonster].Speak != null)
-								{
-									CurrentOption = BattleOption.None;
-									player.NewDialog(Bestiary[(int)CurrentMonster].Speak);
-								}
-							}
-							if (CurrentOption == BattleOption.Fight)
-							{
-								CurrentOption = BattleOption.None;
-								if (rng.Next(0, 100) < Bestiary[(int)CurrentMonster].ChanceToDie)
-								{
-									__flash.Play("Flash");
-									// ouchie monster is dead 
-									player.NewDialog(new[]
-									{
-										new DialogText
-										{
-											Text = "You attacked the foe."
-										},
-										new DialogText
-										{
-											Text = "The foe was defeated!",
-											OnDisplay = () =>
-											{
-												__monsterMover.CurrentAnimation = "Fade out";
-											},
-											AfterDequeue = () =>
-											{
-												player.stats.MonstersVanquished.Add(CurrentMonster);
-												if (player.stats.MonstersOutOfCirculation == 4)
-												{
-													player.root.GetNode<Node2D>("Parallel Dimension/SemiBadEnding").Show();
-												}
-												player.ExitBattle();
-												__monsterMover.CurrentAnimation = "StayStill";
-											}
-										}
-									});
-								} else {
-									player.stats.HP -= Bestiary[(int)CurrentMonster].DamageDone;
-									__shake.CurrentAnimation = "Shake";
-									__shake.Play();
-									if (player.stats.HP <= 0)
-									{
-										player.GameOver = true;
-									}
-									player.NewDialog(new[] {
-										new DialogText
-										{
-											Text = "~you missed~"
-										},
-										new DialogText
-										{
-											Text = $"~you took {Bestiary[(int)CurrentMonster].DamageDone} points of damage~",
-											AfterDequeue = () =>
-											{
-												CurrentOption = BattleOption.None;
-												if (player.stats.HP <= 0)
-												{
-													player.GameOver = true;
-													var timer = GetNode<Timer>("Timer");
-													timer.WaitTime = 1;
-													timer.Connect("timeout", this, nameof(GameoverTimeout));
-													timer.Start();
-													GetNode<AnimationPlayer>("BattleFade/BattleFadeOut/AnimationPlayer").CurrentAnimation = "FadeOut";
-												}
-											},
-											End = player.stats.HP > 0
-										},
-										new DialogText
-										{
-											Text = "You died."
-										}
-									});
-								}
-
-							}
-							if (CurrentOption == BattleOption.Item)
-							{
-								CurrentOption = BattleOption.None;
-								if (!player.stats.HasGun)
-								{
-									player.NewDialog(new[] {
-										new DialogText
-										{
-											Text = "You don't have any items."
-										}
-									});
-								} else {
-									__flash.Play("Flash");
-									__magicSound.Play();
-									player.NewDialog(new[]
-									{
-										new DialogText
-										{
-											Text = "You used your laser gun."
-										},
-										new DialogText
-										{
-											Text = "The foe was defeated!",
-											OnDisplay = () =>
-											{
-												__monsterMover.CurrentAnimation = "Fade out";
-											},
-											AfterDequeue = () =>
-											{
-												player.stats.MonstersVanquished.Add(CurrentMonster);
-												if (player.stats.MonstersOutOfCirculation == 4)
-												{
-													player.root.GetNode<Node2D>("Parallel Dimension/SemiBadEnding").Show();
-												}
-												player.ExitBattle();
-												__monsterMover.CurrentAnimation = "StayStill";
-											}
-										}
-									});
-								}
-							}
+							HandleBattle(player);
 						}
 					}
 				}
@@ -677,6 +682,31 @@ namespace SummerFediverseJam
 			base._Process(delta);
 		}
 
+		private void _on_FightLabel_mouse_entered()
+		{
+			CurrentOption = BattleOption.Fight;
+		}
+		private void _on_ItemLabel_mouse_entered()
+		{
+			CurrentOption = BattleOption.Item;
+		}
+		private void _on_SpeakLabel_mouse_entered()
+		{
+			CurrentOption = BattleOption.Speak;
+		}
+		private void _on_gui_input(object @event)
+		{
+			if (@event is InputEventMouseButton @mevent)
+			{
+				if (@mevent.IsPressed())
+				{
+					if (@mevent.ButtonIndex == 1)
+					{
+						var player = GetNode<Player>("FieldOfFloatingIslands/Player");
+						HandleBattle(player);
+					}
+				}
+			}
+		}
 	}
 }
-
