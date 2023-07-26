@@ -40,7 +40,7 @@ public class Dialog : Node2D
 		__selector = GetNode<AnimatedSprite>("DecideTimeBox/Selector");
 		__timer.WaitTime = TextSpeed;
 
-    }
+	}
 
 	private int FindDialogChoiceById(string id)
 	{
@@ -188,11 +188,11 @@ public class Dialog : Node2D
 	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
-        if (GetParent().GetParent() is Player player)
-        {
-            TouchEnabled = player.TouchEnabled;
-        }
-        if (PhraseNum < 0) {
+		if (GetParent().GetParent() is Player player)
+		{
+			TouchEnabled = player.TouchEnabled;
+		}
+		if (PhraseNum < 0) {
 			Hide();
 		} else {
 			if (PhraseNum  >= 0 && dialog.Length > PhraseNum && dialog[PhraseNum].Options != null && __text.VisibleCharacters >= __text.Text.Length)

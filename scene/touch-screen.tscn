@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://img/up.png" type="Texture" id=1]
 [ext_resource path="res://img/up-pressed.png" type="Texture" id=2]
@@ -8,11 +8,15 @@
 [ext_resource path="res://img/left-pressed.png" type="Texture" id=6]
 [ext_resource path="res://img/right.png" type="Texture" id=7]
 [ext_resource path="res://img/right-pressed.png" type="Texture" id=8]
+[ext_resource path="res://img/menu.png" type="Texture" id=10]
+[ext_resource path="res://cs/AnchorToRightSideOfScreen.cs" type="Script" id=11]
 
 [node name="TouchScreen" type="CanvasLayer"]
+pause_mode = 2
+layer = 0
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 208, 418 )
+position = Vector2( 174, 414 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Up" type="TouchScreenButton" parent="Node2D"]
@@ -45,4 +49,15 @@ normal = ExtResource( 7 )
 pressed = ExtResource( 8 )
 passby_press = true
 action = "ui_right"
+visibility_mode = 1
+
+[node name="Menu" type="Node2D" parent="."]
+script = ExtResource( 11 )
+offset = 585
+
+[node name="Menu" type="TouchScreenButton" parent="Menu"]
+position = Vector2( 482, 0 )
+scale = Vector2( 0.423387, 0.423387 )
+normal = ExtResource( 10 )
+action = "ui_start"
 visibility_mode = 1

@@ -28,6 +28,7 @@ namespace SummerFediverseJam {
 		private AnimationPlayer __apartmentMaskAnimationPlayer;
 		private Roommate __roommate;
 		private BadRoommateEndingCard __badEndCard;
+		private StartMenu __startMenu;
 		private ColorRect[] __sky;
 		private Vector2 DialogExpireLocation = new Vector2(0, 0);
 		public Controls Controls = new Controls();
@@ -83,6 +84,17 @@ namespace SummerFediverseJam {
 				root.GetNode<ColorRect>("Sky2"),
 				root.GetNode<ColorRect>("Sky3")
 			};
+			__startMenu = GetNode<StartMenu>("StartMenu");
+		}
+
+		public void Pause()
+		{
+			__startMenu.Show();
+			GetTree().Paused = true;
+		}
+
+		public void Unpause()
+		{
 
 		}
 
@@ -313,13 +325,24 @@ namespace SummerFediverseJam {
 			if (@event.IsActionPressed("ui_accept") && __badEndCard.Visible) {
 				GetTree().ReloadCurrentScene();
 			}
+			if (@event.IsActionPressed("ui_start") && !__badEndCard.Visible)
+			{
+				Pause();
+			}
 			base._UnhandledInput(@event);
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 		public override void _Process(float delta)
 		{
-			if (Input.IsMouseButtonPressed(1)) {
+			if (Input.IsMouseButtonPressed(2))
+			{
+				if (!__badEndCard.Visible)
+				{
+					Pause();
+				}
+			}
+            if (Input.IsMouseButtonPressed(1)) {
 				if (!TouchEnabled)
 				{
 					Controls.Left = GetViewport().GetMousePosition().x + (GetViewport().Size.x / 10) < GetViewport().Size.x / 2;
