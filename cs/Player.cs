@@ -332,7 +332,7 @@ namespace SummerFediverseJam {
 				{
 					GetTree().ReloadCurrentScene();
 				}
-				if (!UsingMouse && !__badEndCard.Visible && !Controls.Any)
+				if (!UsingMouse && !__badEndCard.Visible && ((!Controls.Any && TouchEnabled) || !TouchEnabled))
 				{
 					__dialog.NextPhrase(true);
 				}
