@@ -59,6 +59,7 @@ namespace SummerFediverseJam
 						AfterDequeue = () =>
 						{
 							__player = player;
+							player.ShowAptMask(0);
 							player.FadeOutAptMask();
 							__timer.WaitTime = 5;
 							__timer.Start();

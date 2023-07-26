@@ -115,17 +115,16 @@ namespace SummerFediverseJam {
 
 		public void FadeOutAptMask()
 		{
-			__apartmentMaskAnimationPlayer.CurrentAnimation = "Fade out";
-			__apartmentMask.Show();
+            __apartmentMaskAnimationPlayer.CurrentAnimation = "Fade out";
 		}
 		public void FadeInAptMask()
 		{
 			__apartmentMaskAnimationPlayer.CurrentAnimation = "Fade in";
 		}
 
-		public void ShowAptMask()
+		public void ShowAptMask(int alpha = 255)
 		{
-			__apartmentMask.Color = new Color(__apartmentMask.Color.r, __apartmentMask.Color.g, __apartmentMask.Color.b, 255);
+			__apartmentMask.Color = new Color(__apartmentMask.Color.r, __apartmentMask.Color.g, __apartmentMask.Color.b, alpha);
 			__apartmentMask.Show();
 		}
 		public void HideAptMask()
