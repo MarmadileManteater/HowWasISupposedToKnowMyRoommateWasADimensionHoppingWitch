@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://img/tiles_packed.png" type="Texture" id=1]
 [ext_resource path="res://img/cup-with-teeth.png" type="Texture" id=2]
@@ -651,9 +651,6 @@ tracks/2/keys = {
 [sub_resource type="DynamicFont" id=101]
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 4 )
-
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 6 )
 region = Rect2( 96, 0, 16, 16 )
@@ -786,6 +783,9 @@ tracks/0/keys = {
 "values": [ Vector2( -10.25, 3.25 ) ]
 }
 
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 4 )
+
 [sub_resource type="Animation" id=55]
 length = 0.4
 tracks/0/type = "value"
@@ -891,6 +891,36 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 3 ), Vector2( -34, 3 ), Vector2( 35, 3 ), Vector2( -34, 3 ), Vector2( 35, 3 ), Vector2( -34, 3 ), Vector2( 1, 3 ) ]
 }
 
+[sub_resource type="Animation" id=109]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=110]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
 [node name="Battle" type="Node2D"]
 position = Vector2( 1, 3 )
 script = ExtResource( 5 )
@@ -960,17 +990,6 @@ custom_fonts/normal_font = SubResource( 101 )
 text = "HP 10/10"
 scroll_active = false
 
-[node name="FightLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
-margin_left = -2.25
-margin_top = -16.0
-margin_right = 23.75
-margin_bottom = -3.99997
-rect_scale = Vector2( 0.75, 0.75 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "Fight"
-scroll_active = false
-
 [node name="Fight Icon" type="AnimatedSprite" parent="PhoneNode/Phone Menu"]
 position = Vector2( -10.25, -13.4848 )
 frames = SubResource( 10 )
@@ -980,17 +999,6 @@ reset_on_save = false
 anims/Float = SubResource( 15 )
 anims/RESET = SubResource( 16 )
 
-[node name="SpeakLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
-margin_left = -2.25
-margin_top = 15.25
-margin_right = 28.75
-margin_bottom = 27.25
-rect_scale = Vector2( 0.75, 0.75 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "Speak"
-scroll_active = false
-
 [node name="Speak Icon" type="AnimatedSprite" parent="PhoneNode/Phone Menu"]
 position = Vector2( -10.25, 20.192 )
 frames = SubResource( 12 )
@@ -999,17 +1007,6 @@ frames = SubResource( 12 )
 anims/Float = SubResource( 17 )
 anims/RESET = SubResource( 18 )
 
-[node name="ItemLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
-margin_left = -2.25
-margin_top = -0.416977
-margin_right = 23.75
-margin_bottom = 11.583
-rect_scale = Vector2( 0.75, 0.75 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
-text = "Item"
-scroll_active = false
-
 [node name="Item Icon" type="AnimatedSprite" parent="PhoneNode/Phone Menu"]
 position = Vector2( -10.25, 3.25 )
 frames = SubResource( 14 )
@@ -1017,6 +1014,38 @@ frames = SubResource( 14 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneNode/Phone Menu/Item Icon"]
 anims/Float = SubResource( 19 )
 anims/RESET = SubResource( 20 )
+
+[node name="FightLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
+margin_left = -19.0
+margin_top = -16.0
+margin_right = 29.0
+margin_bottom = -3.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 5 )
+text = "           Fight"
+scroll_active = false
+
+[node name="SpeakLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
+margin_left = -16.0
+margin_top = 15.0
+margin_right = 33.0
+margin_bottom = 27.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 5 )
+text = "         Speak"
+scroll_active = false
+
+[node name="ItemLabel" type="RichTextLabel" parent="PhoneNode/Phone Menu"]
+margin_left = -17.0
+margin_right = 27.0
+margin_bottom = 12.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 5 )
+text = "          Item"
+scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PhoneNode"]
 "anims/Fall in" = SubResource( 55 )
@@ -1044,3 +1073,20 @@ stream = ExtResource( 11 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 104 )
 anims/Shake = SubResource( 105 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BattleFade" type="Node2D" parent="."]
+visible = false
+z_index = 1
+
+[node name="BattleFadeOut" type="ColorRect" parent="BattleFade"]
+margin_left = -248.0
+margin_top = -279.0
+margin_right = 1334.0
+margin_bottom = 725.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleFade/BattleFadeOut"]
+anims/FadeOut = SubResource( 109 )
+anims/RESET = SubResource( 110 )

@@ -17,6 +17,8 @@ public class Dialog : Node2D
 	private float TextSpeed = 0.025f;
 	public DialogText[] dialog { get; set; }
 	private int SelectedOption { get; set; }
+	private bool HoveringA { get; set; }
+	private bool HoveringB { get; set; }
 	// this is a mutilpier:
 	// - x1 if the player is not mashing enter
 	// - x2 of the player is
@@ -66,16 +68,21 @@ public class Dialog : Node2D
 		}
 	}
 
-	public void NextPhrase(string choice = null)
+	public void NextPhrase(bool IsMouseInput = false)
 	{
+		string choice = null;
+		if (IsMouseInput && PhraseNum > -1 && dialog[PhraseNum].Options != null && dialog[PhraseNum].Options.Count != 0 && !(HoveringA || HoveringB))
+		{
+			return;
+		}
 		if (__text.VisibleCharacters < __text.Text.Length)
 		{
 			// treat the player mashing a as increasing the reveal speed of the text
 			__text.VisibleCharacters++;
 			return;
 		}
-        __indicator.Hide();
-        if (PhraseNum != -1) {
+		__indicator.Hide();
+		if (PhraseNum != -1) {
 			if (dialog[PhraseNum].AfterDequeue != null)
 			{
 				dialog[PhraseNum].AfterDequeue();
@@ -194,4 +201,33 @@ public class Dialog : Node2D
 			Show();
 		}
 	}
+
+	private void _on_Option_A_mouse_entered()
+	{
+		GetNode<Control>("DecideTimeBox/Option A").MouseDefaultCursorShape = Control.CursorShape.PointingHand;
+		SelectedOption = 0;
+		HoveringA = true;
+	}
+
+
+	private void _on_Option_A_mouse_exited()
+	{
+		HoveringA = false;
+	}
+
+
+	private void _on_Option_B_mouse_entered()
+	{
+		GetNode<Control>("DecideTimeBox/Option B").MouseDefaultCursorShape = Control.CursorShape.PointingHand;
+		SelectedOption = 1;
+		HoveringB = true;
+	}
+
+
+	private void _on_Option_B_mouse_exited()
+	{
+		HoveringB = false;
+	}
+
 }
+

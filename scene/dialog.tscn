@@ -118,7 +118,6 @@ __meta__ = {
 }
 
 [node name="DecideTimeBox" type="ColorRect" parent="."]
-visible = false
 margin_left = 645.0
 margin_top = 300.0
 margin_right = 657.0
@@ -175,3 +174,8 @@ reset_on_save = false
 method_call_mode = 1
 anims/RESET = SubResource( 4 )
 anims/bob = SubResource( 5 )
+
+[connection signal="mouse_entered" from="DecideTimeBox/Option A" to="." method="_on_Option_A_mouse_entered"]
+[connection signal="mouse_exited" from="DecideTimeBox/Option A" to="." method="_on_Option_A_mouse_exited"]
+[connection signal="mouse_entered" from="DecideTimeBox/Option B" to="." method="_on_Option_B_mouse_entered"]
+[connection signal="mouse_exited" from="DecideTimeBox/Option B" to="." method="_on_Option_B_mouse_exited"]

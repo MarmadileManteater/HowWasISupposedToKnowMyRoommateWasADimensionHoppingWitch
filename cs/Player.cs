@@ -36,6 +36,7 @@ namespace SummerFediverseJam {
 		public bool IsInBattle = false;
 		public bool IsTransitionCurrentlyHappening = false;
 		private Node2D ParentBeforeBattle;
+		private bool UsingMouse;
 		public bool HasDialog
 		{
 			get
@@ -252,8 +253,8 @@ namespace SummerFediverseJam {
 				if (ParentBeforeBattle == root)
 				{
 					root.AddChildBelowNode(root.GetNode<TileMap>("Environment layer 2"), this);
-                    __backgroundMusic.Play(0);
-                } else
+					__backgroundMusic.Play(0);
+				} else
 				{
 					ParentBeforeBattle.GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 					ParentBeforeBattle.AddChild(this);
@@ -265,9 +266,9 @@ namespace SummerFediverseJam {
 				player.CurrentAnimation = "fade-in";
 				IsInBattle = false;
 
-                __dialog.Scale = new Vector2(1, 1);
+				__dialog.Scale = new Vector2(1, 1);
 				__dialog.Position /= 3;
-                __battleScene.Hide();
+				__battleScene.Hide();
 			}
 		}
 
@@ -304,21 +305,40 @@ namespace SummerFediverseJam {
 			{
 				Controls.Down = false;
 			}
-			if (@event.IsActionPressed("ui_accept"))
+			if (@event.IsActionPressed("ui_accept") && !__badEndCard.Visible)
 			{
 				__dialog.NextPhrase();
 			}
 			if (@event.IsActionPressed("ui_accept") && __badEndCard.Visible) {
 				GetTree().ReloadCurrentScene();
 			}
-
 			base._UnhandledInput(@event);
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 		public override void _Process(float delta)
 		{
-			
+			if (Input.IsMouseButtonPressed(1)) {
+				Controls.Left = GetViewport().GetMousePosition().x + (GetViewport().Size.x / 10) < GetViewport().Size.x / 2;
+				Controls.Right = GetViewport().GetMousePosition().x - (GetViewport().Size.x / 10) > GetViewport().Size.x / 2;
+				Controls.Up = GetViewport().GetMousePosition().y + (GetViewport().Size.y / 10) < GetViewport().Size.y / 2;
+				Controls.Down = GetViewport().GetMousePosition().y - (GetViewport().Size.y / 10) > GetViewport().Size.y / 2;
+                if (!UsingMouse && __badEndCard.Visible)
+                {
+                    GetTree().ReloadCurrentScene();
+                }
+                if (!UsingMouse && !__badEndCard.Visible)
+				{
+					__dialog.NextPhrase(true);
+				}
+				UsingMouse = true;
+			} else if (UsingMouse) {
+				Controls.Up = false;
+				Controls.Down = false;
+				Controls.Left = false;
+				Controls.Right = false;
+				UsingMouse = false;
+			}
 			var sprite = GetNode<AnimatedSprite>("character");
 			// only want to set animation once per `_Process`
 			// otherwise the animation won't play if it keeps flipping back and forth before the animation plays

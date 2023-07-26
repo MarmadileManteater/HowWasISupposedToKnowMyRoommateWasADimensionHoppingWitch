@@ -35,6 +35,7 @@ namespace SummerFediverseJam
 		private AnimationPlayer __shake;
 		private AudioStreamPlayer __magicSound;
 		private RichTextLabel __hp;
+		private Random rng = new Random();
 		private bool __moverSwitch = true;
 		[Export]
 		public bool moverSwitch
@@ -496,6 +497,16 @@ namespace SummerFediverseJam
 			__monsterMover.CurrentAnimation = "StayStill";
 		}
 
+		public void GameoverTimeout()
+		{
+			if (HasNode("FieldOfFloatingIslands/Player"))
+			{
+				var player = GetNode<Player>("FieldOfFloatingIslands/Player");
+				player.ExitBattle();
+				player.ShowEndCard("You died.");
+			}
+		}
+
 		public void PlayMusic()
 		{
 			__audioStream.Play(0);
@@ -513,10 +524,6 @@ namespace SummerFediverseJam
 				if (player != null)
 				{
 					if (moverSwitch && !player.HasDialog) {
-						if (@event.IsActionPressed("ui_left"))
-						{
-							player.ExitBattle();
-						}
 						if (@event.IsActionPressed("ui_down"))
 						{
 							CurrentOption++;
@@ -538,7 +545,7 @@ namespace SummerFediverseJam
 							if (CurrentOption == BattleOption.Fight)
 							{
 								CurrentOption = BattleOption.None;
-								if (new Random().Next(0, 100) < Bestiary[(int)CurrentMonster].ChanceToDie)
+								if (rng.Next(0, 100) < Bestiary[(int)CurrentMonster].ChanceToDie)
 								{
 									__flash.Play("Flash");
 									// ouchie monster is dead 
@@ -569,13 +576,12 @@ namespace SummerFediverseJam
 									});
 								} else {
 									player.stats.HP -= Bestiary[(int)CurrentMonster].DamageDone;
+									__shake.CurrentAnimation = "Shake";
+									__shake.Play();
 									if (player.stats.HP <= 0)
 									{
 										player.GameOver = true;
-										player.ShowEndCard("You died.");
 									}
-									__shake.CurrentAnimation = "Shake";
-									__shake.Play();
 									player.NewDialog(new[] {
 										new DialogText
 										{
@@ -584,10 +590,24 @@ namespace SummerFediverseJam
 										new DialogText
 										{
 											Text = $"~you took {Bestiary[(int)CurrentMonster].DamageDone} points of damage~",
-											OnDisplay = () =>
+											AfterDequeue = () =>
 											{
 												CurrentOption = BattleOption.None;
-											}
+												if (player.stats.HP <= 0)
+												{
+													player.GameOver = true;
+													var timer = GetNode<Timer>("Timer");
+													timer.WaitTime = 1;
+													timer.Connect("timeout", this, nameof(GameoverTimeout));
+													timer.Start();
+													GetNode<AnimationPlayer>("BattleFade/BattleFadeOut/AnimationPlayer").CurrentAnimation = "FadeOut";
+												}
+											},
+											End = player.stats.HP > 0
+										},
+										new DialogText
+										{
+											Text = "You died."
 										}
 									});
 								}
@@ -659,3 +679,4 @@ namespace SummerFediverseJam
 
 	}
 }
+
