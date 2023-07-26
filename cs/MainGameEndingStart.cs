@@ -51,7 +51,11 @@ namespace SummerFediverseJam
 					new DialogText
 					{
 						Name = "Taylor",
-						Text = "There's something I need to show you."
+						Text = "There's something I need to show you.",
+						OnDisplay = () =>
+						{
+							__player.HideAptMask();
+                        }
 					},
 					new DialogText
 					{
