@@ -107,7 +107,6 @@ namespace SummerFediverseJam
 
 		private void _on_return_input(object @event)
 		{
-			GD.Print(@event);
 			Selected = StartMenuOption.Reset;
 			_on_gui_input(@event);
 		}
