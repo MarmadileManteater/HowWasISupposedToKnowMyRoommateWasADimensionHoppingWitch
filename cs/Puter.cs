@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace SummerFediverseJam
 {
@@ -21,7 +22,7 @@ namespace SummerFediverseJam
 		{
 			__player.SetSkyColor(new Color("7f73c3"));
 			__player.FadeInAptMask();
-			__timer.Stop();
+            __timer.Stop();
 			__timer.Disconnect("timeout", this, nameof(AfterWork));
 			__player.GetRoommate().Show();
 			if (__player.stats.KilledRoommatePlant)
@@ -59,6 +60,7 @@ namespace SummerFediverseJam
 						AfterDequeue = () =>
 						{
 							__player = player;
+							player.ShowAptMask(0);
 							player.FadeOutAptMask();
 							__timer.WaitTime = 5;
 							__timer.Start();

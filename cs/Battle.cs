@@ -62,7 +62,6 @@ namespace SummerFediverseJam
 					}
 
 				}
-				GD.Print(value);
 				__moverSwitch = value;
 			}
 		}

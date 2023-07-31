@@ -51,20 +51,20 @@ namespace SummerFediverseJam
 				GetParent().GetNode<Player>("Player").HideAptMask();
 				GetParent().GetNode<Player>("Player").PlayBackgroundMusic();
 				isPlaying = true;
-                GetParent().GetNode<CanvasLayer>("Player/TouchScreen").Show();
-            }
-            if (@event is InputEventScreenTouch)
-            {
+				GetParent().GetNode<CanvasLayer>("Player/TouchScreen").Show();
+			}
+			if (@event is InputEventScreenTouch)
+			{
 				if (GetParent().HasNode("Player"))
 				{
 					GetParent().GetNode<Player>("Player").TouchEnabled = true;
 				}
-            }
-            if (isPlaying)
+			}
+			if (isPlaying)
 			{
 				__stream.Stop();
-            }
-            base._UnhandledInput(@event);
+			}
+			base._UnhandledInput(@event);
 		}
 		public override void _Process(float delta)
 		{
@@ -76,8 +76,8 @@ namespace SummerFediverseJam
 				GetParent().GetNode<Player>("Player").HideAptMask();
 				GetParent().GetNode<Player>("Player").PlayBackgroundMusic();
 				isPlaying = true;
-                GetParent().GetNode<CanvasLayer>("Player/TouchScreen").Show();
-            }
+				GetParent().GetNode<CanvasLayer>("Player/TouchScreen").Show();
+			}
 			base._Process(delta);
 		}
 	}

@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://img/environmental-objects.png" type="Texture" id=1]
+[ext_resource path="res://font/Kenney Pixel.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://cs/AnchorToRightSideOfScreen.cs" type="Script" id=3]
+[ext_resource path="res://cs/StartMenu.cs" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 300, 300 )
+
+[node name="StartMenu" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 488, 0 )
+script = ExtResource( 3 )
+Side = 1
+offset = -50
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+margin_left = -283.0
+margin_top = 186.0
+margin_right = -96.0
+margin_bottom = 262.0
+rect_scale = Vector2( 3, 3 )
+color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+
+[node name="Return to Game" type="RichTextLabel" parent="Node2D/ColorRect"]
+margin_left = 21.6667
+margin_top = 38.3333
+margin_right = 176.667
+margin_bottom = 69.3333
+mouse_default_cursor_shape = 2
+custom_fonts/normal_font = SubResource( 4 )
+text = "Return to Game"
+scroll_active = false
+
+[node name="Reset" type="RichTextLabel" parent="Node2D/ColorRect"]
+margin_left = 21.0
+margin_top = 8.0
+margin_right = 176.0
+margin_bottom = 39.0
+mouse_default_cursor_shape = 2
+custom_fonts/normal_font = SubResource( 4 )
+text = "Reset"
+scroll_active = false
+
+[node name="Selector" type="AnimatedSprite" parent="Node2D"]
+position = Vector2( -254.671, 253 )
+rotation = -1.57327
+scale = Vector2( 3.15832, 3.15832 )
+frames = SubResource( 3 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 773, 182 )
+scale = Vector2( 0.92545, 0.883588 )
+shape = SubResource( 5 )
+action = "ui_accept"
+visibility_mode = 1
+
+[connection signal="gui_input" from="Node2D/ColorRect/Return to Game" to="." method="_on_reset_input"]
+[connection signal="mouse_entered" from="Node2D/ColorRect/Return to Game" to="." method="_on_Return_to_Game_mouse_entered"]
+[connection signal="gui_input" from="Node2D/ColorRect/Reset" to="." method="_on_return_input"]
+[connection signal="mouse_entered" from="Node2D/ColorRect/Reset" to="." method="_on_Reset_mouse_entered"]
